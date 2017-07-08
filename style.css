@@ -14,13 +14,46 @@ html, body {
 #main-container {
     width: 100%;
     height: 100%;
-    padding: 7px;
-    box-sizing: border-box;
 }
 
 #main-svg-viewport {
     background: #d4d4d4;
     width: 100%;
+    height: 80%;
+    vertical-align: top;
+}
+
+#bottom-row {
+    background: #dbebff;
+    width: 100%;
+    height: 20%;
+}
+
+.ul-horizontal {
+    background: #003eff;
+    width: 100%;
     height: 100%;
 }
+
+.ul-horizontal li {
+    background: #2f9cf3;
+    list-style: none;
+    width: 25%;
+    height: 100%;
+    float: left;
+    display: inline-block;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.element-heading {
+    color: #2e2d3e;
+    font-weight: 800;
+    font-size: 19px;
+}
+
+.element-description {
+    color: #2e2d3e;
+}
+
 
