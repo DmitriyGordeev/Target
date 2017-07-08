@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     font-family: 'Forum', serif;
-    color: #2e2d3e;
+    color: #39384d;
     font-weight: 200;
 }
 
@@ -23,6 +23,11 @@ html, body {
     vertical-align: top;
 }
 
+
+
+/* ----------------------------------------------------------
+    bottom row styles:
+ */
 #bottom-row {
     background: #dbebff;
     width: 100%;
@@ -45,6 +50,22 @@ html, body {
     padding: 10px;
     box-sizing: border-box;
 }
+
+
+/* coloring bottom options: */
+.ul-horizontal li:nth-of-type(1) {
+    background: #F53240;
+}
+.ul-horizontal li:nth-of-type(2) {
+    background: #02c8a7;
+}
+.ul-horizontal li:nth-of-type(3) {
+    background: #7CDBD5;
+}
+.ul-horizontal li:nth-of-type(4) {
+    background: #F9BE02;
+}
+
 
 .ul-horizontal li div {
     border-left: 3px solid #2e2d3e;
