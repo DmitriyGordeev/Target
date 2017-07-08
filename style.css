@@ -23,8 +23,6 @@ html, body {
     vertical-align: top;
 }
 
-
-
 /* ----------------------------------------------------------
     bottom row styles:
  */
@@ -88,6 +86,35 @@ html, body {
     font-weight: 100;
     text-align: center;
     margin-top: 10px;
+    transition-duration: 0.3s;
 }
 
+.element-description:hover {
+    transition-duration: 0.3s;
+    background: white;
+    cursor: pointer;
+}
+
+/* TESTING EXP: */
+#cloud {
+    max-width: 250px;
+    padding: 5px;
+    position: absolute;
+    font-weight: 500;
+    background: #e9f2f0;
+    border: 1px solid #c2c2c2;
+    -webkit-border-radius: 2px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+
+.cloud-title {
+    font-weight: 800;
+    border-bottom: 1px solid #c2c2c2;
+    padding-bottom: 5px;
+}
+
+.cloud-description {
+    margin-top: 5px;
+}
 
