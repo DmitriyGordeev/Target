@@ -36,7 +36,7 @@ html, body {
 }
 
 .ul-horizontal li {
-    background: #2f9cf3;
+    background: #e9f2f0;
     list-style: none;
     width: 25%;
     height: 100%;
@@ -46,14 +46,26 @@ html, body {
     box-sizing: border-box;
 }
 
+.ul-horizontal li div {
+    border-left: 3px solid black;
+    padding-left: 20px;
+}
+
+.ul-horizontal li:first-of-type div {
+    border: none;
+}
+
 .element-heading {
     color: #2e2d3e;
     font-weight: 800;
     font-size: 19px;
+    text-align: center;
 }
 
 .element-description {
     color: #2e2d3e;
+    font-weight: 100;
+    text-align: center;
 }
 
 
