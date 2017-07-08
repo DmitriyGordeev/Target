@@ -1,0 +1,21 @@
+
+* {
+    border:0;
+    padding:0;
+    margin:0;
+    font-size: 18px;
+    color: #2e2d3e
+}
+
+svg {
+    border: 1px solid #c2c2c2;
+    background: #d4d4d4;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+.draggable {
+    cursor: move;
+}
