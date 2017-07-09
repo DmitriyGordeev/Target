@@ -5,18 +5,19 @@
     <title>Main page | Project Target</title>
 
     <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="Pikaday-master/css/pikaday.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo+2|Forum|Play" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="Snap.svg-0.5.1/dist/snap.svg-min.js"></script>
+    <script src="Pikaday-master/pikaday.js"></script>
     <script src="script.js"></script>
 
 </head>
 <body>
 
     <div id="main-container">
-
         <header>
             <ul id="top-menu">
                 <li>One</li>
@@ -60,7 +61,8 @@
                 <li>
                     <div>
                         <p class="element-heading">Дата</p>
-                        <textarea class="element-description" name="ta-date" rows="4" placeholder="Например: до 10 июля"></textarea>
+                        <!--<textarea class="element-description" name="ta-date" rows="4" placeholder="Например: до 10 июля"></textarea>-->
+                        <input class=element-description type="text" name="datepicker" placeholder="Выберите дату">
                     </div>
                 </li>
 
