@@ -31,6 +31,12 @@ header {
     text-decoration: underline;
     padding: 8px 20px;
     height: 100%;
+    transition-duration: 0.3s;
+}
+#top-menu li:hover {
+    color: #F53240;
+    transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 
