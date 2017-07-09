@@ -45,7 +45,7 @@ html, body {
     height: 100%;
     float: left;
     display: inline-block;
-    padding: 10px;
+    padding: 10px 10px 12px;
     box-sizing: border-box;
 }
 
@@ -64,14 +64,6 @@ html, body {
     background: #F9BE02;
 }
 
-
-/*.ul-horizontal li div {*/
-    /*border-left: 3px solid #2e2d3e;*/
-/*}*/
-
-/*.ul-horizontal li:first-of-type div {*/
-    /*border: none;*/
-/*}*/
 
 .element-heading {
     color: #2e2d3e;
@@ -105,6 +97,25 @@ textarea.element-description {
     resize: none;
     padding: 5px;
     box-sizing: border-box;
+
+}
+
+textarea.element-description::-webkit-input-placeholder {
+    color: #026755;
+}
+textarea.element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #909;
+    opacity:  1;
+}
+textarea.element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #909;
+    opacity:  1;
+}
+textarea.element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #909;
+}
+textarea.element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color:    #909;
 }
 
 textarea.element-description:focus {
