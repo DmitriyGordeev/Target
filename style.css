@@ -64,7 +64,6 @@ html, body {
     background: #F9BE02;
 }
 
-
 .element-heading {
     color: #2e2d3e;
     font-weight: 800;
@@ -178,25 +177,24 @@ textarea[name="ta-penalty"].element-description:focus {
     overflow: hidden;
 }
 
-
+/* placeholder coloring: */
 textarea.element-description::-webkit-input-placeholder {
-    color: #026755;
+    color: #ffffff;
 }
 textarea.element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #909;
+    color: #fdffc3;
     opacity:  1;
 }
 textarea.element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #909;
+    color: #fdffc3;
     opacity:  1;
 }
 textarea.element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color:    #909;
+    color: #fdffc3;
 }
 textarea.element-description:-ms-input-placeholder { /* Microsoft Edge */
-    color:    #909;
+    color: #fdffc3;
 }
-
 
 
 /* TESTING EXP: */

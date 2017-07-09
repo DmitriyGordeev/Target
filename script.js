@@ -42,13 +42,7 @@ function highlight_circles() {
 
 
 jQuery(document).ready(function() {
-
     highlight_circles();
-
-    jQuery(".element-description").click(function() {
-
-    });
-
 });
 
 
