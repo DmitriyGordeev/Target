@@ -30,7 +30,7 @@ function highlight_circles() {
             this.animate({
                 fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
             }, 200);
-            sticker(this.asPX("cx"), this.asPX("cy") + 25, "План кинжал \u03B1", "20 звонков потенциальным клиентам");
+            sticker(this.asPX("cx"), this.asPX("cy") + 55, "План кинжал \u03B1", "20 звонков потенциальным клиентам");
         }, function() {
             this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
             jQuery("#cloud").hide(200, function() {

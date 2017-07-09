@@ -11,6 +11,29 @@ html, body {
     height: 100%;
 }
 
+
+/* header and top-menu design: */
+header {
+    background: #fef9ff;
+    height: 5%;
+}
+#top-menu {
+    float: right;
+    margin-right: 80px;
+    width: auto;
+    height: 100%;
+}
+#top-menu li {
+    display: inline-block;
+    float: left;
+    font-weight: 800;
+    font-size: 18px;
+    text-decoration: underline;
+    padding: 8px 20px;
+    height: 100%;
+}
+
+
 #main-container {
     width: 100%;
     height: 100%;
@@ -19,7 +42,7 @@ html, body {
 #main-svg-viewport {
     background: #fef9ff;
     width: 100%;
-    height: 80%;
+    height: 75%;
     vertical-align: top;
 }
 
