@@ -75,7 +75,7 @@ html, body {
 .element-description {
     color: #2e2d3e;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     margin-top: 10px;
     transition-duration: 0.3s;
@@ -196,23 +196,19 @@ textarea.element-description:-ms-input-placeholder { /* Microsoft Edge */
     color: #fdffc3;
 }
 
-
-/* TESTING EXP: */
+/* popup cloud design: */
 #cloud {
     max-width: 250px;
-    padding: 5px;
+    padding: 8px 10px;
     position: absolute;
     font-weight: 500;
-    background: #e9f2f0;
-    border: 1px solid #c2c2c2;
-    -webkit-border-radius: 2px;
-    -moz-border-radius:3px;
-    border-radius:3px;
+    background: #fffb93;
 }
 
 .cloud-title {
     font-weight: 800;
-    border-bottom: 1px solid #c2c2c2;
+    text-decoration: underline;
+    font-size: 15px;
     padding-bottom: 5px;
 }
 
