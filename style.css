@@ -84,6 +84,7 @@ html, body {
 .element-description {
     color: #2e2d3e;
     font-weight: 100;
+    font-size: 14px;
     text-align: center;
     margin-top: 10px;
     transition-duration: 0.3s;
@@ -91,8 +92,27 @@ html, body {
 
 .element-description:hover {
     transition-duration: 0.3s;
-    background: white;
+    background: #02a084;
     cursor: pointer;
+}
+
+textarea.element-description {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #02c8a7;
+    vertical-align: top;
+    resize: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+textarea.element-description:focus {
+    outline: none !important;
+    border-color: #02a084;
+    background: #02a084;
+    box-shadow: 0 0 0 #02a084;
+    overflow: hidden;
 }
 
 /* TESTING EXP: */
@@ -117,4 +137,6 @@ html, body {
 .cloud-description {
     margin-top: 5px;
 }
+
+
 
