@@ -154,6 +154,31 @@ textarea[name="ta-date"].element-description:focus {
     overflow: hidden;
 }
 
+/* element penalty: */
+textarea[name="ta-penalty"].element-description:hover {
+    transition-duration: 0.3s;
+    background: #d29e02;
+    cursor: pointer;
+}
+textarea[name="ta-penalty"].element-description {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #F9BE02;
+    vertical-align: top;
+    resize: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+textarea[name="ta-penalty"].element-description:focus {
+    outline: none !important;
+    border-color: #d29e02;
+    background: #d29e02;
+    box-shadow: 0 0 0 #d29e02;
+    overflow: hidden;
+}
+
+
 textarea.element-description::-webkit-input-placeholder {
     color: #026755;
 }
