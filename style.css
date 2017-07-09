@@ -82,13 +82,37 @@ html, body {
     transition-duration: 0.3s;
 }
 
-.element-description:hover {
+/* element goal: */
+textarea[name="ta-goal"].element-description:hover {
+    transition-duration: 0.3s;
+    background: #c72a33;
+    cursor: pointer;
+}
+textarea[name="ta-goal"].element-description {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #F53240;
+    vertical-align: top;
+    resize: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+textarea[name="ta-goal"].element-description:focus {
+    outline: none !important;
+    border-color: #c72a33;
+    background: #c72a33;
+    box-shadow: 0 0 0 #c72a33;
+    overflow: hidden;
+}
+
+/* element proof: */
+textarea[name="ta-proof"].element-description:hover {
     transition-duration: 0.3s;
     background: #02a084;
     cursor: pointer;
 }
-
-textarea.element-description {
+textarea[name="ta-proof"].element-description {
     border: none;
     width: 100%;
     height: 100%;
@@ -97,7 +121,37 @@ textarea.element-description {
     resize: none;
     padding: 5px;
     box-sizing: border-box;
+}
+textarea[name="ta-proof"].element-description:focus {
+    outline: none !important;
+    border-color: #02a084;
+    background: #02a084;
+    box-shadow: 0 0 0 #02a084;
+    overflow: hidden;
+}
 
+/* element date: */
+textarea[name="ta-date"].element-description:hover {
+    transition-duration: 0.3s;
+    background: #65b1ab;
+    cursor: pointer;
+}
+textarea[name="ta-date"].element-description {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #7CDBD5;
+    vertical-align: top;
+    resize: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+textarea[name="ta-date"].element-description:focus {
+    outline: none !important;
+    border-color: #65b1ab;
+    background: #65b1ab;
+    box-shadow: 0 0 0 #65b1ab;
+    overflow: hidden;
 }
 
 textarea.element-description::-webkit-input-placeholder {
@@ -118,13 +172,7 @@ textarea.element-description:-ms-input-placeholder { /* Microsoft Edge */
     color:    #909;
 }
 
-textarea.element-description:focus {
-    outline: none !important;
-    border-color: #02a084;
-    background: #02a084;
-    box-shadow: 0 0 0 #02a084;
-    overflow: hidden;
-}
+
 
 /* TESTING EXP: */
 #cloud {
