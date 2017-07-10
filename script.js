@@ -57,23 +57,46 @@ function date_diff(dateA, dateB) {
 }
 
 jQuery(document).ready(function() {
+
+    var viewport = Snap("#main-svg-viewport");
+    viewport.zpd();
+
     highlight_circles();
 
     var picker = new Pikaday({
-            field: jQuery("input[name='datepicker']")[0],
-            firstDay: 1,
-            minDate: new Date(),
-            maxDate: new Date(2020, 12, 31),
-            yearRange: [2000,2020],
-            onSelect: function() {
-                var r = jQuery("#date_countdown");
-                setInterval(function() {
-                    var countdown = date_diff(new Date(), picker.getDate());
-                    r.text(countdown.d + " : " + countdown.h + " : " + countdown.m + " : " + countdown.s);
-                }, 1000);
-            }
+        field: jQuery("input[name='datepicker']")[0],
+        firstDay: 1,
+        minDate: new Date(),
+        maxDate: new Date(2020, 12, 31),
+        yearRange: [2000, 2020],
+        onSelect: function () {
+            var r = jQuery("#date_countdown");
+            setInterval(function () {
+                var countdown = date_diff(new Date(), picker.getDate());
+                r.text(countdown.d + " : " + countdown.h + " : " + countdown.m + " : " + countdown.s);
+            }, 1000);
+        }
+    });
+
+    /* testing line hover: */
+    var lines = Snap.selectAll(".timeline");
+    for (var i = 0; i < lines.length; i++) {
+        lines[i].hover(function () {
+            this.animate({strokeWidth: "8px"}, 200);
+        }, function () {
+            this.animate({strokeWidth: "4px"}, 200);
         });
+    }
+
+    /* testing click: */
+    for(var j = 0; j < lines.length; j++)
+    {
+        lines[j].click(function() {
+            var line_cam_center_x = this.asPX("x2") - this.asPX("x1");
+            viewport.panTo(line_cam_center_x / 2, 0, 200);
+        });
+    }
+
+
 
 });
-
-
