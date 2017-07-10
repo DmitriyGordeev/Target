@@ -216,23 +216,35 @@ textarea[name="ta-penalty"].element-description:focus {
 }
 
 /* placeholder coloring: */
-.element-description::-webkit-input-placeholder {
-    color: #ffffff;
+
+textarea[name="ta-goal"].element-description::-webkit-input-placeholder {
+    color: #a91e32;
 }
-.element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #fdffc3;
-    opacity:  1;
+textarea[name="ta-proof"].element-description::-webkit-input-placeholder {
+    color: #028570;
 }
-.element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #fdffc3;
-    opacity:  1;
+input[name="datepicker"].element-description::-webkit-input-placeholder {
+    color: #4f928c;
 }
-.element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #fdffc3;
+textarea[name="ta-penalty"].element-description::-webkit-input-placeholder {
+    color: #a77f02;
 }
-.element-description:-ms-input-placeholder { /* Microsoft Edge */
-    color: #fdffc3;
-}
+
+
+/*.element-description:-moz-placeholder { !* Mozilla Firefox 4 to 18 *!*/
+    /*color: #fdffc3;*/
+    /*opacity:  1;*/
+/*}*/
+/*.element-description::-moz-placeholder { !* Mozilla Firefox 19+ *!*/
+    /*color: #fdffc3;*/
+    /*opacity:  1;*/
+/*}*/
+/*.element-description:-ms-input-placeholder { !* Internet Explorer 10-11 *!*/
+    /*color: #fdffc3;*/
+/*}*/
+/*.element-description:-ms-input-placeholder { !* Microsoft Edge *!*/
+    /*color: #fdffc3;*/
+/*}*/
 
 /* popup cloud design: */
 #cloud {
