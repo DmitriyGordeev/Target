@@ -240,7 +240,8 @@ textarea[name="ta-penalty"].element-description:focus {
     padding: 8px 10px;
     position: absolute;
     font-weight: 500;
-    background: #fffb93;
+    /* background: #fffb93; */
+    background: #7CDBD5;
 }
 
 .cloud-title {
@@ -254,5 +255,13 @@ textarea[name="ta-penalty"].element-description:focus {
     margin-top: 5px;
 }
 
+
+/* date testing: */
+#date-test {
+    max-width: 300px;
+    height: 100px;
+    background: #02a084;
+    color: white;
+}
 
 

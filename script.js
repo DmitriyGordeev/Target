@@ -40,18 +40,40 @@ function highlight_circles() {
     }
 }
 
+function date_diff(dateA, dateB) {
+    var ms = dateB - dateA;
+    var rest = ms % 86400000;
+    var days = (ms - rest) / 86400000;
+
+    var hours = (rest - (rest % 3600000)) / 3600000;
+    rest = rest % 3600000;
+
+    var minutes = (rest - (rest % 60000)) / 60000;
+    rest = rest % 60000;
+
+    var seconds = (rest - (rest % 1000)) / 1000;
+
+    return { d: days, h: hours, m: minutes, s: seconds };
+}
 
 jQuery(document).ready(function() {
     highlight_circles();
 
-    var picker = new Pikaday(
-        {
+    var picker = new Pikaday({
             field: jQuery("input[name='datepicker']")[0],
             firstDay: 1,
             minDate: new Date(),
             maxDate: new Date(2020, 12, 31),
-            yearRange: [2000,2020]
+            yearRange: [2000,2020],
+            onSelect: function() {
+                var r = jQuery("#date_countdown");
+                setInterval(function() {
+                    var countdown = date_diff(new Date(), picker.getDate());
+                    r.text(countdown.d + " : " + countdown.h + " : " + countdown.m + " : " + countdown.s);
+                }, 1000);
+            }
         });
+
 });
 
 
