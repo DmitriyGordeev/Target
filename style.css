@@ -280,6 +280,21 @@ textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Micro
 }
 
 
+#date_countdown {
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.digit-block {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.inner-digit {
+    font-weight: 800;
+    font-size: 18px;
+}
+
 /* popup cloud design: */
 #cloud {
     max-width: 250px;
@@ -301,13 +316,5 @@ textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Micro
     margin-top: 5px;
 }
 
-
-/* date testing: */
-#date-test {
-    max-width: 300px;
-    height: 100px;
-    background: #02a084;
-    color: white;
-}
 
 

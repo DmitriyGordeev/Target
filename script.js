@@ -71,12 +71,23 @@ jQuery(document).ready(function() {
         yearRange: [2000, 2020],
         onSelect: function () {
             var r = jQuery("#date_countdown");
+            jQuery(".digit-block").css("visibility", "visible");
+
             setInterval(function () {
                 var countdown = date_diff(new Date(), picker.getDate());
-                r.text(countdown.d + " : " + countdown.h + " : " + countdown.m + " : " + countdown.s);
+
+                jQuery("#days .inner-digit").text(countdown.d);
+                jQuery("#hours .inner-digit").text(countdown.h);
+                jQuery("#minutes .inner-digit").text(countdown.m);
+                jQuery("#seconds .inner-digit").text(countdown.s);
+
             }, 1000);
         }
     });
+
+    if(!picker.isSelected) {
+        jQuery(".digit-block").css("visibility", "hidden");
+    }
 
     /* testing line hover: */
     var lines = Snap.selectAll(".timeline");
