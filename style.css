@@ -216,35 +216,70 @@ textarea[name="ta-penalty"].element-description:focus {
 }
 
 /* placeholder coloring: */
-
 textarea[name="ta-goal"].element-description::-webkit-input-placeholder {
     color: #a91e32;
 }
+textarea[name="ta-goal"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #a91e32;
+}
+textarea[name="ta-goal"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #a91e32;
+}
+textarea[name="ta-goal"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #a91e32;
+}
+textarea[name="ta-goal"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #a91e32;
+}
+
 textarea[name="ta-proof"].element-description::-webkit-input-placeholder {
     color: #028570;
 }
+textarea[name="ta-proof"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #028570;
+}
+textarea[name="ta-proof"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #028570;
+}
+textarea[name="ta-proof"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #028570;
+}
+textarea[name="ta-proof"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #028570;
+}
+
 input[name="datepicker"].element-description::-webkit-input-placeholder {
     color: #4f928c;
 }
+input[name="datepicker"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #4f928c;
+}
+input[name="datepicker"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #4f928c;
+}
+input[name="datepicker"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #4f928c;
+}
+input[name="datepicker"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #4f928c;
+}
+
 textarea[name="ta-penalty"].element-description::-webkit-input-placeholder {
     color: #a77f02;
 }
+textarea[name="ta-penalty"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #a77f02;
+}
+textarea[name="ta-penalty"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #a77f02;
+}
+textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #a77f02;
+}
+textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #a77f02;
+}
 
-
-/*.element-description:-moz-placeholder { !* Mozilla Firefox 4 to 18 *!*/
-    /*color: #fdffc3;*/
-    /*opacity:  1;*/
-/*}*/
-/*.element-description::-moz-placeholder { !* Mozilla Firefox 19+ *!*/
-    /*color: #fdffc3;*/
-    /*opacity:  1;*/
-/*}*/
-/*.element-description:-ms-input-placeholder { !* Internet Explorer 10-11 *!*/
-    /*color: #fdffc3;*/
-/*}*/
-/*.element-description:-ms-input-placeholder { !* Microsoft Edge *!*/
-    /*color: #fdffc3;*/
-/*}*/
 
 /* popup cloud design: */
 #cloud {
