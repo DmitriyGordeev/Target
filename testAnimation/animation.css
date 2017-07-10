@@ -1,0 +1,9 @@
+* {
+    padding: 0; margin: 0;
+}
+
+#viewport {
+    width: 600px;
+    height: 400px;
+    background: #fdffc3;
+}
