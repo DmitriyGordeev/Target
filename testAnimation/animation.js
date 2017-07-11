@@ -10,18 +10,17 @@ jQuery(document).ready(function() {
     var jv = jQuery("#viewport");
     var svg = Snap("#viewport");
     svg.zpd();
-
-    var circles = Snap.selectAll("circle");
-
-    moveTo(circles[1].asPX("cx"), circles[1].asPX("cy"), 100, svg);
-
-    setTimeout(function() {
-        svg.zoomTo(0.2, 200);
-    }, 2000);
-
-    setTimeout(function() {
-        moveTo(circles[2].asPX("cx"), circles[2].asPX("cy"), 100, svg);
-    }, 4000);
-
+    
+    var lines = Snap.selectAll(".timeline");
+    for(var i = 0; i < lines.length; i++)
+    {
+        lines[i].click(function() {
+            var center_x = (this.asPX("x2") - this.asPX("x1")) / 2;
+            moveTo(center_x + this.asPX("x1"), this.asPX("y1"), 300, svg);
+            setTimeout(function() {
+                svg.zoomTo(2.0, 200);
+            }, 300);
+        });
+    }
 
 });

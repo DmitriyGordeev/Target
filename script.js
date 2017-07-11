@@ -112,11 +112,8 @@ jQuery(document).ready(function() {
     for(var j = 0; j < lines.length; j++)
     {
         lines[j].click(function() {
-
             var center_x = (this.asPX("x2") - this.asPX("x1")) / 2;
-            var center_y = this.asPX("y1");
-
-            moveTo(center_x, center_y, 200, viewport);
+            moveTo(center_x + this.asPX("x1"), this.asPX("y1"), 300, viewport);
         });
     }
 
