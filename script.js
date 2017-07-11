@@ -89,15 +89,18 @@ jQuery(document).ready(function() {
         jQuery(".digit-block").css("visibility", "hidden");
     }
 
+
+
     /* testing line hover: */
     var lines = Snap.selectAll(".timeline");
     for (var i = 0; i < lines.length; i++) {
         lines[i].hover(function () {
-            this.animate({strokeWidth: "8px"}, 200);
+            this.animate({strokeWidth: "8px"}, 100);
         }, function () {
             this.animate({strokeWidth: "4px"}, 200);
         });
     }
+
 
     /* testing click: */
     for(var j = 0; j < lines.length; j++)
@@ -109,5 +112,9 @@ jQuery(document).ready(function() {
     }
 
 
+    /* testing panTo(): */
+    var line = Snap.selectAll(".timeline")[0];
+    var cam_x = line.asPX("x2") - line.asPX("x1");
+    // viewport.panTo(cam_x / 2, 0, 300);
 
 });
