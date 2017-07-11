@@ -1,15 +1,27 @@
+
+function moveTo(x, y, interval, viewport) {
+    var dx = viewport.node.clientWidth / 2 - x;
+    var dy = viewport.node.clientHeight / 2 - y;
+    viewport.panTo(dx, dy, interval);
+}
+
 jQuery(document).ready(function() {
 
     var jv = jQuery("#viewport");
-
     var svg = Snap("#viewport");
     svg.zpd();
 
-    var cx1 = Snap("circle").asPX("cx");
-    var cy1 = Snap("circle").asPX("cy");
+    var circles = Snap.selectAll("circle");
 
-    var dx = jv.width() / 2 - cx1;
-    var dy = jv.height() / 2 - cy1;
+    moveTo(circles[1].asPX("cx"), circles[1].asPX("cy"), 100, svg);
 
-    svg.panTo("10", "1", 300);
+    setTimeout(function() {
+        svg.zoomTo(0.2, 200);
+    }, 2000);
+
+    setTimeout(function() {
+        moveTo(circles[2].asPX("cx"), circles[2].asPX("cy"), 100, svg);
+    }, 4000);
+
+
 });

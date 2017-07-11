@@ -56,6 +56,12 @@ function date_diff(dateA, dateB) {
     return { d: days, h: hours, m: minutes, s: seconds };
 }
 
+function moveTo(x, y, interval, viewport) {
+    var dx = viewport.node.clientWidth / 2 - x;
+    var dy = viewport.node.clientHeight / 2 - y;
+    viewport.panTo(dx, dy, interval);
+}
+
 jQuery(document).ready(function() {
 
     var viewport = Snap("#main-svg-viewport");
@@ -106,15 +112,12 @@ jQuery(document).ready(function() {
     for(var j = 0; j < lines.length; j++)
     {
         lines[j].click(function() {
-            var line_cam_center_x = this.asPX("x2") - this.asPX("x1");
-            viewport.panTo(line_cam_center_x / 2, 0, 200);
+
+            var center_x = (this.asPX("x2") - this.asPX("x1")) / 2;
+            var center_y = this.asPX("y1");
+
+            moveTo(center_x, center_y, 200, viewport);
         });
     }
-
-
-    /* testing panTo(): */
-    var line = Snap.selectAll(".timeline")[0];
-    var cam_x = line.asPX("x2") - line.asPX("x1");
-    // viewport.panTo(cam_x / 2, 0, 300);
 
 });
