@@ -115,6 +115,8 @@ jQuery(document).ready(function() {
         lines[j].click(function() {
 
             var current_line = this;
+
+            /* first: zooming */
             viewport.zoomTo(3, 300);
 
             setTimeout(function() {

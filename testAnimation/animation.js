@@ -16,16 +16,20 @@ jQuery(document).ready(function() {
 
             var current_line = this;
 
-            svg.zoomTo(1.5, 300);
-
             setTimeout(function() {
-                var mat = svg.zpd("save");
-
-                var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
-                moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, svg);
+                svg.zoomTo(2, 300);
+            }, 300);
+            setTimeout(function() {
+                svg.zoomTo(1, 300);
             }, 300);
 
 
+            // setTimeout(function() {
+            //     var mat = svg.zpd("save");
+            //     var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
+            //     jQuery("#debug").text("mat.a = " + mat.a);
+            //     moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, svg);
+            // }, 300);
 
 
         });
