@@ -66,6 +66,7 @@ jQuery(document).ready(function() {
 
     var viewport = Snap("#main-svg-viewport");
     viewport.zpd({ pan: false, zoom: false, touch: false });
+    var originMat = viewport.zpd("save");
 
     highlight_circles();
 
@@ -122,6 +123,13 @@ jQuery(document).ready(function() {
                 var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
                 moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, viewport);
             }, 300);
+
+            setInterval(function() {
+                viewport.zoomTo(1, 300);
+                setInterval(function() {
+                    viewport.panTo(0, 0, 300);
+                }, 2000);
+            }, 2000);
 
         });
     }
