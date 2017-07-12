@@ -65,7 +65,7 @@ function moveTo(x, y, interval, viewport) {
 jQuery(document).ready(function() {
 
     var viewport = Snap("#main-svg-viewport");
-    viewport.zpd({pan: false, zoom: false});
+    viewport.zpd({ pan: false, zoom: false, touch: false });
 
     highlight_circles();
 
@@ -114,6 +114,12 @@ jQuery(document).ready(function() {
         lines[j].click(function() {
             var center_x = (this.asPX("x2") - this.asPX("x1")) / 2;
             moveTo(center_x + this.asPX("x1"), this.asPX("y1"), 300, viewport);
+
+            setTimeout(function() {
+                viewport.zoomTo(3.0, 300);
+                viewport.panTo(0, 0);
+            }, 300);
+
         });
     }
 
