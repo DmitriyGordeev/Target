@@ -65,7 +65,7 @@ function moveTo(x, y, interval, viewport) {
 jQuery(document).ready(function() {
 
     var viewport = Snap("#main-svg-viewport");
-    viewport.zpd({ pan: false, zoom: false, touch: false });
+    viewport.zpd({ pan: true, zoom: true });
     var originMat = viewport.zpd("save");
 
     highlight_circles();
@@ -121,19 +121,25 @@ jQuery(document).ready(function() {
 
             setTimeout(function() {
                 var mat = viewport.zpd("save");
-
                 var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
                 moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, viewport);
             }, 300);
 
-            setInterval(function() {
-                viewport.zoomTo(1, 300);
-                setInterval(function() {
-                    viewport.panTo(0, 0, 300);
-                }, 2000);
-            }, 2000);
-
         });
     }
+
+
+    // on return click:
+    jQuery("#return").click(function() {
+        viewport.zoomTo(1, 250);
+        setTimeout(function() {
+            viewport.panTo(0, 0, 300);
+        }, 300);
+    });
+
+    // on return click:
+    jQuery("#move").click(function() {
+        viewport.panTo(0, 0, 300);
+    });
 
 });

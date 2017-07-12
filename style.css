@@ -316,5 +316,25 @@ textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Micro
     margin-top: 5px;
 }
 
+.button {
+    max-width: 100px;
+    background: #a91e32;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    margin: 20px;
+}
+
+.button:hover {
+    background: red;
+    transition-duration: 0.2s;
+}
+
+#debug {
+    padding: 10px;
+    font-size: 17px;
+}
+
 
 
