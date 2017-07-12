@@ -137,9 +137,4 @@ jQuery(document).ready(function() {
         }, 300);
     });
 
-    // on return click:
-    jQuery("#move").click(function() {
-        viewport.panTo(0, 0, 300);
-    });
-
 });
