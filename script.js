@@ -112,12 +112,15 @@ jQuery(document).ready(function() {
     for(var j = 0; j < lines.length; j++)
     {
         lines[j].click(function() {
-            var center_x = (this.asPX("x2") - this.asPX("x1")) / 2;
-            moveTo(center_x + this.asPX("x1"), this.asPX("y1"), 300, viewport);
+
+            var current_line = this;
+            viewport.zoomTo(3, 300);
 
             setTimeout(function() {
-                viewport.zoomTo(3.0, 300);
-                viewport.panTo(0, 0);
+                var mat = viewport.zpd("save");
+
+                var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
+                moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, viewport);
             }, 300);
 
         });
