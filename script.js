@@ -65,8 +65,7 @@ function moveTo(x, y, interval, viewport) {
 jQuery(document).ready(function() {
 
     var viewport = Snap("#main-svg-viewport");
-    viewport.zpd({ pan: true, zoom: true });
-    var originMat = viewport.zpd("save");
+    viewport.zpd({ pan: false, zoom: false });
 
     highlight_circles();
 

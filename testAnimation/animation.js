@@ -5,6 +5,7 @@ function moveTo(x, y, interval, viewport) {
     viewport.panTo(dx, dy, interval);
 }
 
+
 jQuery(document).ready(function() {
 
     var svg = Snap("svg");
