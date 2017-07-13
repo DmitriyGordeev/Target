@@ -1,6 +1,5 @@
 /* Javascript here: */
 
-
 /* creates sticker on position (x,y): */
 function sticker(x, y, title, description) {
 
@@ -62,12 +61,23 @@ function moveTo(x, y, interval, viewport) {
     viewport.panTo(dx, dy, interval);
 }
 
+// returns ending point of timeline:
+function timeline(dateA, dateB, x1, x2) {
+    var dt = new Date() - dateA;
+    return dt * (x2 - x1) / (dateB - dateA);
+}
+
 jQuery(document).ready(function() {
 
     var viewport = Snap("#main-svg-viewport");
     viewport.zpd({ pan: false, zoom: false });
 
     highlight_circles();
+
+    // define pointA cx and pointB cx:
+    var x1 = Snap("#pointA").asPX("cx");
+    var x2 = Snap("#pointB").asPX("cx");
+    var y = Snap("#pointA").asPX("cy");
 
     var picker = new Pikaday({
         field: jQuery("input[name='datepicker']")[0],
@@ -79,6 +89,10 @@ jQuery(document).ready(function() {
             var r = jQuery("#date_countdown");
             jQuery(".digit-block").css("visibility", "visible");
 
+            // dateA for timeline testing:
+            var dateA = new Date();
+            var dateB = new Date().getTime() + 120000;
+
             setInterval(function () {
                 var countdown = date_diff(new Date(), picker.getDate());
 
@@ -87,6 +101,10 @@ jQuery(document).ready(function() {
                 jQuery("#minutes .inner-digit").text(countdown.m);
                 jQuery("#seconds .inner-digit").text(countdown.s);
 
+                // testing timeline:
+                var endingPos = timeline(dateA, dateB, x1, x2);
+                viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
+
             }, 1000);
         }
     });
@@ -94,7 +112,6 @@ jQuery(document).ready(function() {
     if(!picker.isSelected) {
         jQuery(".digit-block").css("visibility", "hidden");
     }
-
 
 
     /* testing line hover: */

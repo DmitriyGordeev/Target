@@ -8,15 +8,8 @@ function moveTo(x, y, interval, viewport) {
 
 // returns ending point of timeline:
 function timeline(dateA, dateB, x1, x2) {
-
-    var T = dateB - dateA;  // diff in ms
-    var L = x2 - x1;        // diff in px
-
-    var coeff = L / T;
-    var currentTime = new Date();
-    var dt = currentTime - dateA;
-
-    return dt * coeff;
+    var dt = new Date() - dateA;
+    return dt * (x2 - x1) / (dateB - dateA);
 }
 
 jQuery(document).ready(function() {
