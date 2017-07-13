@@ -91,7 +91,7 @@ jQuery(document).ready(function() {
 
             // dateA for timeline testing:
             var dateA = new Date();
-            var dateB = new Date().getTime() + 120000;
+            var dateB = picker.getDate().getTime();
 
             setInterval(function () {
                 var countdown = date_diff(new Date(), picker.getDate());
