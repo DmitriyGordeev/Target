@@ -6,34 +6,33 @@ function moveTo(x, y, interval, viewport) {
 }
 
 
+// returns ending point of timeline:
+function timeline(dateA, dateB, x1, x2) {
+
+    var T = dateB - dateA;  // diff in ms
+    var L = x2 - x1;        // diff in px
+
+    var coeff = L / T;
+    var currentTime = new Date();
+    var dt = currentTime - dateA;
+
+    return dt * coeff;
+}
+
 jQuery(document).ready(function() {
-
     var svg = Snap("svg");
+
+    var line = Snap("line");
+    var x1 = line.asPX("x1");
+    var x2 = line.asPX("x2");
+
+    var dateA = new Date() - 120000;
+    var dateB = dateA + 240000;
+
+    setInterval(function() {
+        var endingPos = timeline(dateA, dateB, x1, x2);
+        svg.line(x1, line.asPX("y1"), x1 + endingPos, line.asPX("y1")).attr({stroke: "white", strokeWidth: 4});
+    }, 1000);
+
     svg.zpd();
-
-    var lines = Snap.selectAll("line");
-    for(var i = 0; i < lines.length; i++) {
-        lines[i].click(function() {
-
-            var current_line = this;
-
-            setTimeout(function() {
-                svg.zoomTo(2, 300);
-            }, 300);
-            setTimeout(function() {
-                svg.zoomTo(1, 300);
-            }, 300);
-
-
-            // setTimeout(function() {
-            //     var mat = svg.zpd("save");
-            //     var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
-            //     jQuery("#debug").text("mat.a = " + mat.a);
-            //     moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, svg);
-            // }, 300);
-
-
-        });
-    }
-
 });
