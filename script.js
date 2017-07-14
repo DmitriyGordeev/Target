@@ -91,6 +91,8 @@ function lineZoom(x1, x2, y, delta, W, H) {
 
 jQuery(document).ready(function() {
 
+    var zoomed = false;
+
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
 
@@ -159,15 +161,29 @@ jQuery(document).ready(function() {
             var x1 = current_line.asPX("x1");
             var x2 = current_line.asPX("x2");
 
-            // delta needed for left, right margin
-            var delta = 0.3;
             var duration = 200;
 
+            var transform_query = "";
+            var dx = 0;
+
+            // zooming stuff:
+            var delta = 0.3;
             var w = (x2 - x1) * (1 + delta);
             var zoomfactor = W / w;
-            var dx = (W - x2 - x1) / 2;
 
-            var transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
+            var tau = (w - x1 - x2) / 2;
+
+            if(zoomed) {
+                var mat = viewport.zpd("save");
+                transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
+            }
+            else {
+                // delta needed for left & right circles margin of zoomed viewport
+                dx = (W - x2 - x1) / 2;
+                transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
+                zoomed = true;
+            }
+
             viewport.animate({ "transform": transform_query }, duration);
         });
     }
@@ -176,6 +192,7 @@ jQuery(document).ready(function() {
     // on return click:
     jQuery("#return").click(function() {
         viewport.animate({ "transform":"t0,0 s1,1" }, 200);
+        zoomed = false;
     });
 
 
