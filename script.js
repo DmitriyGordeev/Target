@@ -21,7 +21,7 @@ function sticker(x, y, title, description) {
 }
 
 /* highlights circles when hovering: */
-function highlight_circles() {
+function highlight_circles(viewport) {
     var circles = Snap.selectAll(".dot");
 
     for(var i = 0; i < circles.length; i++) {
@@ -29,7 +29,13 @@ function highlight_circles() {
             this.animate({
                 fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
             }, 200);
-            sticker(this.asPX("cx"), this.asPX("cy") + 55, "План кинжал \u03B1", "20 звонков потенциальным клиентам");
+
+            // recalculating cloud coordinates:
+            var mat = viewport.zpd("save");
+            var newx = this.asPX("cx") * mat.a + mat.e;
+            var newy = this.asPX("cy") * mat.a + mat.f;
+
+            sticker(newx, newy + 55, "План кинжал \u03B1", "20 звонков потенциальным клиентам");
         }, function() {
             this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
             jQuery("#cloud").hide(200, function() {
@@ -70,9 +76,7 @@ function timeline(dateA, dateB, x1, x2) {
 jQuery(document).ready(function() {
 
     var viewport = Snap("#main-svg-viewport");
-    viewport.zpd({ pan: false, zoom: false });
-
-    highlight_circles();
+    highlight_circles(viewport);
 
     // define pointA cx and pointB cx:
     var x1 = Snap("#pointA").asPX("cx");
@@ -104,6 +108,7 @@ jQuery(document).ready(function() {
                 // testing timeline:
                 var endingPos = timeline(dateA, dateB, x1, x2);
                 viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
+                // viewport.zpd({ pan: false, zoom: false });
 
             }, 1000);
         }
@@ -133,7 +138,7 @@ jQuery(document).ready(function() {
             var current_line = this;
 
             /* first: zooming */
-            viewport.zoomTo(3, 300);
+            viewport.zoomTo(3.2, 300);
 
             setTimeout(function() {
                 var mat = viewport.zpd("save");
@@ -153,4 +158,5 @@ jQuery(document).ready(function() {
         }, 300);
     });
 
+    viewport.zpd({ pan: false, zoom: false });
 });

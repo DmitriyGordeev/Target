@@ -33,31 +33,14 @@ function timeline(dateA, dateB, x1, x2) {
 }
 
 jQuery(document).ready(function() {
-    var svg = Snap("svg");
+    var viewport = Snap("svg");
+    var group = viewport.select("#canvas");
 
-    var circle = Snap("circle");
-    circle.hover(function() {
-        this.attr({fill: "red"});
+    group.circle(100, 100, 20).attr({fill: "#a91e32"});
 
-        var mat = svg.zpd("save");
-        var newx = this.asPX("cx") * mat.a + mat.e;
-        var newy = this.asPX("cy") * mat.a + mat.f;
-
-        sticker(newx, newy, "Title", "Description");
-
-    }, function() {
-        this.attr({fill: "blue"});
-        jQuery("#cloud").hide(200, function() {
-            jQuery("#cloud").remove();
-        });
+    jQuery("body").keydown(function() {
+        group.circle(100, 100, 50).attr({fill: "#504f6f"});
     });
 
-
-    jQuery("body").keydown(function(event) {
-        var mat = svg.zpd("save");
-        jQuery("#debug").text(mat.e + " : " + mat.f + " | mat.a:" + mat.a + " | mat.d: " + mat.d);
-    });
-
-
-    svg.zpd();
+    viewport.zpd();
 });
