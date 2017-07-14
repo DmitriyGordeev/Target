@@ -67,16 +67,19 @@ jQuery(document).ready(function() {
             var x2 = line.asPX("x2");
             var y = line.asPX("y1");
 
-            // calculating coords:
-            var delta = 0.2;
-            var zoomfactor = W / (x2 - x1) * (1 - delta);
+            var delta = 0.3;
+            var w = (x2 - x1) * (1 + delta);
+            var zoomfactor = W / w;
+            var h = H / zoomfactor;
 
-            var tx = -x1 + (x2 - x1) * delta / 2;
-            var ty = -y + H / zoomfactor / 2;
+            var cx = x1 + (x2 - x1) / 2;
+            var cy = y;
 
-            var transform_query = "s" + zoomfactor + " t" + tx + "," + ty;
+            var dx = cx - w / 2;
+            var dy = cy - h / 2;
 
-            group.animate({ "transform":transform_query }, duration);
+            var transform_query = "s" + zoomfactor + " t-" + dx + ",-" + dy;
+            group.animate({ "transform": transform_query }, duration);
             zoomed = true;
         }
 
