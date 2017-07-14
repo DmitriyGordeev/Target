@@ -33,11 +33,19 @@ function timeline(dateA, dateB, x1, x2) {
 }
 
 // transform viewport to values:
-function lineZoom(x1, x2, y1, y2, duration) {
+function lineZoom(x1, x2, y, duration, delta, W, H) {
 
+    var w = (x2 - x1) * (1 + delta);
+    var zoomfactor = W / w;
+    var h = H / zoomfactor;
 
+    var cx = x1 + (x2 - x1) / 2;
+    var cy = y;
 
+    var dx = cx - w / 2;
+    var dy = cy - h / 2;
 
+    return "s" + zoomfactor + " t-" + dx + ",-" + dy;
 }
 
 
@@ -52,7 +60,7 @@ jQuery(document).ready(function() {
 
     jQuery("body").keydown(function() {
 
-        var duration = 300;
+        var duration = 200;
 
         if(zoomed) {
             group.animate({ "transform":"t0,0 s1,1" }, duration);
@@ -67,18 +75,21 @@ jQuery(document).ready(function() {
             var x2 = line.asPX("x2");
             var y = line.asPX("y1");
 
-            var delta = 0.3;
-            var w = (x2 - x1) * (1 + delta);
-            var zoomfactor = W / w;
-            var h = H / zoomfactor;
+            var delta = 0.2;
 
-            var cx = x1 + (x2 - x1) / 2;
-            var cy = y;
+            // var w = (x2 - x1) * (1 + delta);
+            // var zoomfactor = W / w;
+            // var h = H / zoomfactor;
+            //
+            // var cx = x1 + (x2 - x1) / 2;
+            // var cy = y;
+            //
+            // var dx = cx - w / 2;
+            // var dy = cy - h / 2;
+            //
+            // var transform_query = "s" + zoomfactor + " t-" + dx + ",-" + dy;
 
-            var dx = cx - w / 2;
-            var dy = cy - h / 2;
-
-            var transform_query = "s" + zoomfactor + " t-" + dx + ",-" + dy;
+            var transform_query = lineZoom(x1, x2, y, duration, delta, W, H);
             group.animate({ "transform": transform_query }, duration);
             zoomed = true;
         }

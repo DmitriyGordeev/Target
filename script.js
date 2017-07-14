@@ -73,7 +73,26 @@ function timeline(dateA, dateB, x1, x2) {
     return dt * (x2 - x1) / (dateB - dateA);
 }
 
+// transform viewport to values:
+function lineZoom(x1, x2, y, delta, W, H) {
+
+    var w = (x2 - x1) * (1 + delta);
+    var zoomfactor = W / w;
+    var h = H / zoomfactor;
+
+    var cx = x1 + (x2 - x1) / 2;
+    var cy = y;
+
+    var dx = x1;
+    var dy = cy - h / 2;
+
+    return "s" + zoomfactor + " t" + x1 + "," + y;
+}
+
 jQuery(document).ready(function() {
+
+    var W = jQuery("#main-svg-viewport").width();
+    var H = jQuery("#main-svg-viewport").height();
 
     var svgElement = Snap("#main-svg-viewport");
     var viewport = svgElement.select("#canvas");
@@ -119,7 +138,6 @@ jQuery(document).ready(function() {
         jQuery(".digit-block").css("visibility", "hidden");
     }
 
-
     // testing line hover:
     var lines = viewport.selectAll(".timeline");
     for (var i = 0; i < lines.length; i++) {
@@ -135,47 +153,31 @@ jQuery(document).ready(function() {
     for(var j = 0; j < lines.length; j++)
     {
         lines[j].click(function() {
-
             var current_line = this;
 
-            var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
-            var center_y = current_line.asPX("y1");
-            var scale = 2;
+            // get line positions:
+            var x1 = current_line.asPX("x1");
+            var x2 = current_line.asPX("x2");
 
-            jQuery("#debug").text(center_x);
+            // delta needed for left, right margin
+            var delta = 0.3;
+            var duration = 200;
 
-            var mat = viewport.zpd("save");
+            var w = (x2 - x1) * (1 + delta);
+            var zoomfactor = W / w;
+            var dx = (W - x2 - x1) / 2;
 
-            var request = "t" + 100 + "," + 0 + "s" + scale + "," + scale;
-            viewport.animate({ "transform":request }, 3000);
-
-            // first zooming:
-            // svgElement.zoomTo(3.2, 300);
-            setTimeout(function() {
-
-
-
-                // moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, viewport);
-                // jQuery("#debug").text(mat.a + " | " + mat.e + " | " + mat.f);
-            }, 300);
-
+            var transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
+            viewport.animate({ "transform": transform_query }, duration);
         });
     }
 
 
     // on return click:
     jQuery("#return").click(function() {
-        viewport.zoomTo(1, 250);
-        setTimeout(function() {
-            viewport.panTo(0, 0, 300);
-        }, 300);
+        viewport.animate({ "transform":"t0,0 s1,1" }, 200);
     });
 
-
-    // testing keydown:
-    jQuery("body").keydown(function() {
-        viewport.circle(100, 100, 20).attr({fill: "#00520b"});
-    });
 
     svgElement.zpd();
 });
