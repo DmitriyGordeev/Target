@@ -7,3 +7,24 @@
     height: 600px;
     background: #fdffc3;
 }
+
+/* popup cloud design: */
+#cloud {
+    max-width: 250px;
+    padding: 8px 10px;
+    position: absolute;
+    font-weight: 500;
+    /* background: #fffb93; */
+    background: #7CDBD5;
+}
+
+.cloud-title {
+    font-weight: 800;
+    text-decoration: underline;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+
+.cloud-description {
+    margin-top: 5px;
+}
