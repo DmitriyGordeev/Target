@@ -32,14 +32,54 @@ function timeline(dateA, dateB, x1, x2) {
     return dt * (x2 - x1) / (dateB - dateA);
 }
 
+// transform viewport to values:
+function lineZoom(x1, x2, y1, y2, duration) {
+
+
+
+
+}
+
+
 jQuery(document).ready(function() {
     var viewport = Snap("svg");
     var group = viewport.select("#canvas");
 
-    group.circle(100, 100, 20).attr({fill: "#a91e32"});
+    var W = jQuery("#viewport").width();
+    var H = jQuery("#viewport").height();
+
+    var zoomed = false;
 
     jQuery("body").keydown(function() {
-        group.circle(100, 100, 50).attr({fill: "#504f6f"});
+
+        var duration = 300;
+
+        if(zoomed) {
+            group.animate({ "transform":"t0,0 s1,1" }, duration);
+            zoomed = false;
+        }
+        else {
+
+            var line = Snap("#target");
+
+            // get line positions:
+            var x1 = line.asPX("x1");
+            var x2 = line.asPX("x2");
+            var y = line.asPX("y1");
+
+            // calculating coords:
+            var delta = 0.2;
+            var zoomfactor = W / (x2 - x1) * (1 - delta);
+
+            var tx = -x1 + (x2 - x1) * delta / 2;
+            var ty = -y + H / zoomfactor / 2;
+
+            var transform_query = "s" + zoomfactor + " t" + tx + "," + ty;
+
+            group.animate({ "transform":transform_query }, duration);
+            zoomed = true;
+        }
+
     });
 
     viewport.zpd();

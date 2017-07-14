@@ -75,7 +75,9 @@ function timeline(dateA, dateB, x1, x2) {
 
 jQuery(document).ready(function() {
 
-    var viewport = Snap("#main-svg-viewport");
+    var svgElement = Snap("#main-svg-viewport");
+    var viewport = svgElement.select("#canvas");
+
     highlight_circles(viewport);
 
     // define pointA cx and pointB cx:
@@ -108,7 +110,6 @@ jQuery(document).ready(function() {
                 // testing timeline:
                 var endingPos = timeline(dateA, dateB, x1, x2);
                 viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
-                // viewport.zpd({ pan: false, zoom: false });
 
             }, 1000);
         }
@@ -119,8 +120,8 @@ jQuery(document).ready(function() {
     }
 
 
-    /* testing line hover: */
-    var lines = Snap.selectAll(".timeline");
+    // testing line hover:
+    var lines = viewport.selectAll(".timeline");
     for (var i = 0; i < lines.length; i++) {
         lines[i].hover(function () {
             this.animate({strokeWidth: "8px"}, 100);
@@ -130,20 +131,32 @@ jQuery(document).ready(function() {
     }
 
 
-    /* testing click: */
+    // testing click:
     for(var j = 0; j < lines.length; j++)
     {
         lines[j].click(function() {
 
             var current_line = this;
 
-            /* first: zooming */
-            viewport.zoomTo(3.2, 300);
+            var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
+            var center_y = current_line.asPX("y1");
+            var scale = 2;
 
+            jQuery("#debug").text(center_x);
+
+            var mat = viewport.zpd("save");
+
+            var request = "t" + 100 + "," + 0 + "s" + scale + "," + scale;
+            viewport.animate({ "transform":request }, 3000);
+
+            // first zooming:
+            // svgElement.zoomTo(3.2, 300);
             setTimeout(function() {
-                var mat = viewport.zpd("save");
-                var center_x = (current_line.asPX("x2") - current_line.asPX("x1")) / 2;
-                moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, viewport);
+
+
+
+                // moveTo(mat.a * (center_x + current_line.asPX("x1")), mat.a * current_line.asPX("y1"), 300, viewport);
+                // jQuery("#debug").text(mat.a + " | " + mat.e + " | " + mat.f);
             }, 300);
 
         });
@@ -158,5 +171,11 @@ jQuery(document).ready(function() {
         }, 300);
     });
 
-    viewport.zpd({ pan: false, zoom: false });
+
+    // testing keydown:
+    jQuery("body").keydown(function() {
+        viewport.circle(100, 100, 20).attr({fill: "#00520b"});
+    });
+
+    svgElement.zpd();
 });
