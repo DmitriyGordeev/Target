@@ -1,10 +1,7 @@
 <?php
     class HtmlPage {
 
-        public function __construct($title, $centered_text) {
-            $this->title = $title;
-            $this->centered_text = $centered_text;
-        }
+        public function __construct() {}
         
         /*
          *  methods:
@@ -15,12 +12,22 @@
 
         /* main tags: */
         public function head() {
-            return "<head>
+            $head_string = "<head>
                     <meta charset=\"UTF-8\">
-                    <title>".$this->title."</title>";
+                    <title> MainPage | Goal </title>";
+
+            $head_string = $head_string.$this->styles().$this->scripts()."</head>";
+            return $head_string;
         }
         public function body() {
-            return "<body><p style='text-align: center; font-size: 30px'>".$this->centered_text."</p></body>";
+
+            $body_string = "<body>".
+                $this->topMenu().
+                $this->svgViewport().
+                $this->bottomGoalDescription().
+                "</body>";
+
+            return $body_string;
         }
 
         /* head links: */
@@ -42,11 +49,6 @@
 
         }
 
-        /*
-         *  properties:
-         */
-        public $title;
-        public $centered_text;
     }
 
     $htmlPageObject = new HtmlPage("This is title", "This is centered text");
