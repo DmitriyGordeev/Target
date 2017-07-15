@@ -2,12 +2,12 @@
     class HtmlPage {
 
         public function __construct() {}
-        
+
         /*
          *  methods:
         */
         public function generate() {
-            return "<!DOCTYPE><html>".$this->head().$this->body()."</html>";
+            return "<!DOCTYPE><html lang=\"en\">".$this->head().$this->body()."</html>";
         }
 
         /* main tags: */
@@ -75,10 +75,10 @@
                         <line class=\"timeline\" x1=\"30%\" y1=\"50%\" x2=\"50%\" y2=\"50%\" stroke=\"#02c8a7\" stroke-width=\"4px\"></line>
                         <line class=\"timeline\" x1=\"50%\" y1=\"50%\" x2=\"70%\" y2=\"50%\" stroke=\"#7CDBD5\" stroke-width=\"4px\"></line>
                         <line class=\"timeline\" x1=\"70%\" y1=\"50%\" x2=\"90%\" y2=\"50%\" stroke=\"#F9BE02\" stroke-width=\"4px\"></line>
-        
+
                         <circle id=\"pointA\" class=\"dot\" cx=\"10%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
                         <circle id=\"pointB\" class=\"dot\" cx=\"90%\" cy=\"50%\" r=\"14\" fill=\"#39384d\"></circle>
-       
+
                         <circle class=\"dot\" cx=\"30%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
                         <circle class=\"dot\" cx=\"50%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
                         <circle class=\"dot\" cx=\"70%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
@@ -94,14 +94,14 @@
                                     <textarea class=\"element-description\" name=\"ta-goal\" rows=\"3\" placeholder=\"Например: заработать 100 000 руб\"></textarea>
                                 </div>
                             </li>
-            
+
                             <li>
                                 <div>
                                     <p class=\"element-heading\">Доказательство</p>
                                     <textarea class=\"element-description\" name=\"ta-proof\" rows=\"3\" placeholder=\"Например: 10 фотографий поездки\"></textarea>
                                 </div>
                             </li>
-            
+
                             <li>
                                 <div>
                                     <p class=\"element-heading\">Дата</p>
@@ -118,7 +118,7 @@
                                     </p>
                                 </div>
                             </li>
-            
+
                             <li>
                                 <div>
                                     <p class=\"element-heading\">Цена слова</p>
@@ -131,6 +131,10 @@
 
     }
 
-    $htmlPageObject = new HtmlPage("This is title", "This is centered text");
-    echo $htmlPageObject->generate();
+    $htmlPageObject = new HtmlPage();
+    $html = $htmlPageObject->generate();
+
+    echo $html;
+
+
 
