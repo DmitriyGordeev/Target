@@ -6,7 +6,9 @@
             $this->centered_text = $centered_text;
         }
         
-        /* methods: */
+        /*
+         *  methods:
+        */
         public function generate() {
             return "<!DOCTYPE><html>".$this->head().$this->body()."</html>";
         }
@@ -18,8 +20,22 @@
         public function body() {
             return "<body><p style='text-align: center; font-size: 30px'>".$this->centered_text."</p></body>";
         }
+        public function links() {
 
-        /* properties: */
+        }
+        public function scripts() {
+
+        }
+        public function svgViewport() {
+
+        }
+        public function bottomGoalDescription() {
+
+        }
+
+        /*
+         *  properties:
+         */
         public $title;
         public $centered_text;
     }
