@@ -152,8 +152,8 @@ jQuery(document).ready(function() {
 
 
     // testing click:
-    for(var j = 0; j < lines.length; j++)
-    {
+    for(var j = 0; j < lines.length; j++) {
+
         lines[j].click(function() {
             var current_line = this;
 
@@ -167,18 +167,17 @@ jQuery(document).ready(function() {
             var dx = 0;
 
             // zooming stuff:
+            // delta needed for left & right circles margin of zoomed viewport
             var delta = 0.3;
             var w = (x2 - x1) * (1 + delta);
             var zoomfactor = W / w;
-
-            var tau = (w - x1 - x2) / 2;
+            var tau = (x2 - x1) * delta / 2;
 
             if(zoomed) {
-                var mat = viewport.zpd("save");
-                transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
+                viewport.animate({ "transform":"t0,0 s1,1" }, 200);
+                zoomed = false;
             }
             else {
-                // delta needed for left & right circles margin of zoomed viewport
                 dx = (W - x2 - x1) / 2;
                 transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
                 zoomed = true;
@@ -188,13 +187,11 @@ jQuery(document).ready(function() {
         });
     }
 
-
     // on return click:
     jQuery("#return").click(function() {
         viewport.animate({ "transform":"t0,0 s1,1" }, 200);
         zoomed = false;
     });
-
 
     svgElement.zpd();
 });

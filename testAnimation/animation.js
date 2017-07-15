@@ -58,39 +58,32 @@ jQuery(document).ready(function() {
 
     var zoomed = false;
 
+    group.line(400, -1000, 400, 1000).attr({stroke: "black", strokeWidth: 3});
+    group.line(-1000, 300, 1000, 300).attr({stroke: "black", strokeWidth: 3});
+
     jQuery("body").keydown(function() {
 
         var duration = 200;
 
         if(zoomed) {
             group.animate({ "transform":"t0,0 s1,1" }, duration);
+            setTimeout(function() {
+                var mat = group.zpd("save");
+                jQuery("#debug").text(mat.e + "   |   " + mat.f);
+            }, 500);
             zoomed = false;
         }
         else {
 
             var line = Snap("#target");
 
-            // get line positions:
-            var x1 = line.asPX("x1");
-            var x2 = line.asPX("x2");
-            var y = line.asPX("y1");
+            var transform_query = "s2 t300,0";
 
-            var delta = 0.2;
-
-            // var w = (x2 - x1) * (1 + delta);
-            // var zoomfactor = W / w;
-            // var h = H / zoomfactor;
-            //
-            // var cx = x1 + (x2 - x1) / 2;
-            // var cy = y;
-            //
-            // var dx = cx - w / 2;
-            // var dy = cy - h / 2;
-            //
-            // var transform_query = "s" + zoomfactor + " t-" + dx + ",-" + dy;
-
-            var transform_query = lineZoom(x1, x2, y, duration, delta, W, H);
             group.animate({ "transform": transform_query }, duration);
+            setTimeout(function() {
+                var mat = group.zpd("save");
+                jQuery("#debug").text(mat.e + "   |   " + mat.f);
+            }, 500);
             zoomed = true;
         }
 
