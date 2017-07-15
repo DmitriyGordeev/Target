@@ -301,7 +301,6 @@ textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Micro
     padding: 8px 10px;
     position: absolute;
     font-weight: 500;
-    /* background: #fffb93; */
     background: #7CDBD5;
 }
 
@@ -329,6 +328,12 @@ textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Micro
 .button:hover {
     background: red;
     transition-duration: 0.2s;
+}
+
+#return {
+    position:absolute;
+    left: 30px;
+    top: 71%;
 }
 
 #debug {

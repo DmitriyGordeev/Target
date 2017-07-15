@@ -193,5 +193,5 @@ jQuery(document).ready(function() {
         zoomed = false;
     });
 
-    svgElement.zpd();
+    svgElement.zpd({pan: false, zoom: false});
 });
