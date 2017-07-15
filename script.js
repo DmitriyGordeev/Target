@@ -90,7 +90,6 @@ function lineZoom(x1, x2, y, delta, W, H) {
 }
 
 jQuery(document).ready(function() {
-
     var zoomed = false;
 
     var W = jQuery("#main-svg-viewport").width();
