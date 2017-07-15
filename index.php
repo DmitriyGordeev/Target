@@ -12,6 +12,8 @@
         public function generate() {
             return "<!DOCTYPE><html>".$this->head().$this->body()."</html>";
         }
+
+        /* main tags: */
         public function head() {
             return "<head>
                     <meta charset=\"UTF-8\">
@@ -20,10 +22,17 @@
         public function body() {
             return "<body><p style='text-align: center; font-size: 30px'>".$this->centered_text."</p></body>";
         }
-        public function links() {
+
+        /* head links: */
+        public function styles() {
 
         }
         public function scripts() {
+
+        }
+
+        /* body content: */
+        public function topMenu() {
 
         }
         public function svgViewport() {
