@@ -21,11 +21,17 @@
         }
         public function body() {
 
-            $body_string = "<body>".
+            $body_string =
+                "<body>
+                <div id=\"main-container\">".
                 $this->topMenu().
                 $this->svgViewport().
+                "<p id=\"return\" class=\"button\">Исходная</p>
+                <br>
+                <span id=\"debug\"></span>".
                 $this->bottomGoalDescription().
-                "</body>";
+                "</div>
+                </body>";
 
             return $body_string;
         }
@@ -53,13 +59,74 @@
 
         /* body content: */
         public function topMenu() {
-            return "";
+            return "<header>
+                        <ul id=\"top-menu\">
+                            <li><a href=\"testAnimation/animation.html\">AnimationTest</a></li>
+                            <li>Two</li>
+                            <li>Three</li>
+                        </ul>
+                    </header>";
         }
         public function svgViewport() {
-            return "";
+            return
+                "<svg id=\"main-svg-viewport\">
+                    <g id=\"canvas\">
+                        <line class=\"timeline\" x1=\"10%\" y1=\"50%\" x2=\"30%\" y2=\"50%\" stroke=\"#F53240\" stroke-width=\"4px\"></line>
+                        <line class=\"timeline\" x1=\"30%\" y1=\"50%\" x2=\"50%\" y2=\"50%\" stroke=\"#02c8a7\" stroke-width=\"4px\"></line>
+                        <line class=\"timeline\" x1=\"50%\" y1=\"50%\" x2=\"70%\" y2=\"50%\" stroke=\"#7CDBD5\" stroke-width=\"4px\"></line>
+                        <line class=\"timeline\" x1=\"70%\" y1=\"50%\" x2=\"90%\" y2=\"50%\" stroke=\"#F9BE02\" stroke-width=\"4px\"></line>
+        
+                        <circle id=\"pointA\" class=\"dot\" cx=\"10%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
+                        <circle id=\"pointB\" class=\"dot\" cx=\"90%\" cy=\"50%\" r=\"14\" fill=\"#39384d\"></circle>
+       
+                        <circle class=\"dot\" cx=\"30%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
+                        <circle class=\"dot\" cx=\"50%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
+                        <circle class=\"dot\" cx=\"70%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
+                    </g>
+                </svg>";
         }
         public function bottomGoalDescription() {
-            return "";
+            return "<div id=\"bottom-row\">
+                        <ul class=\"ul-horizontal\">
+                            <li>
+                                <div>
+                                    <p class=\"element-heading\">Цель</p>
+                                    <textarea class=\"element-description\" name=\"ta-goal\" rows=\"3\" placeholder=\"Например: заработать 100 000 руб\"></textarea>
+                                </div>
+                            </li>
+            
+                            <li>
+                                <div>
+                                    <p class=\"element-heading\">Доказательство</p>
+                                    <textarea class=\"element-description\" name=\"ta-proof\" rows=\"3\" placeholder=\"Например: 10 фотографий поездки\"></textarea>
+                                </div>
+                            </li>
+            
+                            <li>
+                                <div>
+                                    <p class=\"element-heading\">Дата</p>
+                                    <!--<textarea class=\"element-description\" name=\"ta-date\" rows=\"3\" placeholder=\"Например: до 10 июля\"></textarea>-->
+                                    <input class=element-description type=\"text\" name=\"datepicker\" placeholder=\"Выберите дату\">
+                                    <p class=\"element-description\" id=\"date_countdown\">
+                                        <span class=\"digit-block\" id=\"days\"><span class=\"inner-digit\">12</span><br>дней</span>
+                                        <span class=\"digit-block\"><span class=\"inner-digit\">-</span></span>
+                                        <span class=\"digit-block\" id=\"hours\"><span class=\"inner-digit\">12</span><br>часов</span>
+                                        <span class=\"digit-block\"><span class=\"inner-digit\">-</span></span>
+                                        <span class=\"digit-block\" id=\"minutes\"><span class=\"inner-digit\">12</span><br>минут</span>
+                                        <span class=\"digit-block\"><span class=\"inner-digit\">-</span></span>
+                                        <span class=\"digit-block\" id=\"seconds\"><span class=\"inner-digit\">12</span><br>секунд</span>
+                                    </p>
+                                </div>
+                            </li>
+            
+                            <li>
+                                <div>
+                                    <p class=\"element-heading\">Цена слова</p>
+                                    <textarea class=\"element-description\" name=\"ta-penalty\" rows=\"3\" placeholder=\"Например: отдать Ивану Ивановичу 20 000 руб\"></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>";
         }
 
     }
