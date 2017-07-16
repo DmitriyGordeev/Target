@@ -99,9 +99,9 @@
                         <circle id=\"pointA\" class=\"dot\" cx=\"10%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
                         <circle id=\"pointB\" class=\"dot\" cx=\"90%\" cy=\"50%\" r=\"14\" fill=\"#39384d\"></circle>
 
-                        <circle class=\"dot\" cx=\"30%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
-                        <circle class=\"dot\" cx=\"50%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
-                        <circle class=\"dot\" cx=\"70%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
+                        <circle id=\"alpha\" class=\"dot\" cx=\"30%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
+                        <circle id=\"betta\" class=\"dot\" cx=\"50%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
+                        <circle id=\"gamma\" class=\"dot\" cx=\"70%\" cy=\"50%\" r=\"10\" fill=\"#39384d\"></circle>
                     </g>
                 </svg>";
         }

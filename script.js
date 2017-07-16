@@ -22,27 +22,85 @@ function sticker(x, y, title, description) {
 
 /* highlights circles when hovering: */
 function highlight_circles(viewport) {
-    var circles = Snap.selectAll(".dot");
 
-    for(var i = 0; i < circles.length; i++) {
-        circles[i].hover(function() {
-            this.animate({
-                fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
-            }, 200);
+    // var circles = Snap.selectAll(".dot");
+    // for(var i = 0; i < circles.length; i++) {
+    //     circles[i].hover(function() {
+    //         this.animate({
+    //             fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
+    //         }, 200);
+    //
+    //         // recalculating cloud coordinates:
+    //         var mat = viewport.zpd("save");
+    //         var newx = this.asPX("cx") * mat.a + mat.e;
+    //         var newy = this.asPX("cy") * mat.a + mat.f;
+    //
+    //         sticker(newx, newy + 55, "План кинжал \u03B1", "20 звонков потенциальным клиентам");
+    //     }, function() {
+    //         this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
+    //         jQuery("#cloud").hide(200, function() {
+    //             jQuery("#cloud").remove();
+    //         });
+    //     });
+    // }
 
-            // recalculating cloud coordinates:
-            var mat = viewport.zpd("save");
-            var newx = this.asPX("cx") * mat.a + mat.e;
-            var newy = this.asPX("cy") * mat.a + mat.f;
+    var alphaCircle = Snap.select("#alpha");
+    alphaCircle.hover(function() {
+        this.animate({
+            fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
+        }, 200);
 
-            sticker(newx, newy + 55, "План кинжал \u03B1", "20 звонков потенциальным клиентам");
-        }, function() {
-            this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
-            jQuery("#cloud").hide(200, function() {
-                jQuery("#cloud").remove();
-            });
+        // recalculating cloud coordinates:
+        var mat = viewport.zpd("save");
+        var newx = this.asPX("cx") * mat.a + mat.e;
+        var newy = this.asPX("cy") * mat.a + mat.f;
+
+        sticker(newx, newy + 55, "План кинжал \u03B1", "Задача план-кинжала \u03B1");
+    }, function() {
+        this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
+        jQuery("#cloud").hide(200, function() {
+            jQuery("#cloud").remove();
         });
-    }
+    });
+
+    var bettaCircle = Snap.select("#betta");
+    bettaCircle.hover(function() {
+        this.animate({
+            fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
+        }, 200);
+
+        // recalculating cloud coordinates:
+        var mat = viewport.zpd("save");
+        var newx = this.asPX("cx") * mat.a + mat.e;
+        var newy = this.asPX("cy") * mat.a + mat.f;
+
+        sticker(newx, newy + 55, "План кинжал Betta", "Задача план-кинжала Betta");
+    }, function() {
+        this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
+        jQuery("#cloud").hide(200, function() {
+            jQuery("#cloud").remove();
+        });
+    });
+
+    var gammaCircle = Snap.select("#gamma");
+    gammaCircle.hover(function() {
+        this.animate({
+            fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
+        }, 200);
+
+        // recalculating cloud coordinates:
+        var mat = viewport.zpd("save");
+        var newx = this.asPX("cx") * mat.a + mat.e;
+        var newy = this.asPX("cy") * mat.a + mat.f;
+
+        sticker(newx, newy + 55, "План кинжал Gamma", "Задача план-кинжала Gamma");
+    }, function() {
+        this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
+        jQuery("#cloud").hide(200, function() {
+            jQuery("#cloud").remove();
+        });
+    });
+
 }
 
 function date_diff(dateA, dateB) {
