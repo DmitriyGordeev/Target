@@ -1,6 +1,20 @@
 <?php
+
+    class UserGoalData {
+        public $goal;
+        public $proof;
+        public $dateA;
+        public $dateB;
+        public $penalty;
+    }
+
     class HtmlPage {
-        public function __construct() {}
+
+        public function __construct($goal, $proof, $penalty) {
+            $this->goalData = $goal;
+            $this->proofData = $proof;
+            $this->penaltyData = $penalty;
+        }
 
         /*
          *  methods:
@@ -91,14 +105,14 @@
                             <li>
                                 <div>
                                     <p class=\"element-heading\">Цель</p>
-                                    <textarea class=\"element-description\" name=\"ta-goal\" rows=\"3\" placeholder=\"Например: заработать 100 000 руб\"></textarea>
+                                    <textarea class=\"element-description\" name=\"ta-goal\" rows=\"3\" placeholder=\"Например: заработать 100 000 руб\">".$this->goalData."</textarea>
                                 </div>
                             </li>
 
                             <li>
                                 <div>
                                     <p class=\"element-heading\">Доказательство</p>
-                                    <textarea class=\"element-description\" name=\"ta-proof\" rows=\"3\" placeholder=\"Например: 10 фотографий поездки\"></textarea>
+                                    <textarea class=\"element-description\" name=\"ta-proof\" rows=\"3\" placeholder=\"Например: 10 фотографий поездки\">".$this->proofData."</textarea>
                                 </div>
                             </li>
 
@@ -115,25 +129,29 @@
                                         <span class=\"digit-block\" id=\"minutes\"><span class=\"inner-digit\">12</span><br>минут</span>
                                         <span class=\"digit-block\"><span class=\"inner-digit\">-</span></span>
                                         <span class=\"digit-block\" id=\"seconds\"><span class=\"inner-digit\">12</span><br>секунд</span>
-                                    </p>
+                                    </p> 
                                 </div>
                             </li>
 
                             <li>
                                 <div>
                                     <p class=\"element-heading\">Цена слова</p>
-                                    <textarea class=\"element-description\" name=\"ta-penalty\" rows=\"3\" placeholder=\"Например: отдать Ивану Ивановичу 20 000 руб\"></textarea>
+                                    <textarea class=\"element-description\" name=\"ta-penalty\" rows=\"3\" placeholder=\"Например: отдать Ивану Ивановичу 20 000 руб\">".$this->penaltyData."</textarea>
                                 </div>
                             </li>
                         </ul>
                     </div>";
         }
+
+        public $goalData;
+        public $proofData;
+        public $penaltyData;
+
     }
 
-    $htmlPageObject = new HtmlPage();
+    $htmlPageObject = new HtmlPage("Goal Set", "Goal proof", "Penalty");
     $html = $htmlPageObject->generate();
 
     echo $html;
-
 
 
