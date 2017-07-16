@@ -1,11 +1,18 @@
 <?php
 
+    // keypoint is alpha, beta, gamma:
+    class KeyPoint {
+        public $date;
+        public $description;
+    }
+
     class UserGoalData {
         public $goal;
         public $proof;
         public $dateA;
         public $dateB;
         public $penalty;
+        public $keyPoints;
     }
 
     class HtmlPage {
@@ -146,8 +153,11 @@
         public $goalData;
         public $proofData;
         public $penaltyData;
+        public $keyPoints;
 
     }
+
+    $cars = array("Saab","Volvo","BMW","Toyota");
 
     $htmlPageObject = new HtmlPage("Goal Set", "Goal proof", "Penalty");
     $html = $htmlPageObject->generate();

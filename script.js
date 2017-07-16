@@ -92,6 +92,18 @@ function lineZoom(x1, x2, y, delta, W, H) {
 jQuery(document).ready(function() {
     var zoomed = false;
 
+    // DEBUG --------------------------
+    $.ajax({
+        type: 'POST',
+        url: 'user_data.php',
+        data: {},
+        success: function(result) {
+            var arr = JSON.parse(result);
+            alert(arr.length + ", arr[0] = " + arr[0]);
+        }
+    });
+    // --------------------------------
+
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
 
