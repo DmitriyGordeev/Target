@@ -32,6 +32,7 @@
                 <br>
                 <span id="debug"></span><div id="bottom-row">
                         <ul class="ul-horizontal">
+
                             <li>
                                 <div>
                                     <p class="element-heading">Цель</p>

@@ -1,13 +1,12 @@
 <?php
     class HtmlPage {
-
         public function __construct() {}
 
         /*
          *  methods:
         */
         public function generate() {
-            return "<!DOCTYPE><html lang=\"en\">".$this->head().$this->body()."</html>";
+             return "<!DOCTYPE><html lang=\"en\">".$this->head().$this->body()."</html>";
         }
 
         /* main tags: */
@@ -88,6 +87,7 @@
         public function bottomGoalDescription() {
             return "<div id=\"bottom-row\">
                         <ul class=\"ul-horizontal\">
+
                             <li>
                                 <div>
                                     <p class=\"element-heading\">Цель</p>
@@ -128,11 +128,12 @@
                         </ul>
                     </div>";
         }
-
     }
 
     $htmlPageObject = new HtmlPage();
     $html = $htmlPageObject->generate();
+
+    file_put_contents("file.txt", $html);
 
     echo $html;
 

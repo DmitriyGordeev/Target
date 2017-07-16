@@ -152,7 +152,6 @@ jQuery(document).ready(function() {
 
     // testing click:
     for(var j = 0; j < lines.length; j++) {
-
         lines[j].click(function() {
             var current_line = this;
 
