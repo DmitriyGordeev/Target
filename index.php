@@ -133,8 +133,6 @@
     $htmlPageObject = new HtmlPage();
     $html = $htmlPageObject->generate();
 
-    file_put_contents("file.txt", $html);
-
     echo $html;
 
 
