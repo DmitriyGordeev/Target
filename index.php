@@ -22,7 +22,7 @@
          *  methods:
         */
         public function generate() {
-             return "<!DOCTYPE><html lang=\"en\">".$this->head().$this->body()."</html>";
+             return "<!DOCTYPE html><html lang=\"en\">".$this->head().$this->body()."</html>";
         }
 
         /* main tags: */
@@ -154,5 +154,3 @@
     $html = $viewportPage->generate();
 
     echo $html;
-
-

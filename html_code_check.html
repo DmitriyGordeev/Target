@@ -1,4 +1,4 @@
-<!DOCTYPE><html lang="en"><head>
+<!DOCTYPE html><html lang="en"><head>
                     <meta charset="UTF-8">
                     <title> MainPage | Goal </title><link rel="stylesheet" href="style.css" type="text/css">
                 <link rel="stylesheet" href="Pikaday-master/css/pikaday.css" type="text/css">
@@ -24,9 +24,9 @@
                         <circle id="pointA" class="dot" cx="10%" cy="50%" r="10" fill="#39384d"></circle>
                         <circle id="pointB" class="dot" cx="90%" cy="50%" r="14" fill="#39384d"></circle>
 
-                        <circle class="dot" cx="30%" cy="50%" r="10" fill="#39384d"></circle>
-                        <circle class="dot" cx="50%" cy="50%" r="10" fill="#39384d"></circle>
-                        <circle class="dot" cx="70%" cy="50%" r="10" fill="#39384d"></circle>
+                        <circle id="alpha" class="dot" cx="30%" cy="50%" r="10" fill="#39384d"></circle>
+                        <circle id="betta" class="dot" cx="50%" cy="50%" r="10" fill="#39384d"></circle>
+                        <circle id="gamma" class="dot" cx="70%" cy="50%" r="10" fill="#39384d"></circle>
                     </g>
                 </svg><p id="return" class="button">Исходная</p>
                 <br>
@@ -36,14 +36,14 @@
                             <li>
                                 <div>
                                     <p class="element-heading">Цель</p>
-                                    <textarea class="element-description" name="ta-goal" rows="3" placeholder="Например: заработать 100 000 руб"></textarea>
+                                    <textarea class="element-description" name="ta-goal" rows="3" placeholder="Например: заработать 100 000 руб">Goal Set</textarea>
                                 </div>
                             </li>
 
                             <li>
                                 <div>
                                     <p class="element-heading">Доказательство</p>
-                                    <textarea class="element-description" name="ta-proof" rows="3" placeholder="Например: 10 фотографий поездки"></textarea>
+                                    <textarea class="element-description" name="ta-proof" rows="3" placeholder="Например: 10 фотографий поездки">Goal proof</textarea>
                                 </div>
                             </li>
 
@@ -60,14 +60,14 @@
                                         <span class="digit-block" id="minutes"><span class="inner-digit">12</span><br>минут</span>
                                         <span class="digit-block"><span class="inner-digit">-</span></span>
                                         <span class="digit-block" id="seconds"><span class="inner-digit">12</span><br>секунд</span>
-                                    </p>
+                                    </p> 
                                 </div>
                             </li>
 
                             <li>
                                 <div>
                                     <p class="element-heading">Цена слова</p>
-                                    <textarea class="element-description" name="ta-penalty" rows="3" placeholder="Например: отдать Ивану Ивановичу 20 000 руб"></textarea>
+                                    <textarea class="element-description" name="ta-penalty" rows="3" placeholder="Например: отдать Ивану Ивановичу 20 000 руб">Penalty</textarea>
                                 </div>
                             </li>
                         </ul>
