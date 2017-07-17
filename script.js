@@ -22,7 +22,6 @@ function sticker(x, y, title, description) {
     stickerDiv.show(300);
 }
 
-
 /* circle cloud appearance: */
 function circle_popup(viewport, circleObject, title, desc) {
     circleObject.hover(function() {
@@ -47,14 +46,20 @@ function circle_popup(viewport, circleObject, title, desc) {
 /* highlights circles when hovering: */
 function highlight_circles(viewport, keyPoints) {
 
+    var pointA_circle = Snap.select("#pointA");
+    circle_popup(viewport, pointA_circle, "Точка А", keyPoints[0].description);
+
     var alphaCircle = Snap.select("#alpha");
-    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints[0].description);
+    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints[1].description);
 
     var bettaCircle = Snap.select("#betta");
-    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints[1].description);
+    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints[2].description);
 
     var gammaCircle = Snap.select("#gamma");
-    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints[2].description);
+    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints[3].description);
+
+    var pointB_circle = Snap.select("#pointB");
+    circle_popup(viewport, pointB_circle, "Точка B", keyPoints[4].description);
 
 }
 
