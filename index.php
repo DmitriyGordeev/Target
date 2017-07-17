@@ -1,16 +1,5 @@
 <?php
-
-    // keypoint is alpha, beta, gamma:
-    class KeyPoint {
-
-        public function __construct($date, $description) {
-            $this->date = $date;
-            $this->description = $description;
-        }
-
-        public $date;
-        public $description;
-    }
+    include_once("KeyPoint.php");
 
     class UserGoalData {
         public $goal;
@@ -161,14 +150,8 @@
         public $proofData;
         public $penaltyData;
         public $keyPoints;
-
     }
 
-    $alpha_keyPoint = new KeyPoint("Some Date Alpha", "Alpha Description");
-    $betta_keyPoint = new KeyPoint("Some Date Betta", "Betta Description");
-    $gamma_keyPoint = new KeyPoint("Some Date Gamma", "Gamma Description");
-
-    $keyPoints = array($alpha_keyPoint, $betta_keyPoint, $gamma_keyPoint);
 
     $viewportPage = new MainViewportPage("Goal Set", "Goal proof", "Penalty", $keyPoints);
     $html = $viewportPage->generate();

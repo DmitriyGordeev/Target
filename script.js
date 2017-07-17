@@ -149,26 +149,24 @@ function lineZoom(x1, x2, y, delta, W, H) {
 
 // obtain user_data from the server:
 function getUserData() {
-    var out = "";
+
     $.ajax({
         type: 'POST',
         url: 'user_data.php',
         data: {},
         success: function(result) {
             var userData = JSON.parse(result);
-            out = userData.length;
+            alert(userData[0].description);
         }
     });
 
-    return out;
 }
 
 jQuery(document).ready(function() {
     var zoomed = false;
 
     // DEBUG --------------------------
-    var ud = getUserData();
-    alert(ud[0]);
+    getUserData();
     // --------------------------------
 
     var W = jQuery("#main-svg-viewport").width();
