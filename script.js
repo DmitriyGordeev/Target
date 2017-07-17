@@ -147,19 +147,28 @@ function lineZoom(x1, x2, y, delta, W, H) {
     return "s" + zoomfactor + " t" + x1 + "," + y;
 }
 
-jQuery(document).ready(function() {
-    var zoomed = false;
-
-    // DEBUG --------------------------
+// obtain user_data from the server:
+function getUserData() {
+    var out = "";
     $.ajax({
         type: 'POST',
         url: 'user_data.php',
         data: {},
         success: function(result) {
-            var arr = JSON.parse(result);
-            alert(arr.length + ", arr[0] = " + arr[0]);
+            var userData = JSON.parse(result);
+            out = userData.length;
         }
     });
+
+    return out;
+}
+
+jQuery(document).ready(function() {
+    var zoomed = false;
+
+    // DEBUG --------------------------
+    var ud = getUserData();
+    alert(ud[0]);
     // --------------------------------
 
     var W = jQuery("#main-svg-viewport").width();
