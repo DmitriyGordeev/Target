@@ -12,11 +12,10 @@
 
     class MainViewportPage {
 
-        public function __construct($goal, $proof, $penalty, $keyPoints) {
+        public function __construct($goal, $proof, $penalty) {
             $this->goalData = $goal;
             $this->proofData = $proof;
             $this->penaltyData = $penalty;
-            $this->keyPoints = $keyPoints;
         }
 
         /*
@@ -149,11 +148,9 @@
         public $goalData;
         public $proofData;
         public $penaltyData;
-        public $keyPoints;
     }
 
-
-    $viewportPage = new MainViewportPage("Goal Set", "Goal proof", "Penalty", $keyPoints);
+    $viewportPage = new MainViewportPage("Goal Set", "Goal proof", "Penalty");
     $html = $viewportPage->generate();
 
     echo $html;
