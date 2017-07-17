@@ -1,7 +1,7 @@
 <?php
     include_once("KeyPoint.php");
 
-    $alpha_keyPoint = new KeyPoint("Some Date Alpha", "Alpha Description");
+    $alpha_keyPoint = new KeyPoint("Some Date Alpha", "Alpha Description from PHP");
     $betta_keyPoint = new KeyPoint("Some Date Betta", "Betta Description");
     $gamma_keyPoint = new KeyPoint("Some Date Gamma", "Gamma Description");
 

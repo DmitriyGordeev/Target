@@ -1,5 +1,7 @@
 /* Javascript here: */
 
+var keypoints = [];
+
 /* creates sticker on position (x,y): */
 function sticker(x, y, title, description) {
 
@@ -20,86 +22,39 @@ function sticker(x, y, title, description) {
     stickerDiv.show(300);
 }
 
-/* highlights circles when hovering: */
-function highlight_circles(viewport) {
 
-    // var circles = Snap.selectAll(".dot");
-    // for(var i = 0; i < circles.length; i++) {
-    //     circles[i].hover(function() {
-    //         this.animate({
-    //             fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
-    //         }, 200);
-    //
-    //         // recalculating cloud coordinates:
-    //         var mat = viewport.zpd("save");
-    //         var newx = this.asPX("cx") * mat.a + mat.e;
-    //         var newy = this.asPX("cy") * mat.a + mat.f;
-    //
-    //         sticker(newx, newy + 55, "План кинжал \u03B1", "20 звонков потенциальным клиентам");
-    //     }, function() {
-    //         this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
-    //         jQuery("#cloud").hide(200, function() {
-    //             jQuery("#cloud").remove();
-    //         });
-    //     });
-    // }
+/* circle cloud appearance: */
+function circle_popup(viewport, circleObject, title, desc) {
+    circleObject.hover(function() {
+            this.animate({
+                fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
+            }, 200);
+
+            // recalculating cloud coordinates:
+            var mat = viewport.zpd("save");
+            var newx = this.asPX("cx") * mat.a + mat.e;
+            var newy = this.asPX("cy") * mat.a + mat.f;
+
+            sticker(newx, newy + 55, title, desc);
+        }, function() {
+            this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
+            jQuery("#cloud").hide(200, function() {
+                jQuery("#cloud").remove();
+            });
+        });
+}
+
+/* highlights circles when hovering: */
+function highlight_circles(viewport, keyPoints) {
 
     var alphaCircle = Snap.select("#alpha");
-    alphaCircle.hover(function() {
-        this.animate({
-            fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
-        }, 200);
-
-        // recalculating cloud coordinates:
-        var mat = viewport.zpd("save");
-        var newx = this.asPX("cx") * mat.a + mat.e;
-        var newy = this.asPX("cy") * mat.a + mat.f;
-
-        sticker(newx, newy + 55, "План кинжал \u03B1", "Задача план-кинжала \u03B1");
-    }, function() {
-        this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
-        jQuery("#cloud").hide(200, function() {
-            jQuery("#cloud").remove();
-        });
-    });
+    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints[0].description);
 
     var bettaCircle = Snap.select("#betta");
-    bettaCircle.hover(function() {
-        this.animate({
-            fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
-        }, 200);
-
-        // recalculating cloud coordinates:
-        var mat = viewport.zpd("save");
-        var newx = this.asPX("cx") * mat.a + mat.e;
-        var newy = this.asPX("cy") * mat.a + mat.f;
-
-        sticker(newx, newy + 55, "План кинжал Betta", "Задача план-кинжала Betta");
-    }, function() {
-        this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
-        jQuery("#cloud").hide(200, function() {
-            jQuery("#cloud").remove();
-        });
-    });
+    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints[1].description);
 
     var gammaCircle = Snap.select("#gamma");
-    gammaCircle.hover(function() {
-        this.animate({
-            fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
-        }, 200);
-
-        // recalculating cloud coordinates:
-        var mat = viewport.zpd("save");
-        var newx = this.asPX("cx") * mat.a + mat.e;
-        var newy = this.asPX("cy") * mat.a + mat.f;
-
-        sticker(newx, newy + 55, "План кинжал Gamma", "Задача план-кинжала Gamma");
-    }, function() {
-        this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
-        jQuery("#cloud").hide(200, function() {
-            jQuery("#cloud").remove();
-        });
-    });
+    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints[2].description);
 
 }
 
@@ -147,27 +102,16 @@ function lineZoom(x1, x2, y, delta, W, H) {
     return "s" + zoomfactor + " t" + x1 + "," + y;
 }
 
-// obtain user_data from the server:
-function getUserData() {
-
-    $.ajax({
-        type: 'POST',
-        url: 'user_data.php',
-        data: {},
-        success: function(result) {
-            var userData = JSON.parse(result);
-            alert(userData[0].description);
-        }
+// obtain keypoints objects from server as json:
+function get_keypoints(viewport) {
+    jQuery.post("retreive_keypoints.php", function(result) {
+        keypoints = JSON.parse(result);
+        highlight_circles(viewport, keypoints);
     });
-
 }
 
 jQuery(document).ready(function() {
     var zoomed = false;
-
-    // DEBUG --------------------------
-    getUserData();
-    // --------------------------------
 
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
@@ -175,7 +119,8 @@ jQuery(document).ready(function() {
     var svgElement = Snap("#main-svg-viewport");
     var viewport = svgElement.select("#canvas");
 
-    highlight_circles(viewport);
+    // get keypoints objects from server:
+    get_keypoints(viewport);
 
     // define pointA cx and pointB cx:
     var x1 = Snap("#pointA").asPX("cx");
