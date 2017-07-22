@@ -47,19 +47,19 @@ function circle_popup(viewport, circleObject, title, desc) {
 function highlight_circles(viewport, keyPoints) {
 
     var pointA_circle = Snap.select("#pointA");
-    circle_popup(viewport, pointA_circle, "Точка А", keyPoints[0].description);
+    circle_popup(viewport, pointA_circle, keyPoints.state_A.date, keyPoints.state_A.description);
 
     var alphaCircle = Snap.select("#alpha");
-    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints[1].description);
+    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints.state_alpha.description);
 
     var bettaCircle = Snap.select("#betta");
-    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints[2].description);
+    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints.state_betta.description);
 
     var gammaCircle = Snap.select("#gamma");
-    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints[3].description);
+    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints.state_gamma.description);
 
     var pointB_circle = Snap.select("#pointB");
-    circle_popup(viewport, pointB_circle, "Точка B", keyPoints[4].description);
+    circle_popup(viewport, pointB_circle, "Точка B", keyPoints.state_B.description);
 
 }
 
@@ -109,7 +109,7 @@ function lineZoom(x1, x2, y, delta, W, H) {
 
 // obtain keypoints objects from server as json:
 function get_keypoints(viewport) {
-    jQuery.post("retreive_keypoints.php", function(result) {
+    jQuery.post("test_database.php", function(result) {
         keypoints = JSON.parse(result);
         highlight_circles(viewport, keypoints);
     });

@@ -57,5 +57,4 @@ $gi->state_alpha = new State("someDateAlpha", "State Alpha description");
 $gi->state_betta = new State("someDateBetta", "State Betta description");
 $gi->state_gamma = new State("someDateGamma", "State Gamma description");
 
-$str = json_decode($row['goal_info'])->state_A->description;
-echo $str;
+echo $row['goal_info'];
