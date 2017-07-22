@@ -6,6 +6,26 @@ $db_user = "root";
 $db_pass = "123";
 $db_name = "goal_service";
 
+
+class State {
+    public function __construct($date, $description) {
+        $this->date = $date;
+        $this->description = $description;
+    }
+
+    public $date;
+    public $description;
+}
+
+class GoalInfo {
+    public $state_A;
+    public $state_B;
+    public $state_alpha;
+    public $state_betta;
+    public $state_gamma;
+
+}
+
 class UserPreferences {
     public function __construct($id, $name, $email) {
         $this->id = $id;
