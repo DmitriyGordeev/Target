@@ -18,9 +18,7 @@
             $this->penaltyData = $penalty;
         }
 
-        /*
-         *  methods:
-        */
+        /* methods: */
         public function generate() {
              return "<!DOCTYPE html><html lang=\"en\">".$this->head().$this->body()."</html>";
         }
