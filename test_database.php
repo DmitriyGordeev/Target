@@ -23,20 +23,20 @@ class GoalInfo {
     public $state_alpha;
     public $state_betta;
     public $state_gamma;
-
 }
 
 class UserPreferences {
-    public function __construct($id, $name, $email) {
+    public function __construct($id, $name, $email, $goal_info) {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
+        $this->goal_info = $goal_info;
     }
 
     public $id;
     public $name;
     public $email;
-
+    public $goal_info;
 }
 
 
@@ -50,5 +50,12 @@ if($mysqli == false) {
 $res = mysqli_query($mysqli, "select * from users");
 $row = mysqli_fetch_assoc($res);
 
-$up = new UserPreferences($row['id'], $row['name'], $row['email']);
-echo json_encode($up);
+$gi = new GoalInfo();
+$gi->state_A = new State("someDateA", "State A description");
+$gi->state_B = new State("someDateB", "State B description");
+$gi->state_alpha = new State("someDateAlpha", "State Alpha description");
+$gi->state_betta = new State("someDateBetta", "State Betta description");
+$gi->state_gamma = new State("someDateGamma", "State Gamma description");
+
+$str = json_decode($row['goal_info'])->state_A->description;
+echo $str;
