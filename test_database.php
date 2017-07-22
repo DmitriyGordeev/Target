@@ -1,6 +1,8 @@
 <?php
 
+class UserPreferences {
 
+}
 
 
 /* testing simple database interaction: */
