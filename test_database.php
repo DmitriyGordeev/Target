@@ -10,12 +10,7 @@ if($mysqli == false) {
     exit();
 }
 
+$result = $mysqli->query("select * from users");
+$row = $result->fetch_array(MYSQLI_ASSOC);
 
-$goalInfo = new GoalInfo();
-$goalInfo->point_A = new TimePoint("DATE A", "POINT A");
-$goalInfo->point_B = new TimePoint("DATE B", "POINT B");
-$goalInfo->point_alpha = new TimePoint("DATE ALPHA", "POINT ALPHA");
-$goalInfo->point_betta = new TimePoint("DATE BETTA", "POINT BETTA");
-$goalInfo->point_gamma = new TimePoint("DATE GAMMA", "POINT GAMMA");
-
-file_put_contents("goal_info_example.json", json_encode($goalInfo));
+echo $row["goal_info"];

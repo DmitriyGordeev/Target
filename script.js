@@ -47,19 +47,19 @@ function circle_popup(viewport, circleObject, title, desc) {
 function highlight_circles(viewport, keyPoints) {
 
     var pointA_circle = Snap.select("#pointA");
-    circle_popup(viewport, pointA_circle, keyPoints.state_A.date, keyPoints.state_A.description);
+    circle_popup(viewport, pointA_circle, keyPoints.point_A.date, keyPoints.point_A.description);
 
     var alphaCircle = Snap.select("#alpha");
-    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints.state_alpha.description);
+    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints.point_alpha.description);
 
     var bettaCircle = Snap.select("#betta");
-    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints.state_betta.description);
+    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints.point_betta.description);
 
     var gammaCircle = Snap.select("#gamma");
-    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints.state_gamma.description);
+    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints.point_gamma.description);
 
     var pointB_circle = Snap.select("#pointB");
-    circle_popup(viewport, pointB_circle, "Точка B", keyPoints.state_B.description);
+    circle_popup(viewport, pointB_circle, "Точка B", keyPoints.point_B.description);
 
 }
 
