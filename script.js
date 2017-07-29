@@ -132,35 +132,46 @@ jQuery(document).ready(function() {
     var x2 = Snap("#pointB").asPX("cx");
     var y = Snap("#pointA").asPX("cy");
 
-    var picker = new Pikaday({
-        field: jQuery("input[name='datepicker']")[0],
-        firstDay: 1,
-        minDate: new Date(),
-        maxDate: new Date(2020, 12, 31),
-        yearRange: [2000, 2020],
-        onSelect: function () {
-            var r = jQuery("#date_countdown");
-            jQuery(".digit-block").css("visibility", "visible");
+    // var picker = new Pikaday({
+    //     field: jQuery("input[name='datepicker']")[0],
+    //     firstDay: 1,
+    //     minDate: new Date(),
+    //     maxDate: new Date(2020, 12, 31),
+    //     yearRange: [2000, 2020],
+    //     onSelect: function () {
+    //         var r = jQuery("#date_countdown");
+    //         jQuery(".digit-block").css("visibility", "visible");
+    //
+    //         // dateA for timeline testing:
+    //         var dateA = new Date();
+    //         var dateB = picker.getDate().getTime();
+    //
+    //         setInterval(function () {
+    //             var countdown = date_diff(new Date(), picker.getDate());
+    //
+    //             jQuery("#days .inner-digit").text(countdown.d);
+    //             jQuery("#hours .inner-digit").text(countdown.h);
+    //             jQuery("#minutes .inner-digit").text(countdown.m);
+    //             jQuery("#seconds .inner-digit").text(countdown.s);
+    //
+    //             // testing timeline:
+    //             var endingPos = timeline(dateA, dateB, x1, x2);
+    //             viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
+    //
+    //         }, 1000);
+    //     }
+    // });
 
-            // dateA for timeline testing:
-            var dateA = new Date();
-            var dateB = picker.getDate().getTime();
 
-            setInterval(function () {
-                var countdown = date_diff(new Date(), picker.getDate());
+    // timout because of delay of ajax and parsing data:
+    setTimeout(function() {
+        var datePicker = new Pikaday({
+            field: jQuery("input[name='datepicker']")[0],
+            defaultDate: new Date(Date.parse(keypoints.point_B.date)),
+            setDefaultDate: new Date(Date.parse(keypoints.point_B.date))
+        });
+    }, 1000);
 
-                jQuery("#days .inner-digit").text(countdown.d);
-                jQuery("#hours .inner-digit").text(countdown.h);
-                jQuery("#minutes .inner-digit").text(countdown.m);
-                jQuery("#seconds .inner-digit").text(countdown.s);
-
-                // testing timeline:
-                var endingPos = timeline(dateA, dateB, x1, x2);
-                viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
-
-            }, 1000);
-        }
-    });
 
     if(!picker.isSelected) {
         jQuery(".digit-block").css("visibility", "hidden");

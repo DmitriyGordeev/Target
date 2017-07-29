@@ -12,7 +12,6 @@ class TimePoint {
 }
 
 class GoalInfo {
-
     public $point_A;
     public $point_B;
     public $point_alpha;
