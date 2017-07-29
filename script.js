@@ -164,13 +164,20 @@ jQuery(document).ready(function() {
 
 
     // timout because of delay of ajax and parsing data:
+    var datePicker = null;
     setTimeout(function() {
-        var datePicker = new Pikaday({
+        datePicker = new Pikaday({
             field: jQuery("input[name='datepicker']")[0],
             defaultDate: new Date(Date.parse(keypoints.point_B.date)),
             setDefaultDate: new Date(Date.parse(keypoints.point_B.date))
         });
+
+        alert(datePicker.getDate().toString());
+
     }, 1000);
+
+
+
 
 
     if(!picker.isSelected) {

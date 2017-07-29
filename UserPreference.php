@@ -17,7 +17,6 @@ class GoalInfo {
     public $point_alpha;
     public $point_betta;
     public $point_gamma;
-
 }
 
 class UserPreferences {
