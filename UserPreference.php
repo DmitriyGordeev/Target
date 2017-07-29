@@ -1,6 +1,7 @@
 <?php
 
-class State {
+class TimePoint {
+
     public function __construct($date, $description) {
         $this->date = $date;
         $this->description = $description;
@@ -11,11 +12,13 @@ class State {
 }
 
 class GoalInfo {
-    public $state_A;
-    public $state_B;
-    public $state_alpha;
-    public $state_betta;
-    public $state_gamma;
+
+    public $point_A;
+    public $point_B;
+    public $point_alpha;
+    public $point_betta;
+    public $point_gamma;
+
 }
 
 class UserPreferences {

@@ -148,7 +148,7 @@
         public $penaltyData;
     }
 
-    $viewportPage = new MainViewportPage("Goal Set", "Goal proof", "Penalty");
+    $viewportPage = new MainViewportPage("Постановка цели", "Goal proof", "Penalty");
     $html = $viewportPage->generate();
 
     echo $html;
