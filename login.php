@@ -26,7 +26,7 @@ if(!isset($_POST)) {
 $result = $mysqli->query("select * from users where id=10");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 if($row == false) {
-    header("Location: http://target.com/main_static_page.html");
+    header("Location: http://target.com/goalset.html");
     exit();
 }
 
