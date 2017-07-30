@@ -22,8 +22,15 @@ if(!isset($_POST)) {
     exit();
 }
 
-$result = $mysqli->query("select * from users where id=1");
+
+$result = $mysqli->query("select * from users where id=10");
 $row = $result->fetch_array(MYSQLI_ASSOC);
+if($row == false) {
+    header("Location: http://target.com/index_static_page.html");
+    exit();
+}
+
+
 echo $row["name"];
 
 
