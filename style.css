@@ -1,3 +1,8 @@
+:root {
+    --main-color: #39384d;
+}
+
+
 * {
     padding: 0;
     margin: 0;
@@ -62,7 +67,6 @@ header {
 }
 
 .ul-horizontal {
-    background: #003eff;
     width: 100%;
     height: 100%;
 }

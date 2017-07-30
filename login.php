@@ -23,9 +23,11 @@ if(!isset($_POST)) {
 }
 
 
-$result = $mysqli->query("select * from users where id=10");
+$result = $mysqli->query("select * from users where email='".$_POST["user_email"]."'");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 if($row == false) {
+    $insert_query = "insert into users (name, email) values ('', '".$_POST["user_email"]."')";
+    $mysqli->query($insert_query);
     header("Location: http://target.com/goalset.html");
     exit();
 }

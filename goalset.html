@@ -42,6 +42,8 @@
         background: #F53240;
         text-decoration: none;
         text-align: center;
+        border: none;
+        outline: none;
         /*-webkit-border-radius: 3px;*/
         /*-moz-border-radius: 3px;*/
         /*border-radius: 3px;*/
@@ -58,51 +60,63 @@
         transition-duration: 0.4s;
     }
 
+    .element-heading {
+        text-decoration: none;
+    }
+
+    .element-heading > span {
+        border-bottom: 2px solid #39384d;
+        font-weight: 800;
+        padding: 0 3px;
+    }
+
 </style>
 
 <body>
 
     <div id="outer-container">
         <p>Поставьте цель</p>
-        <div id="bottom-row">
-            <ul class="ul-horizontal">
-                <li>
-                    <div>
-                        <p class="element-heading">Цель</p>
-                        <textarea class="element-description" name="ta-goal" rows="5" placeholder="Например: заработать 100 000 руб"></textarea>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <p class="element-heading">Доказательство</p>
-                        <textarea class="element-description" name="ta-proof" rows="5" placeholder="Например: 10 фотографий поездки"></textarea>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <p class="element-heading">Date</p>
-                        <!--<textarea class="element-description" name="ta-date" rows="3" placeholder="Например: до 10 июля"></textarea>-->
-                        <input class=element-description type="text" name="datepicker" placeholder="Выберите дату">
-                        <!--<p class="element-description" id="date_countdown">-->
-                            <!--<span class="digit-block" id="days"><span class="inner-digit">12</span><br>дней</span>-->
-                            <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
-                            <!--<span class="digit-block" id="hours"><span class="inner-digit">12</span><br>часов</span>-->
-                            <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
-                            <!--<span class="digit-block" id="minutes"><span class="inner-digit">12</span><br>минут</span>-->
-                            <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
-                            <!--<span class="digit-block" id="seconds"><span class="inner-digit">12</span><br>секунд</span>-->
-                        <!--</p>-->
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <p class="element-heading">Цена слова</p>
-                        <textarea class="element-description" name="ta-penalty" rows="5" placeholder="Например: отдать Ивану Ивановичу 20 000 руб"></textarea>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <a id="goal-begin" href="main.php">Начать достижение</a>
+        <form method="post" action="test_insert.php">
+            <div id="bottom-row">
+                    <ul class="ul-horizontal">
+                        <li>
+                            <div>
+                                <p class="element-heading"><span>Цель</span></p>
+                                <textarea class="element-description" name="ta-goal" rows="5" placeholder="Например: заработать 100 000 руб"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p class="element-heading"><span>Доказательство</span></p>
+                                <textarea class="element-description" name="ta-proof" rows="5" placeholder="Например: 10 фотографий поездки"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p class="element-heading"><span>Дата</span></p>
+                                <!--<textarea class="element-description" name="ta-date" rows="3" placeholder="Например: до 10 июля"></textarea>-->
+                                <input class=element-description type="text" name="datepicker" placeholder="Выберите дату">
+                                <!--<p class="element-description" id="date_countdown">-->
+                                <!--<span class="digit-block" id="days"><span class="inner-digit">12</span><br>дней</span>-->
+                                <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
+                                <!--<span class="digit-block" id="hours"><span class="inner-digit">12</span><br>часов</span>-->
+                                <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
+                                <!--<span class="digit-block" id="minutes"><span class="inner-digit">12</span><br>минут</span>-->
+                                <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
+                                <!--<span class="digit-block" id="seconds"><span class="inner-digit">12</span><br>секунд</span>-->
+                                <!--</p>-->
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p class="element-heading"><span>Цена слова</span></p>
+                                <textarea class="element-description" name="ta-penalty" rows="5" placeholder="Например: отдать Ивану Ивановичу 20 000 руб"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+            </div>
+            <input id="goal-begin" type="submit" value="Начать достижение">
+        </form>
     </div>
 
 </body>
