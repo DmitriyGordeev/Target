@@ -4,21 +4,47 @@
     padding: 0;
     margin: 0;
     font-family: 'Forum', serif;
+    font-weight: 600;
     color: #39384d;
-    font-weight: 200;
 }
 
 form {
     width: 400px;
-    height: 300px;
-    background: #90d3a2;
-    margin: 120px auto 0;
+    margin: 210px auto 0;
+}
+
+p {
+    margin: 0 auto;
+    text-align: center;
 }
 
 input {
+    display: block;
     font-size: 20px;
-    width: 100%;
+    width: 400px;
     background: transparent;
     outline: none;
+    color: #39384d;
+    font-weight: 600;
     border: none;
+    border-bottom: 5px solid #F53240;
+    padding: 9px 11px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+input[type="submit"] {
+    display: block;
+    background: #F53240;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    width: 150px;
+    margin: 20px auto;
+    transition-duration: 0.4s;
+}
+
+input[type="submit"]:hover {
+    background: red;
+    transition-duration: 0.4s;
 }
