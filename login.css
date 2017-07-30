@@ -53,6 +53,7 @@ input[type="submit"]:hover {
     transition-duration: 0.4s;
 }
 
+/* placeholder color: */
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #b4b4b4;
 }
