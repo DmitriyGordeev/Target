@@ -1,0 +1,228 @@
+/* ----------------------------------------------------------
+    bottom row styles:
+ */
+#bottom-row {
+    background: #dbebff;
+    width: 100%;
+    height: 22%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.ul-horizontal {
+    background: #003eff;
+    width: 100%;
+    height: 100%;
+}
+
+.ul-horizontal li {
+    background: #e9f2f0;
+    list-style: none;
+    width: 25%;
+    height: 100%;
+    float: left;
+    display: inline-block;
+    padding: 10px 10px 12px;
+    box-sizing: border-box;
+}
+
+/* coloring bottom options: */
+.ul-horizontal li:nth-of-type(1) {
+    background: #F53240;
+}
+.ul-horizontal li:nth-of-type(2) {
+    background: #02c8a7;
+}
+.ul-horizontal li:nth-of-type(3) {
+    background: #7CDBD5;
+}
+.ul-horizontal li:nth-of-type(4) {
+    background: #F9BE02;
+}
+
+.element-heading {
+    color: #2e2d3e;
+    font-weight: 800;
+    font-size: 19px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.element-description {
+    color: #2e2d3e;
+    font-weight: 100;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    transition-duration: 0.3s;
+}
+
+/* element goal: */
+textarea[name="ta-goal"].element-description:hover {
+    transition-duration: 0.3s;
+    background: #c72a33;
+    cursor: pointer;
+}
+textarea[name="ta-goal"].element-description {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #F53240;
+    vertical-align: top;
+    font-size: 17px;
+    font-weight: 800;
+    resize: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+textarea[name="ta-goal"].element-description:focus {
+    outline: none !important;
+    border-color: #c72a33;
+    background: #c72a33;
+    box-shadow: 0 0 0 #c72a33;
+    overflow: hidden;
+}
+
+/* element proof: */
+textarea[name="ta-proof"].element-description:hover {
+    transition-duration: 0.3s;
+    background: #02a084;
+    cursor: pointer;
+}
+textarea[name="ta-proof"].element-description {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #02c8a7;
+    vertical-align: top;
+    resize: none;
+    font-size: 17px;
+    font-weight: 800;
+    padding: 5px;
+    box-sizing: border-box;
+}
+textarea[name="ta-proof"].element-description:focus {
+    outline: none !important;
+    border-color: #02a084;
+    background: #02a084;
+    box-shadow: 0 0 0 #02a084;
+    overflow: hidden;
+}
+
+/* element date: */
+input[name='datepicker'] {
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    background: #7CDBD5;
+    font-size: 17px;
+    font-weight: 800;
+    text-align: center;
+    border: none;
+    vertical-align: top;
+    box-sizing: border-box;
+    margin-top: 11px;
+}
+input[name='datepicker']:hover {
+    transition-duration: 0.3s;
+    background: #65b1ab;
+    cursor: pointer;
+}
+input[name='datepicker']:focus {
+    outline: none !important;
+    border-color: #65b1ab;
+    background: #65b1ab;
+    box-shadow: 0 0 0 #65b1ab;
+    overflow: hidden;
+}
+
+/* element penalty: */
+textarea[name="ta-penalty"].element-description:hover {
+    transition-duration: 0.3s;
+    background: #d29e02;
+    cursor: pointer;
+}
+textarea[name="ta-penalty"].element-description {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #F9BE02;
+    vertical-align: top;
+    resize: none;
+    font-size: 17px;
+    font-weight: 800;
+    padding: 5px;
+    box-sizing: border-box;
+}
+textarea[name="ta-penalty"].element-description:focus {
+    outline: none !important;
+    border-color: #d29e02;
+    background: #d29e02;
+    box-shadow: 0 0 0 #d29e02;
+    overflow: hidden;
+}
+
+/* placeholder coloring: */
+textarea[name="ta-goal"].element-description::-webkit-input-placeholder {
+    color: #a91e32;
+}
+textarea[name="ta-goal"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #a91e32;
+}
+textarea[name="ta-goal"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #a91e32;
+}
+textarea[name="ta-goal"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #a91e32;
+}
+textarea[name="ta-goal"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #a91e32;
+}
+
+textarea[name="ta-proof"].element-description::-webkit-input-placeholder {
+    color: #028570;
+}
+textarea[name="ta-proof"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #028570;
+}
+textarea[name="ta-proof"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #028570;
+}
+textarea[name="ta-proof"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #028570;
+}
+textarea[name="ta-proof"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #028570;
+}
+
+input[name="datepicker"].element-description::-webkit-input-placeholder {
+    color: #4f928c;
+}
+input[name="datepicker"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #4f928c;
+}
+input[name="datepicker"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #4f928c;
+}
+input[name="datepicker"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #4f928c;
+}
+input[name="datepicker"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #4f928c;
+}
+
+textarea[name="ta-penalty"].element-description::-webkit-input-placeholder {
+    color: #a77f02;
+}
+textarea[name="ta-penalty"].element-description:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #a77f02;
+}
+textarea[name="ta-penalty"].element-description::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #a77f02;
+}
+textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #a77f02;
+}
+textarea[name="ta-penalty"].element-description:-ms-input-placeholder { /* Microsoft Edge */
+    color: #a77f02;
+}
