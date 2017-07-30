@@ -18,3 +18,4 @@ $mysqli->query("update users SET goal='".$_POST["ta-goal"]."' where email='".$_S
 $mysqli->query("update users SET proof='".$_POST["ta-proof"]."' where email='".$_SESSION["user_email"]."'");
 $mysqli->query("update users SET date='".$_POST["datepicker"]."' where email='".$_SESSION["user_email"]."'");
 $mysqli->query("update users SET penalty='".$_POST["ta-penalty"]."' where email='".$_SESSION["user_email"]."'");
+$mysqli->query("update users SET is_set=1 where email='".$_SESSION["user_email"]."'");
