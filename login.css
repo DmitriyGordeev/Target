@@ -1,0 +1,24 @@
+/* Login page styles: */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Forum', serif;
+    color: #39384d;
+    font-weight: 200;
+}
+
+form {
+    width: 400px;
+    height: 300px;
+    background: #90d3a2;
+    margin: 120px auto 0;
+}
+
+input {
+    font-size: 20px;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+}
