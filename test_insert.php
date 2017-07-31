@@ -8,7 +8,7 @@ $mysqli->query("update users SET date='".$_POST["datepicker"]."' where email='".
 $mysqli->query("update users SET penalty='".$_POST["ta-penalty"]."' where email='".$_SESSION["user_email"]."'");
 $mysqli->query("update users SET is_set=1 where email='".$_SESSION["user_email"]."'");
 
-$currentDateTime = date("d-m-Y H:m:s:ms");
+$currentDateTime = date("d F Y H:m:s");
 $mysqli->query("update users SET begin_date='".$currentDateTime."' where email='".$_SESSION["user_email"]."'");
 
 header("Location: main.php");

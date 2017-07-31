@@ -11,10 +11,11 @@ include_once ("encoding.php");
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="Pikaday-master/css/pikaday.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo+2|Forum|Play" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
     <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="Snap.svg-0.5.1/dist/snap.svg-min.js"></script>
     <script src="snap.svg.zpd-master/snap.svg.zpd.js"></script>
+    <script src="moment-with-locales.js"></script>
     <script src="Pikaday-master/pikaday.js"></script>
     <script src="goalset.js"></script>
     <!--<script src="script.js"></script>-->

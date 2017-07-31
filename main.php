@@ -64,6 +64,7 @@ class MainViewportPage {
             <script src=\"jquery-ui-1.12.1/jquery-ui.js\"></script>
             <script src=\"Snap.svg-0.5.1/dist/snap.svg-min.js\"></script>
             <script src=\"snap.svg.zpd-master/snap.svg.zpd.js\"></script>
+            <script src=\"moment-with-locales.js\"></script>
             <script src=\"Pikaday-master/pikaday.js\"></script>
             <script src=\"script.js\"></script>";
 
