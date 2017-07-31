@@ -9,8 +9,8 @@ include_once ("encoding.php");
 $query_result = $mysqli->query("select * from users where email='".$_SESSION["user_email"]."'");
 $query_data = $query_result->fetch_array(MYSQLI_ASSOC);
 
-class MainViewportPage {
 
+class MainViewportPage {
     public function __construct($goal, $proof, $penalty) {
         $this->goalData = $goal;
         $this->proofData = $proof;

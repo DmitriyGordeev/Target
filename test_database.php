@@ -1,6 +1,6 @@
 <?php
 include("database_settings.php");
-include ("UserPreference.php");
+include("user_preference.php");
 
 
 /* testing simple database interaction: */
