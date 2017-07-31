@@ -7,15 +7,6 @@
     $query_result = $mysqli->query("select * from users where email='".$_SESSION["user_email"]."'");
     $query_data = $query_result->fetch_array(MYSQLI_ASSOC);
 
-    class UserGoalData {
-        public $goal;
-        public $proof;
-        public $dateA;
-        public $dateB;
-        public $penalty;
-        public $keyPoints;
-    }
-
     class MainViewportPage {
 
         public function __construct($goal, $proof, $penalty) {
