@@ -1,5 +1,5 @@
 <?php
-include("database_settings.php");
+include_once("database_settings.php");
 session_start();
 
 $mysqli->query("update users SET goal='".$_POST["ta-goal"]."' where email='".$_SESSION["user_email"]."'");
