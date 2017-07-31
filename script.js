@@ -132,6 +132,7 @@ jQuery(document).ready(function() {
     var x2 = Snap("#pointB").asPX("cx");
     var y = Snap("#pointA").asPX("cy");
 
+    // TODO: do not delete this:
     // var picker = new Pikaday({
     //     field: jQuery("input[name='datepicker']")[0],
     //     firstDay: 1,
@@ -171,14 +172,8 @@ jQuery(document).ready(function() {
             defaultDate: new Date(Date.parse(keypoints.point_B.date)),
             setDefaultDate: new Date(Date.parse(keypoints.point_B.date))
         });
-
         alert(datePicker.getDate().toString());
-
     }, 1000);
-
-
-
-
 
     if(!picker.isSelected) {
         jQuery(".digit-block").css("visibility", "hidden");

@@ -11,9 +11,10 @@ $query_data = $query_result->fetch_array(MYSQLI_ASSOC);
 
 
 class MainViewportPage {
-    public function __construct($goal, $proof, $penalty) {
+    public function __construct($goal, $proof, $date, $penalty) {
         $this->goalData = $goal;
         $this->proofData = $proof;
+        $this->date = $date;
         $this->penaltyData = $penalty;
     }
 
@@ -119,7 +120,7 @@ class MainViewportPage {
                             <div>
                                 <p class=\"element-heading\">Дата</p>
                                 <!--<textarea class=\"element-description\" name=\"ta-date\" rows=\"3\" placeholder=\"Например: до 10 июля\"></textarea>-->
-                                <input class=element-description type=\"text\" name=\"datepicker\" placeholder=\"Выберите дату\">
+                                <input class=element-description type=\"text\" name=\"datepicker\" placeholder=\"Выберите дату\" value='".$this->date."'>
                                 <p class=\"element-description\" id=\"date_countdown\">
                                     <span class=\"digit-block\" id=\"days\"><span class=\"inner-digit\">12</span><br>дней</span>
                                     <span class=\"digit-block\"><span class=\"inner-digit\">-</span></span>
@@ -144,10 +145,11 @@ class MainViewportPage {
 
     public $goalData;
     public $proofData;
+    public $date;
     public $penaltyData;
 }
 
-$viewportPage = new MainViewportPage($query_data["goal"], $query_data["proof"], $query_data["penalty"]);
+$viewportPage = new MainViewportPage($query_data["goal"], $query_data["proof"], $query_data["date"], $query_data["penalty"]);
 $html = $viewportPage->generate();
 
 echo $html;
