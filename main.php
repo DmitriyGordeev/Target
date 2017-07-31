@@ -1,5 +1,11 @@
 <?php
+    session_start();
     include_once("KeyPoint.php");
+    include_once("database_settings.php");
+
+    // retreive data from database with $_SESSION[user_email]:
+    $query_result = $mysqli->query("select * from users where email='".$_SESSION["user_email"]."'");
+    $query_data = $query_result->fetch_array(MYSQLI_ASSOC);
 
     class UserGoalData {
         public $goal;
@@ -148,7 +154,7 @@
         public $penaltyData;
     }
 
-    $viewportPage = new MainViewportPage("Постановка цели", "Goal proof", "Penalty");
+    $viewportPage = new MainViewportPage($query_data["goal"], $query_data["proof"], $query_data["penalty"]);
     $html = $viewportPage->generate();
 
     echo $html;

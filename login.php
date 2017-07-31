@@ -27,6 +27,8 @@ $_SESSION["user_email"] = $_POST["user_email"];
 
 $result = $mysqli->query("select * from users where email='".$_POST["user_email"]."'");
 $row = $result->fetch_array(MYSQLI_ASSOC);
+
+// if new user: (no such email record)
 if($row == false) {
     $insert_query = "insert into users (name, email) values ('', '".$_POST["user_email"]."')";
     $mysqli->query($insert_query);
@@ -34,7 +36,11 @@ if($row == false) {
     exit();
 }
 
+// already signed up user:
+else {
+    header("Location: main.php");
+    exit();
+}
 
-echo $row["email"];
 
 
