@@ -115,8 +115,25 @@ function get_keypoints(viewport) {
     });
 }
 
+// retreive Date begin (point A) and date end (point B):
+function retreive_dates() {
+
+    jQuery.post("retreive_dates.php", function(result) {
+
+        // var dates = JSON.parse(result);
+        // alert(dates.begin_date.toString() + " : " + dates.date.toString());
+
+        // var datePicker = new Pikaday({
+        //     field: jQuery("input[name='datepicker']")[0],
+        //     defaultDate: new Date(Date.parse(keypoints.point_B.date)),
+        //     setDefaultDate: new Date(Date.parse(keypoints.point_B.date))
+        // });
+    });
+}
+
 jQuery(document).ready(function() {
     var zoomed = false;
+
 
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
@@ -131,6 +148,8 @@ jQuery(document).ready(function() {
     var x1 = Snap("#pointA").asPX("cx");
     var x2 = Snap("#pointB").asPX("cx");
     var y = Snap("#pointA").asPX("cy");
+
+    retreive_dates();
 
     // TODO: do not delete this:
     // var picker = new Pikaday({
@@ -165,19 +184,19 @@ jQuery(document).ready(function() {
 
 
     // timout because of delay of ajax and parsing data:
-    var datePicker = null;
-    setTimeout(function() {
-        datePicker = new Pikaday({
-            field: jQuery("input[name='datepicker']")[0],
-            defaultDate: new Date(Date.parse(keypoints.point_B.date)),
-            setDefaultDate: new Date(Date.parse(keypoints.point_B.date))
-        });
-        alert(datePicker.getDate().toString());
-    }, 1000);
-
-    if(!picker.isSelected) {
-        jQuery(".digit-block").css("visibility", "hidden");
-    }
+    // var datePicker = null;
+    // setTimeout(function() {
+    //     datePicker = new Pikaday({
+    //         field: jQuery("input[name='datepicker']")[0],
+    //         defaultDate: new Date(Date.parse(keypoints.point_B.date)),
+    //         setDefaultDate: new Date(Date.parse(keypoints.point_B.date))
+    //     });
+    //     alert(datePicker.getDate().toString());
+    // }, 1000);
+    //
+    // if(!picker.isSelected) {
+    //     jQuery(".digit-block").css("visibility", "hidden");
+    // }
 
     // testing line hover:
     var lines = viewport.selectAll(".timeline");
