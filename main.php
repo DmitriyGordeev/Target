@@ -20,7 +20,11 @@ class MainViewportPage {
 
     /* methods: */
     public function generate() {
-         return "<!DOCTYPE html><html lang=\"en\">".$this->head().$this->body()."</html>";
+         return "<!DOCTYPE html>
+        \n<html lang=\"en\">\n"
+             .$this->head().
+             $this->body().
+             "</html>\n";
     }
 
     /* main tags: */
@@ -154,3 +158,4 @@ $viewportPage = new MainViewportPage($query_data["goal"], $query_data["proof"], 
 $html = $viewportPage->generate();
 
 echo $html;
+//file_put_contents("main_static_page.html", $html);

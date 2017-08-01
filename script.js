@@ -128,10 +128,9 @@ function retreive_dates(viewport, x1, x2, y) {
             defaultDate: dateObject,
             setDefaultDate: dateObject
         });
-
-        // jQuery("#date-countdown").css("visibility", "visible");
         jQuery(".digit-block").css("visibility", "visible");
 
+        // refresh timeline drawing each second:
         setInterval(function () {
             var countdown = date_diff(new Date(), dateObject);
 
@@ -140,7 +139,6 @@ function retreive_dates(viewport, x1, x2, y) {
             jQuery("#minutes .inner-digit").text(countdown.m);
             jQuery("#seconds .inner-digit").text(countdown.s);
 
-            // testing timeline:
             var endingPos = timeline(beginDateObject, dateObject, x1, x2);
             viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
 
@@ -168,7 +166,7 @@ jQuery(document).ready(function() {
 
     retreive_dates(viewport, x1, x2, y);
 
-    // testing line hover:
+    // line hover:
     var lines = viewport.selectAll(".timeline");
     for (var i = 0; i < lines.length; i++) {
         lines[i].hover(function () {
@@ -178,8 +176,7 @@ jQuery(document).ready(function() {
         });
     }
 
-
-    // testing click:
+    // line click:
     for(var j = 0; j < lines.length; j++) {
         lines[j].click(function() {
             var current_line = this;
@@ -203,14 +200,31 @@ jQuery(document).ready(function() {
             if(zoomed) {
                 viewport.animate({ "transform":"t0,0 s1,1" }, 200);
                 zoomed = false;
+
+                // swipe #plan-container to #bottom-row:
+                jQuery("#bottom-row > .ul-horizontal").animate({width: "100%", opacity: 1}, duration);
+                jQuery("#plan-container").animate({width: 0, opacity: 0}, duration);
+
+                // // hide task menu (#section-menu) to right:
+                // jQuery("#section-menu").animate({width: 0}, duration);
+                // jQuery("#section-main").animate({width: "100%"}, duration);
             }
             else {
                 dx = (W - x2 - x1) / 2;
                 transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
                 zoomed = true;
+
+                // swipe #bottom-row to #plan-container:
+                jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration);
+                jQuery("#plan-container").animate({width: "100%", opacity: 1}, duration);
+
+                // // swipe task menu (#section-menu) from right:
+                // jQuery("#section-main").animate({width: "75%"}, duration);
+                // jQuery("#section-menu").animate({width: "25%"}, duration);
             }
 
             viewport.animate({ "transform": transform_query }, duration);
+
         });
     }
 
