@@ -1,22 +1,22 @@
 {
   "point_A": {
-    "date": "DATE A",
-    "description": "POINT A"
+    "date": "18 June 2017",
+    "description": "POINT A Description"
   },
   "point_B": {
-    "date": "DATE B",
-    "description": "POINT B"
+    "date": "18 September 2017",
+    "description": "POINT B Description"
   },
   "point_alpha": {
-    "date": "DATE ALPHA",
-    "description": "POINT ALPHA"
+    "date": "18 August 2017",
+    "description": "POINT ALPHA Description"
   },
   "point_betta": {
-    "date": "DATE BETTA",
-    "description": "POINT BETTA"
+    "date": "18 August 2017",
+    "description": "POINT BETTA Description"
   },
   "point_gamma": {
-    "date": "DATE GAMMA",
-    "description": "POINT GAMMA"
+    "date": "18 August 2017",
+    "description": "POINT GAMMA Description"
   }
 }

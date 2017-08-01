@@ -11,11 +11,13 @@ $query_data = $query_result->fetch_array(MYSQLI_ASSOC);
 
 
 class MainViewportPage {
-    public function __construct($goal, $proof, $date, $penalty) {
+    public function __construct($goal, $proof, $date, $penalty, $user_goal_info) {
         $this->goalData = $goal;
         $this->proofData = $proof;
         $this->date = $date;
         $this->penaltyData = $penalty;
+        $this->user_goal_info_object = json_decode($user_goal_info);
+
     }
 
     /* methods: */
@@ -148,8 +150,8 @@ class MainViewportPage {
                         </li>
                     </ul>
                     <div id=\"plan-container\">
-                        <h2 style=\"font-weight: 800;\">План - кинжал</h2>
-                        <textarea rows=\"5\"></textarea>
+                        <h2 style=\"font-weight: 800;\">".$this->user_goal_info_object->point_B->description."</h2>
+                        <textarea rows=\"5\">".$this->user_goal_info_object->point_B->description."</textarea>
                     </div>
                 </div>";
     }
@@ -166,9 +168,14 @@ class MainViewportPage {
     public $proofData;
     public $date;
     public $penaltyData;
+    public $user_goal_info_object;
 }
 
-$viewportPage = new MainViewportPage($query_data["goal"], $query_data["proof"], $query_data["date"], $query_data["penalty"]);
+$viewportPage = new MainViewportPage($query_data["goal"],
+                                    $query_data["proof"],
+                                    $query_data["date"],
+                                    $query_data["penalty"],
+                                    $query_data["user_goal_info"]);
 $html = $viewportPage->generate();
 
 echo $html;
