@@ -185,7 +185,7 @@ jQuery(document).ready(function() {
             var x1 = current_line.asPX("x1");
             var x2 = current_line.asPX("x2");
 
-            var duration = 200;
+            var duration = 300;
 
             var transform_query = "";
             var dx = 0;
@@ -195,7 +195,6 @@ jQuery(document).ready(function() {
             var delta = 0.3;
             var w = (x2 - x1) * (1 + delta);
             var zoomfactor = W / w;
-            var tau = (x2 - x1) * delta / 2;
 
             if(zoomed) {
                 viewport.animate({ "transform":"t0,0 s1,1" }, 200);
@@ -205,22 +204,38 @@ jQuery(document).ready(function() {
                 jQuery("#bottom-row > .ul-horizontal").animate({width: "100%", opacity: 1}, duration);
                 jQuery("#plan-container").animate({width: 0, opacity: 0}, duration);
 
-                // // hide task menu (#section-menu) to right:
-                // jQuery("#section-menu").animate({width: 0}, duration);
-                // jQuery("#section-main").animate({width: "100%"}, duration);
+                // hide task menu (#section-menu) to right:
+                jQuery("#section-menu").animate({width: 0}, duration);
+                jQuery("#section-main").animate({width: "100%"}, duration);
             }
             else {
-                dx = (W - x2 - x1) / 2;
-                transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
-                zoomed = true;
 
                 // swipe #bottom-row to #plan-container:
                 jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration);
                 jQuery("#plan-container").animate({width: "100%", opacity: 1}, duration);
 
-                // // swipe task menu (#section-menu) from right:
-                // jQuery("#section-main").animate({width: "75%"}, duration);
-                // jQuery("#section-menu").animate({width: "25%"}, duration);
+                // swipe task menu (#section-menu) from right:
+                jQuery("#section-main").animate({width: "75%"}, duration);
+                jQuery("#section-menu").animate({width: "25%"}, duration);
+
+
+                // swipe task menu (#section-menu) from right:
+                setTimeout(function() {
+
+                    // 0.75 - hardcoded value because #main-svg-viewport
+                    // decreased to 75% of its normal width
+                    // TODO: refactor hardcoding
+
+                    dx = 0.75 * (W - x2 - x1) / 2;
+                    transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
+                    viewport.animate({ "transform": transform_query }, duration);
+                }, duration);
+
+
+                // TODO: refactor transform_query usage (should not be empty):
+                transform_query = "";
+                zoomed = true;
+
             }
 
             viewport.animate({ "transform": transform_query }, duration);

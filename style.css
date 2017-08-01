@@ -30,12 +30,16 @@ header {
     height: 95%;
     background: green;
     box-sizing: border-box;
+    float: left;
+    display: inline-block;
 }
 
 #section-menu {
     width: 0;
     height: 95%;
     background: blue;
+    float: left;
+    display: inline-block;
 }
 
 #top-menu {
@@ -157,6 +161,7 @@ header {
 }
 
 
+/* TODO: refactor these huge styles: */
 /* element goal: */
 
 textarea[name="ta-goal"].element-description:hover {
@@ -278,7 +283,6 @@ textarea[name="ta-penalty"].element-description:focus {
 }
 
 
-/* TODO: to refactor this huge styles: */
 /* placeholder coloring: */
 
 textarea[name="ta-goal"].element-description::-webkit-input-placeholder {
