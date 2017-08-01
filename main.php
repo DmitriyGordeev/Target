@@ -42,12 +42,14 @@ class MainViewportPage {
             "<body>
             <div id=\"main-container\">".
             $this->topMenu().
-            $this->svgViewport().
-            "<p id=\"return\" class=\"button\">Исходная</p>
-            <br>
-            <span id=\"debug\"></span>".
-            $this->bottomGoalDescription().
-            "</div>
+            "<section id=\"section-main\">".
+                $this->svgViewport().
+                $this->bottomGoalDescription().
+            "</section>".
+            "<section id=\"section-menu\">".
+                $this->sectionMenu().
+            "</section>
+            </div>
             </body>";
 
         return $body_string;
@@ -145,7 +147,19 @@ class MainViewportPage {
                             </div>
                         </li>
                     </ul>
+                    <div id=\"plan-container\">
+                        <h2 style=\"font-weight: 800;\">План - кинжал</h2>
+                        <textarea rows=\"5\"></textarea>
+                    </div>
                 </div>";
+    }
+    public function sectionMenu() {
+        return
+            "<ul>
+                <li>One</li>
+                <li class=\"task-complete\">Two</li>
+                <li>Three</li>
+            </ul>";
     }
 
     public $goalData;
@@ -158,4 +172,3 @@ $viewportPage = new MainViewportPage($query_data["goal"], $query_data["proof"], 
 $html = $viewportPage->generate();
 
 echo $html;
-//file_put_contents("main_static_page.html", $html);
