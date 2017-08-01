@@ -205,7 +205,7 @@ jQuery(document).ready(function() {
                 jQuery("#plan-container").animate({width: 0, opacity: 0}, duration);
 
                 // hide task menu (#section-menu) to right:
-                jQuery("#section-menu").animate({width: 0}, duration);
+                jQuery("#section-menu").animate({width: 0, opacity: 0}, duration);
                 jQuery("#section-main").animate({width: "100%"}, duration);
             }
             else {
@@ -216,7 +216,7 @@ jQuery(document).ready(function() {
 
                 // swipe task menu (#section-menu) from right:
                 jQuery("#section-main").animate({width: "75%"}, duration);
-                jQuery("#section-menu").animate({width: "25%"}, duration);
+                jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
 
 
                 // swipe task menu (#section-menu) from right:

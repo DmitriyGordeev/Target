@@ -35,11 +35,27 @@ header {
 }
 
 #section-menu {
+    opacity: 0;
     width: 0;
     height: 95%;
     background: blue;
     float: left;
     display: inline-block;
+    padding: 20px 20px;
+    box-sizing: border-box;
+}
+
+/* task li layout: */
+#section-menu > ul {
+    background: red;
+    height: 100%;
+    padding-left: 25px;
+}
+
+#section-menu > ul > li {
+    font-weight: 800;
+    margin-bottom: 5px;
+    background: green;
 }
 
 #top-menu {
@@ -111,10 +127,11 @@ header {
 #plan-container {
     width: 0;
     opacity: 0;
-    height: 100px;
+    height: 100%;
     float: left;
     display: inline-block;
     font-weight: 800;
+    background: var(--main-color);
 }
 
 #plan-container > textarea {
