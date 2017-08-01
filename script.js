@@ -218,7 +218,6 @@ jQuery(document).ready(function() {
                 jQuery("#section-main").animate({width: "75%"}, duration);
                 jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
 
-
                 // swipe task menu (#section-menu) from right:
                 setTimeout(function() {
 
@@ -231,10 +230,17 @@ jQuery(document).ready(function() {
                     viewport.animate({ "transform": transform_query }, duration);
                 }, duration);
 
-
                 // TODO: refactor transform_query usage (should not be empty):
                 transform_query = "";
                 zoomed = true;
+
+
+                // get user_goal_info from database for this line:
+                jQuery.post("retreive_goal_info.php", function(result) {
+                    var line_id = current_line.attr("id");
+                    var user_goal_object = JSON.parse(result);
+                    jQuery("#plan-container > textarea").text(user_goal_object[line_id].description);
+                });
 
             }
 
