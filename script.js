@@ -2,6 +2,7 @@
 
 var keypoints = [];
 var g_line_id = "";
+var g_user_goal_object = null;
 
 /* creates sticker on position (x,y): */
 function sticker(x, y, title, description) {
@@ -165,12 +166,15 @@ function writeDatabaseEvents() {
     // overwrites plan description (database):
     jQuery("#btn-change-plan-description").click(function() {
 
-        var plan_desc_data = jQuery("#plan-container > textarea").text();
+        var plan_desc_data = jQuery("#plan-container > textarea").val();
+        g_user_goal_object[g_line_id].description = plan_desc_data;
+
+        alert(plan_desc_data);
 
         jQuery.ajax({
             url: "test_js_accept.php",
             type: "post",
-            data: { plan_desc: plan_desc_data }
+            data: { user_goal_info: JSON.stringify(g_user_goal_object) }
         });
 
     });
@@ -183,6 +187,11 @@ jQuery(document).ready(function() {
     expTest();
 
     writeDatabaseEvents();
+
+    // load and parse user_goal_info from database:
+    jQuery.post("retreive_goal_info.php", function(result) {
+        g_user_goal_object = JSON.parse(result);
+    });
 
     var zoomed = false;
     var W = jQuery("#main-svg-viewport").width();
@@ -250,7 +259,6 @@ jQuery(document).ready(function() {
             }
             else {
 
-
                 // swipe #bottom-row to #plan-container:
                 jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration);
                 jQuery("#plan-container").animate({width: "100%", opacity: 1}, duration);
@@ -264,7 +272,7 @@ jQuery(document).ready(function() {
 
                     // 0.75 - hardcoded value because #main-svg-viewport
                     // decreased to 75% of its normal width
-                    // TODO: refactor hardcoding
+                    // TODO: refactor hardcode
 
                     dx = 0.75 * (W - x2 - x1) / 2;
                     transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
@@ -276,19 +284,13 @@ jQuery(document).ready(function() {
                 zoomed = true;
 
 
-                // get user_goal_info from database for clicked line:
-                jQuery.post("retreive_goal_info.php", function(result) {
-
-                    var user_goal_object = JSON.parse(result);
-                    jQuery("#plan-container > textarea").text(user_goal_object[g_line_id].description);
-
-                    var tasklist = user_goal_object[g_line_id].tasklist;
-                    var tasklistElement = jQuery("#section-menu > ul");
-                    for(var i = 0; i < tasklist.length; i++) {
-                        tasklistElement.append("<li>" + tasklist[i] + "</li>");
-                    }
-
-                });
+                // assign data to plan-container (Plan Description)
+                jQuery("#plan-container > textarea").text(g_user_goal_object[g_line_id].description);
+                var tasklist = g_user_goal_object[g_line_id].tasklist;
+                var tasklistElement = jQuery("#section-menu > ul");
+                for(var i = 0; i < tasklist.length; i++) {
+                    tasklistElement.append("<li>" + tasklist[i] + "</li>");
+                }
 
             }
 
