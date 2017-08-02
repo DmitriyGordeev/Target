@@ -264,7 +264,7 @@ jQuery(document).ready(function() {
                 jQuery("#section-main").animate({width: "75%"}, duration);
                 jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
 
-                // swipe task menu (#section-menu) from right:
+                // svg animation:
                 setTimeout(function() {
 
                     // 0.75 - hardcoded value because #main-svg-viewport
@@ -282,7 +282,7 @@ jQuery(document).ready(function() {
 
 
                 // assign data to plan-container (Plan Description)
-                jQuery("#plan-container > textarea").text(g_user_goal_object[g_line_id].description);
+                jQuery("#plan-container > textarea").val(g_user_goal_object[g_line_id].description);
                 var tasklist = g_user_goal_object[g_line_id].tasklist;
                 var tasklistElement = jQuery("#section-menu > ul");
                 for(var i = 0; i < tasklist.length; i++) {
