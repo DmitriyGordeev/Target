@@ -26,10 +26,10 @@
     <section id="section-main">
         <svg id="main-svg-viewport">
             <g id="canvas">
-                <line class="timeline" x1="10%" y1="50%" x2="30%" y2="50%" stroke="#F53240" stroke-width="4px"></line>
-                <line class="timeline" x1="30%" y1="50%" x2="50%" y2="50%" stroke="#02c8a7" stroke-width="4px"></line>
-                <line class="timeline" x1="50%" y1="50%" x2="70%" y2="50%" stroke="#7CDBD5" stroke-width="4px"></line>
-                <line class="timeline" x1="70%" y1="50%" x2="90%" y2="50%" stroke="#F9BE02" stroke-width="4px"></line>
+                <line id="point_alpha" class="timeline" x1="10%" y1="50%" x2="30%" y2="50%" stroke="#F53240" stroke-width="4px"></line>
+                <line id="point_betta" class="timeline" x1="30%" y1="50%" x2="50%" y2="50%" stroke="#02c8a7" stroke-width="4px"></line>
+                <line id="point_gamma" class="timeline" x1="50%" y1="50%" x2="70%" y2="50%" stroke="#7CDBD5" stroke-width="4px"></line>
+                <line id="point_B" class="timeline" x1="70%" y1="50%" x2="90%" y2="50%" stroke="#F9BE02" stroke-width="4px"></line>
                 <circle id="pointA" class="dot" cx="10%" cy="50%" r="10" fill="#39384d"></circle>
                 <circle id="pointB" class="dot" cx="90%" cy="50%" r="14" fill="#39384d"></circle>
                 <circle id="alpha" class="dot" cx="30%" cy="50%" r="10" fill="#39384d"></circle>
@@ -42,20 +42,20 @@
                 <li>
                     <div>
                         <p class="element-heading">Цель</p>
-                        <textarea class="element-description" name="ta-goal" rows="3" placeholder="Например: заработать 100 000 руб"></textarea>
+                        <textarea class="element-description" name="ta-goal" rows="3" placeholder="Например: заработать 100 000 руб">Моя Цель!</textarea>
                     </div>
                 </li>
                 <li>
                     <div>
                         <p class="element-heading">Доказательство</p>
-                        <textarea class="element-description" name="ta-proof" rows="3" placeholder="Например: 10 фотографий поездки"></textarea>
+                        <textarea class="element-description" name="ta-proof" rows="3" placeholder="Например: 10 фотографий поездки">Мое Доказательство</textarea>
                     </div>
                 </li>
                 <li>
                     <div>
                         <p class="element-heading">Дата</p>
                         <!--<textarea class="element-description" name="ta-date" rows="3" placeholder="Например: до 10 июля"></textarea>-->
-                        <input class=element-description type="text" name="datepicker" placeholder="Выберите дату" value=''>
+                        <input class=element-description type="text" name="datepicker" placeholder="Выберите дату" value='15 September 2017'>
                         <p class="element-description" id="date_countdown">
                             <span class="digit-block" id="days"><span class="inner-digit">12</span><br>дней</span>
                             <span class="digit-block"><span class="inner-digit">-</span></span>
@@ -70,22 +70,24 @@
                 <li>
                     <div>
                         <p class="element-heading">Цена слова</p>
-                        <textarea class="element-description" name="ta-penalty" rows="3" placeholder="Например: отдать Ивану Ивановичу 20 000 руб"></textarea>
+                        <textarea class="element-description" name="ta-penalty" rows="3" placeholder="Например: отдать Ивану Ивановичу 20 000 руб">Иван</textarea>
                     </div>
                 </li>
             </ul>
             <div id="plan-container">
-                <h2 style="font-weight: 800;">План - кинжал</h2>
+                <h2 style="font-weight: 800;"></h2>
                 <textarea rows="5"></textarea>
+                <button id="btn-change-plan-description" style='font-size: 20px'>Применить</button>
             </div>
         </div>
     </section>
     <section id="section-menu">
         <ul>
             <li>One</li>
-            <li class="task-complete">Two</li>
+            <li>Two</li>
             <li>Three</li>
         </ul>
+        <div id="button-add-task"></div>
     </section>
 </div>
 </body>

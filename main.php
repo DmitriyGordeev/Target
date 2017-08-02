@@ -159,8 +159,8 @@ class MainViewportPage {
     }
     public function sectionMenu() {
         return
-            "<ul>
-            </ul>";
+            "<ul></ul>
+            <div id=\"button-add-task\"></div>";
     }
 
     public $goalData;
@@ -178,3 +178,4 @@ $viewportPage = new MainViewportPage($query_data["goal"],
 $html = $viewportPage->generate();
 
 echo $html;
+//file_put_contents("test-main-static-page.html", $html);
