@@ -164,16 +164,16 @@ function expTest() {
 function writeDatabaseEvents() {
 
     // overwrites plan description (database):
-    jQuery("#btn-change-plan-description").click(function() {
+        jQuery("#btn-change-plan-description").click(function() {
 
-        var plan_desc_data = jQuery("#plan-container > textarea").val();
-        g_user_goal_object[g_line_id].description = plan_desc_data;
+            var plan_desc_data = jQuery("#plan-container > textarea").val();
+            g_user_goal_object[g_line_id].description = plan_desc_data;
 
-        jQuery.ajax({
-            url: "test_js_accept.php",
-            type: "post",
-            data: { user_goal_info: JSON.stringify(g_user_goal_object) }
-        });
+            jQuery.ajax({
+                url: "test_js_accept.php",
+                type: "post",
+                data: { user_goal_info: JSON.stringify(g_user_goal_object) }
+            });
     });
 
     // add new task to tasklist:
