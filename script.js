@@ -1,6 +1,7 @@
 /* Javascript here: */
 
 var keypoints = [];
+var g_line_id = "";
 
 /* creates sticker on position (x,y): */
 function sticker(x, y, title, description) {
@@ -147,14 +148,41 @@ function retreive_dates(viewport, x1, x2, y) {
     });
 }
 
-jQuery(document).ready(function() {
-
+/* some experiments and tests: */
+function expTest() {
+    
     // jQuery.ajax({
     //     url: "test_js_accept.php",
     //     type: "post",
     //     data: { userID : "stupid user id here ... : (" }
     // });
+    
+}
 
+// assign events to elements which write data to database:
+function writeDatabaseEvents() {
+
+    // overwrites plan description (database):
+    jQuery("#btn-change-plan-description").click(function() {
+
+        var plan_desc_data = jQuery("#plan-container > textarea").text();
+
+        jQuery.ajax({
+            url: "test_js_accept.php",
+            type: "post",
+            data: { plan_desc: plan_desc_data }
+        });
+
+    });
+
+
+}
+
+jQuery(document).ready(function() {
+    
+    expTest();
+
+    writeDatabaseEvents();
 
     var zoomed = false;
     var W = jQuery("#main-svg-viewport").width();
@@ -187,6 +215,7 @@ jQuery(document).ready(function() {
     for(var j = 0; j < lines.length; j++) {
         lines[j].click(function() {
             var current_line = this;
+            g_line_id = current_line.attr("id");
 
             // get line positions:
             var x1 = current_line.asPX("x1");
@@ -217,8 +246,10 @@ jQuery(document).ready(function() {
 
                 // remove all <li> from tasklist:
                 jQuery("#section-menu > ul").empty();
+                g_line_id = "";
             }
             else {
+
 
                 // swipe #bottom-row to #plan-container:
                 jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration);
@@ -248,17 +279,17 @@ jQuery(document).ready(function() {
                 // get user_goal_info from database for clicked line:
                 jQuery.post("retreive_goal_info.php", function(result) {
 
-                    var line_id = current_line.attr("id");
                     var user_goal_object = JSON.parse(result);
-                    jQuery("#plan-container > textarea").text(user_goal_object[line_id].description);
+                    jQuery("#plan-container > textarea").text(user_goal_object[g_line_id].description);
 
-                    var tasklist = user_goal_object[line_id].tasklist;
+                    var tasklist = user_goal_object[g_line_id].tasklist;
                     var tasklistElement = jQuery("#section-menu > ul");
                     for(var i = 0; i < tasklist.length; i++) {
                         tasklistElement.append("<li>" + tasklist[i] + "</li>");
                     }
 
                 });
+
             }
 
             viewport.animate({ "transform": transform_query }, duration);

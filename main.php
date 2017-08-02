@@ -108,8 +108,9 @@ class MainViewportPage {
             </svg>";
     }
     public function bottomGoalDescription() {
-        return "<div id=\"bottom-row\">
-                    <ul class=\"ul-horizontal\">
+        return
+            "<div id=\"bottom-row\">
+                <ul class=\"ul-horizontal\">
 
                         <li>
                             <div>
@@ -148,12 +149,13 @@ class MainViewportPage {
                                 <textarea class=\"element-description\" name=\"ta-penalty\" rows=\"3\" placeholder=\"Например: отдать Ивану Ивановичу 20 000 руб\">".$this->penaltyData."</textarea>
                             </div>
                         </li>
-                    </ul>
-                    <div id=\"plan-container\">
-                        <h2 style=\"font-weight: 800;\"></h2>
-                        <textarea rows=\"5\"></textarea>
-                    </div>
-                </div>";
+                </ul>
+                <div id=\"plan-container\">
+                    <h2 style=\"font-weight: 800;\"></h2>
+                    <textarea rows=\"5\"></textarea>
+                    <button id=\"btn-change-plan-description\" style='font-size: 20px'>Применить</button>
+                </div>
+            </div>";
     }
     public function sectionMenu() {
         return
