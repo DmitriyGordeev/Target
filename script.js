@@ -176,6 +176,10 @@ function writeDatabaseEvents() {
         });
     });
 
+    // add new task to tasklist:
+    jQuery("#button-add-task").click(function() {
+        jQuery("#section-menu > ul").append("<li>Some Task</li>");
+    });
 
 }
 
