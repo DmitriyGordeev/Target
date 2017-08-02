@@ -149,6 +149,13 @@ function retreive_dates(viewport, x1, x2, y) {
 
 jQuery(document).ready(function() {
 
+    // jQuery.ajax({
+    //     url: "test_js_accept.php",
+    //     type: "post",
+    //     data: { userID : "stupid user id here ... : (" }
+    // });
+
+
     var zoomed = false;
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
