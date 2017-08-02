@@ -207,6 +207,9 @@ jQuery(document).ready(function() {
                 // hide task menu (#section-menu) to right:
                 jQuery("#section-menu").animate({width: 0, opacity: 0}, duration);
                 jQuery("#section-main").animate({width: "100%"}, duration);
+
+                // remove all <li> from tasklist:
+                jQuery("#section-menu > ul").empty();
             }
             else {
 
@@ -235,13 +238,20 @@ jQuery(document).ready(function() {
                 zoomed = true;
 
 
-                // get user_goal_info from database for this line:
+                // get user_goal_info from database for clicked line:
                 jQuery.post("retreive_goal_info.php", function(result) {
+
                     var line_id = current_line.attr("id");
                     var user_goal_object = JSON.parse(result);
                     jQuery("#plan-container > textarea").text(user_goal_object[line_id].description);
-                });
 
+                    var tasklist = user_goal_object[line_id].tasklist;
+                    var tasklistElement = jQuery("#section-menu > ul");
+                    for(var i = 0; i < tasklist.length; i++) {
+                        tasklistElement.append("<li>" + tasklist[i] + "</li>");
+                    }
+
+                });
             }
 
             viewport.animate({ "transform": transform_query }, duration);

@@ -150,17 +150,14 @@ class MainViewportPage {
                         </li>
                     </ul>
                     <div id=\"plan-container\">
-                        <h2 style=\"font-weight: 800;\">".$this->user_goal_info_object->point_B->description."</h2>
-                        <textarea rows=\"5\">".$this->user_goal_info_object->point_B->description."</textarea>
+                        <h2 style=\"font-weight: 800;\"></h2>
+                        <textarea rows=\"5\"></textarea>
                     </div>
                 </div>";
     }
     public function sectionMenu() {
         return
             "<ul>
-                <li>One</li>
-                <li class=\"task-complete\">Two</li>
-                <li>Three</li>
             </ul>";
     }
 
