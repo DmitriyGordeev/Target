@@ -214,14 +214,22 @@ function writeDatabaseEvents() {
     // remove selected task from tasklist:
     jQuery("#button-remove-tasks").click(function() {
         var task_item_array = jQuery("#tasklist li");
-        var selected_count = 0;
 
+        // TODO: refactor very ugly removing element from array:
+        var new_taskarray = [];
         for(var i = 0; i < task_item_array.length; i++) {
-            if(task_item_array.eq(i).data("selected"))
-                selected_count++;
+            if(task_item_array.eq(i).data("selected")) {
+                task_item_array.eq(i).addClass("to-remove");
+            }
+            else {
+                new_taskarray.push(g_user_goal_object[g_line_id].tasklist[i]);
+            }
         }
 
-        alert("Selected count = " + selected_count);
+        jQuery(".to-remove").remove();
+        g_user_goal_object[g_line_id].tasklist = new_taskarray;
+
+        alert(g_user_goal_object[g_line_id].tasklist.join(" ; "));
     });
 }
 
