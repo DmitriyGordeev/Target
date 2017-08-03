@@ -112,8 +112,8 @@ function lineZoom(x1, x2, y, delta, W, H) {
 // obtain keypoints objects from server as json:
 function get_keypoints(viewport) {
     jQuery.post("test_database.php", function(result) {
-        keypoints = JSON.parse(result);
-        highlight_circles(viewport, keypoints);
+        // keypoints = JSON.parse(result);
+        // highlight_circles(viewport, keypoints);
     });
 }
 
@@ -151,20 +151,20 @@ function retreive_dates(viewport, x1, x2, y) {
 
 /* some experiments and tests: */
 function expTest() {
-    
+
     // jQuery.ajax({
     //     url: "test_js_accept.php",
     //     type: "post",
     //     data: { userID : "stupid user id here ... : (" }
     // });
-    
+
 }
 
 // assign events to elements which write data to database:
 function writeDatabaseEvents() {
 
     // overwrites plan description (database):
-        jQuery("#btn-change-plan-description").click(function() {
+    jQuery("#btn-change-plan-description").click(function() {
 
             var plan_desc_data = jQuery("#plan-container > textarea").val();
             g_user_goal_object[g_line_id].description = plan_desc_data;
@@ -178,13 +178,28 @@ function writeDatabaseEvents() {
 
     // add new task to tasklist:
     jQuery("#add-task-container > .small-button-confirm").click(function() {
-        jQuery("#section-menu > ul").append("<li>Some Task</li>");
+        var task_data = jQuery("#add-task-container > input").val();
+        if(!task_data) {
+            alert("Название задачи не должно быть пустым");
+            return;
+        }
+
+        jQuery("#section-menu > ul").append("<li>" + task_data + "</li>");
+        jQuery("#add-task-container > input").val("");
+        g_user_goal_object[g_line_id].tasklist.push(task_data);
+
+        jQuery.ajax({
+            url: "test_js_accept.php",
+            type: "post",
+            data: { user_goal_info: JSON.stringify(g_user_goal_object) }
+        });
+
     });
 
 }
 
 jQuery(document).ready(function() {
-    
+
     expTest();
 
     writeDatabaseEvents();
@@ -308,3 +323,4 @@ jQuery(document).ready(function() {
 
     svgElement.zpd({pan: false, zoom: false});
 });
+

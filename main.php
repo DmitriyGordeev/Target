@@ -160,9 +160,10 @@ class MainViewportPage {
     public function sectionMenu() {
         return
             "<ul></ul>
-                <div id=\"add-task-container\">
+            <div id=\"add-task-container\">
                 <input placeholder=\"Введите название задачи\">
                 <div class=\"small-button-confirm\"></div>
+            </div>
             </div>";
     }
 
