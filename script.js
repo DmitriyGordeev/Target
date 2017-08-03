@@ -229,7 +229,12 @@ function writeDatabaseEvents() {
         jQuery(".to-remove").remove();
         g_user_goal_object[g_line_id].tasklist = new_taskarray;
 
-        alert(g_user_goal_object[g_line_id].tasklist.join(" ; "));
+        // send fresh data to server:
+        jQuery.ajax({
+            url: "test_js_accept.php",
+            type: "post",
+            data: { user_goal_info: JSON.stringify(g_user_goal_object) }
+        });
     });
 }
 
