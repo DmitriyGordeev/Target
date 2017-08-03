@@ -164,17 +164,6 @@ function retreive_dates(viewport, x1, x2, y) {
     });
 }
 
-/* some experiments and tests: */
-function expTest() {
-
-    // jQuery.ajax({
-    //     url: "test_js_accept.php",
-    //     type: "post",
-    //     data: { userID : "stupid user id here ... : (" }
-    // });
-
-}
-
 // assign events to elements which write data to database:
 function writeDatabaseEvents() {
 
@@ -240,7 +229,6 @@ function writeDatabaseEvents() {
 
 jQuery(document).ready(function() {
 
-    expTest();
     writeDatabaseEvents();
 
     // load and parse user_goal_info from database:
