@@ -211,9 +211,22 @@ function writeDatabaseEvents() {
 
     });
 
+    // remove selected task from tasklist:
+    jQuery("#button-remove-tasks").click(function() {
+        var task_item_array = jQuery("#tasklist li");
+        var selected_count = 0;
+
+        for(var i = 0; i < task_item_array.length; i++) {
+            if(task_item_array.eq(i).data("selected"))
+                selected_count++;
+        }
+
+        alert("Selected count = " + selected_count);
+    });
 }
 
 jQuery(document).ready(function() {
+
     expTest();
     writeDatabaseEvents();
 

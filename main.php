@@ -164,7 +164,7 @@ class MainViewportPage {
                 <input placeholder=\"Введите название задачи\">
                 <div class=\"small-button-confirm\"></div>
             </div>
-            </div>";
+            <div id=\"button-remove-tasks\"></div>";
     }
 
     public $goalData;

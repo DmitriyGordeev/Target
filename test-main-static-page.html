@@ -42,20 +42,20 @@
                 <li>
                     <div>
                         <p class="element-heading">Цель</p>
-                        <textarea class="element-description" name="ta-goal" rows="3" placeholder="Например: заработать 100 000 руб">Моя Цель!</textarea>
+                        <textarea class="element-description" name="ta-goal" rows="3" placeholder="Например: заработать 100 000 руб"></textarea>
                     </div>
                 </li>
                 <li>
                     <div>
                         <p class="element-heading">Доказательство</p>
-                        <textarea class="element-description" name="ta-proof" rows="3" placeholder="Например: 10 фотографий поездки">Мое Доказательство</textarea>
+                        <textarea class="element-description" name="ta-proof" rows="3" placeholder="Например: 10 фотографий поездки"></textarea>
                     </div>
                 </li>
                 <li>
                     <div>
                         <p class="element-heading">Дата</p>
                         <!--<textarea class="element-description" name="ta-date" rows="3" placeholder="Например: до 10 июля"></textarea>-->
-                        <input class=element-description type="text" name="datepicker" placeholder="Выберите дату" value='15 September 2017'>
+                        <input class=element-description type="text" name="datepicker" placeholder="Выберите дату" value=''>
                         <p class="element-description" id="date_countdown">
                             <span class="digit-block" id="days"><span class="inner-digit">12</span><br>дней</span>
                             <span class="digit-block"><span class="inner-digit">-</span></span>
@@ -70,7 +70,7 @@
                 <li>
                     <div>
                         <p class="element-heading">Цена слова</p>
-                        <textarea class="element-description" name="ta-penalty" rows="3" placeholder="Например: отдать Ивану Ивановичу 20 000 руб">Иван</textarea>
+                        <textarea class="element-description" name="ta-penalty" rows="3" placeholder="Например: отдать Ивану Ивановичу 20 000 руб"></textarea>
                     </div>
                 </li>
             </ul>
@@ -82,15 +82,12 @@
         </div>
     </section>
     <section id="section-menu">
-        <ul>
-            <li>One</li>
-            <li>Two</li>
-            <li>Three</li>
-        </ul>
+        <ul id='tasklist'></ul>
         <div id="add-task-container">
             <input placeholder="Введите название задачи">
             <div class="small-button-confirm"></div>
         </div>
+        <div id="button-remove-tasks"></div>
     </section>
 </div>
 </body>
