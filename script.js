@@ -199,14 +199,34 @@ function writeDatabaseEvents() {
 }
 
 jQuery(document).ready(function() {
-
     expTest();
-
     writeDatabaseEvents();
 
     // load and parse user_goal_info from database:
     jQuery.post("retreive_goal_info.php", function(result) {
         g_user_goal_object = JSON.parse(result);
+    });
+
+
+    // make tasklist sortbale with jQuery-ui
+    // and refresh database record of tasks order:
+    jQuery("#section-menu > ul").sortable({
+        stop: function(event, ui) {
+
+            var li_array = jQuery(this).children("li");
+            var tasklist_string_array = [];
+            for(var i = 0; i < li_array.length; i++) {
+                tasklist_string_array.push(li_array.eq(i).text());
+            }
+
+            g_user_goal_object[g_line_id].tasklist = tasklist_string_array;
+
+            jQuery.ajax({
+                url: "test_js_accept.php",
+                type: "post",
+                data: { user_goal_info: JSON.stringify(g_user_goal_object) }
+            });
+        }
     });
 
     var zoomed = false;
