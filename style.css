@@ -58,11 +58,40 @@ header {
     padding: 12px 7px 12px;
 }
 
-#button-add-task {
+#add-task-container {
     background: red;
-    width: 50px;
-    height: 50px;
+    width: 100%;
     margin: 20px auto 0;
+}
+
+#add-task-container > input {
+    width: 75%;
+    float: left;
+    height: 30px;
+    font-size: 17px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 0;
+    border-bottom: 2px solid var(--main-color);
+    outline: none;
+    font-weight: 500;
+    padding: 5px 9px;
+}
+
+#add-task-container > .small-button-confirm {
+    display: inline-block;
+    float: left;
+}
+
+.small-button-confirm {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background: url("images/icon-send-arrow.svg");
+    display: inline-block;
+    float: left;
 }
 
 /* --------------------------------------------- */

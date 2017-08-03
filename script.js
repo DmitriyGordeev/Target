@@ -177,7 +177,7 @@ function writeDatabaseEvents() {
     });
 
     // add new task to tasklist:
-    jQuery("#button-add-task").click(function() {
+    jQuery("#add-task-container > .small-button-confirm").click(function() {
         jQuery("#section-menu > ul").append("<li>Some Task</li>");
     });
 
