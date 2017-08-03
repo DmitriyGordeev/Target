@@ -1,5 +1,20 @@
 /* Javascript here: */
 
+// attach click event to dynamic added an removed task object:
+$(document).on('click', '#tasklist li', function(){
+    var item = jQuery(this);
+
+    if(jQuery(this).data("selected")) {
+        jQuery(this).css({background: "white"});
+        jQuery(this).data("selected", false);
+    }
+    else {
+        jQuery(this).css({background: "#eeeeee"});
+        jQuery(this).data("selected", true);
+    }
+
+});
+
 var keypoints = [];
 var g_line_id = "";
 var g_user_goal_object = null;
@@ -229,6 +244,7 @@ jQuery(document).ready(function() {
         }
     });
 
+
     var zoomed = false;
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
@@ -342,5 +358,6 @@ jQuery(document).ready(function() {
     });
 
     svgElement.zpd({pan: false, zoom: false});
+
 });
 

@@ -58,6 +58,11 @@ header {
     padding: 12px 7px 12px;
 }
 
+.selected {
+    background: #8791aa;
+    color: red;
+}
+
 #add-task-container {
     background: red;
     width: 100%;
