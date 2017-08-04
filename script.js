@@ -25,7 +25,7 @@ function init() {
     // hide #plan-container:
     jQuery("#plan-container").toggle();
 
-    // hide section-menu:
+    // hide #section-menu:
     jQuery("#section-menu").toggle();
 
 }

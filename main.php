@@ -93,6 +93,9 @@ class MainViewportPage {
         return
             "<svg id=\"main-svg-viewport\">
                 <g id=\"canvas\">
+                
+                    <rect x='0' y='0' width='500px' height='100%' fill='#eeeeee'></rect>
+                
                     <line id=\"point_alpha\" class=\"timeline\" x1=\"10%\" y1=\"50%\" x2=\"30%\" y2=\"50%\" stroke=\"#F53240\" stroke-width=\"4px\"></line>
                     <line id=\"point_betta\" class=\"timeline\" x1=\"30%\" y1=\"50%\" x2=\"50%\" y2=\"50%\" stroke=\"#02c8a7\" stroke-width=\"4px\"></line>
                     <line id=\"point_gamma\" class=\"timeline\" x1=\"50%\" y1=\"50%\" x2=\"70%\" y2=\"50%\" stroke=\"#7CDBD5\" stroke-width=\"4px\"></line>
