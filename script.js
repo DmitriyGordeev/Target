@@ -225,16 +225,40 @@ function writeDatabaseEvents() {
             data: { user_goal_info: JSON.stringify(g_user_goal_object) }
         });
     });
+
+    // #plan-datepicker date selection:
+    var planDatePicker = new Pikaday({
+            field: jQuery("input[name='plan-datepicker']")[0],
+            format: "DD MMMM YYYY",
+            firstDay: 1,
+            minDate: new Date(),
+            maxDate: new Date(2020, 12, 31),
+            yearRange: [2000, 2020],
+            onSelect: function () {
+                g_user_goal_object[g_line_id].date = jQuery("input[name='plan-datepicker']").val();
+
+                // send fresh data to server:
+                jQuery.ajax({
+                    url: "test_js_accept.php",
+                    type: "post",
+                    data: { user_goal_info: JSON.stringify(g_user_goal_object) }
+                });
+            }
+    });
+
 }
 
-jQuery(document).ready(function() {
 
-    writeDatabaseEvents();
+///////////////////////////////////////////////////////////////////////////////////
+jQuery(document).ready(function() {
 
     // load and parse user_goal_info from database:
     jQuery.post("retreive_goal_info.php", function(result) {
         g_user_goal_object = JSON.parse(result);
     });
+
+
+    writeDatabaseEvents();
 
 
     // make tasklist sortbale with jQuery-ui
@@ -257,6 +281,7 @@ jQuery(document).ready(function() {
             });
         }
     });
+
 
 
     var zoomed = false;
@@ -363,11 +388,10 @@ jQuery(document).ready(function() {
                 for(var i = 0; i < tasklist.length; i++) {
                     tasklistElement.append("<li>" + tasklist[i] + "</li>");
                 }
-
             }
 
             viewport.animate({ "transform": transform_query }, duration);
-
+            jQuery("input[name='plan-datepicker']").val(g_user_goal_object[g_line_id].date);
         });
     }
 
