@@ -168,7 +168,8 @@ function retreive_dates(viewport, x1, x2, y) {
             jQuery("#seconds .inner-digit").text(countdown.s);
 
             var endingPos = timeline(beginDateObject, dateObject, x1, x2);
-            viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
+            Snap("#timeline-rect").attr({width: endingPos + x1});
+            // viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
 
         }, 1000);
 
