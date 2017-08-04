@@ -5,7 +5,7 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Forum', serif;
+    font-family: 'Exo 2', serif;
     color: #39384d;
     font-weight: 200;
 }
@@ -42,7 +42,7 @@ header {
     display: inline-block;
     padding: 20px 20px;
     box-sizing: border-box;
-    border: 3px solid var(--main-color);
+    /*border: 3px solid var(--main-color);*/
 }
 
 /* --------------------------------------------- */
@@ -161,7 +161,7 @@ header {
 #btn-change-plan-description {
     border: none;
     outline: none;
-    font-size: 19px;
+    font-size: 14px;
     background: #F53240;
     color: white;
     padding: 7px 9px;
