@@ -356,11 +356,16 @@ jQuery(document).ready(function() {
                 zoomed = false;
 
                 // swipe #plan-container to #bottom-row:
+                jQuery("#bottom-row > .ul-horizontal").toggle();
                 jQuery("#bottom-row > .ul-horizontal").animate({width: "100%", opacity: 1}, duration);
-                jQuery("#plan-container").animate({width: 0, opacity: 0}, duration);
+                jQuery("#plan-container").animate({width: 0, opacity: 0}, duration, function() {
+                    jQuery(this).toggle();
+                });
 
                 // hide task menu (#section-menu) to right:
-                jQuery("#section-menu").animate({width: 0, opacity: 0}, duration);
+                jQuery("#section-menu").animate({width: 0, opacity: 0}, duration, function() {
+                    jQuery(this).toggle();
+                });
                 jQuery("#section-main").animate({width: "100%"}, duration);
 
                 // remove all <li> from tasklist:
