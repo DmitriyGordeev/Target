@@ -19,6 +19,17 @@ var keypoints = [];
 var g_line_id = "";
 var g_user_goal_object = null;
 
+/* initial page preferences: */
+function init() {
+
+    // hide #plan-container:
+    jQuery("#plan-container").toggle();
+
+    // hide section-menu:
+    jQuery("#section-menu").toggle();
+
+}
+
 /* creates sticker on position (x,y): */
 function sticker(x, y, title, description) {
 
@@ -252,6 +263,8 @@ function writeDatabaseEvents() {
 ///////////////////////////////////////////////////////////////////////////////////
 jQuery(document).ready(function() {
 
+    init();
+
     // load and parse user_goal_info from database:
     jQuery.post("retreive_goal_info.php", function(result) {
         g_user_goal_object = JSON.parse(result);
@@ -357,11 +370,15 @@ jQuery(document).ready(function() {
             else {
 
                 // swipe #bottom-row to #plan-container:
-                jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration);
+                jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration, function() {
+                    jQuery(this).toggle();
+                });
+                jQuery("#plan-container").toggle();
                 jQuery("#plan-container").animate({width: "100%", opacity: 1}, duration);
 
                 // swipe task menu (#section-menu) from right:
                 jQuery("#section-main").animate({width: "75%"}, duration);
+                jQuery("#section-menu").toggle();
                 jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
 
                 // svg animation:
