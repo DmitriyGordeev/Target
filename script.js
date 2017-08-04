@@ -262,7 +262,6 @@ function writeDatabaseEvents() {
 
 ///////////////////////////////////////////////////////////////////////////////////
 jQuery(document).ready(function() {
-
     init();
 
     // load and parse user_goal_info from database:
@@ -270,9 +269,7 @@ jQuery(document).ready(function() {
         g_user_goal_object = JSON.parse(result);
     });
 
-
     writeDatabaseEvents();
-
 
     // make tasklist sortbale with jQuery-ui
     // and refresh database record of tasks order:
@@ -295,29 +292,22 @@ jQuery(document).ready(function() {
         }
     });
 
-
-
     var zoomed = false;
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
 
-
     var svgElement = Snap("#main-svg-viewport");
     var viewport = svgElement.select("#canvas");
 
-
     // get keypoints objects from server:
     get_keypoints(viewport);
-
 
     // define pointA cx and pointB cx:
     var x1 = Snap("#pointA").asPX("cx");
     var x2 = Snap("#pointB").asPX("cx");
     var y = Snap("#pointA").asPX("cy");
 
-
     retreive_dates(viewport, x1, x2, y);
-
 
     // line hover:
     var lines = viewport.selectAll(".timeline");
@@ -328,7 +318,6 @@ jQuery(document).ready(function() {
             this.animate({strokeWidth: "4px"}, 200);
         });
     }
-
 
     // line click:
     for(var j = 0; j < lines.length; j++) {
@@ -417,14 +406,11 @@ jQuery(document).ready(function() {
         });
     }
 
-
     // on return click:
     jQuery("#return").click(function() {
         viewport.animate({ "transform":"t0,0 s1,1" }, 200);
         zoomed = false;
     });
 
-
     svgElement.zpd({pan: false, zoom: false});
-
 });
