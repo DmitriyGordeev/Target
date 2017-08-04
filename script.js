@@ -228,22 +228,22 @@ function writeDatabaseEvents() {
 
     // #plan-datepicker date selection:
     var planDatePicker = new Pikaday({
-            field: jQuery("input[name='plan-datepicker']")[0],
-            format: "DD MMMM YYYY",
-            firstDay: 1,
-            minDate: new Date(),
-            maxDate: new Date(2020, 12, 31),
-            yearRange: [2000, 2020],
-            onSelect: function () {
-                g_user_goal_object[g_line_id].date = jQuery("input[name='plan-datepicker']").val();
+        field: jQuery("input[name='plan-datepicker']")[0],
+        format: "DD MMMM YYYY",
+        firstDay: 1,
+        minDate: new Date(),
+        maxDate: new Date(2020, 12, 31),
+        yearRange: [2000, 2020],
+        onSelect: function () {
+            g_user_goal_object[g_line_id].date = jQuery("input[name='plan-datepicker']").val();
 
-                // send fresh data to server:
-                jQuery.ajax({
-                    url: "test_js_accept.php",
-                    type: "post",
-                    data: { user_goal_info: JSON.stringify(g_user_goal_object) }
-                });
-            }
+            // send fresh data to server:
+            jQuery.ajax({
+                url: "test_js_accept.php",
+                type: "post",
+                data: { user_goal_info: JSON.stringify(g_user_goal_object) }
+            });
+        }
     });
 
 }
