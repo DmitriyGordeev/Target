@@ -188,7 +188,7 @@ function retreive_dates(viewport, x1, x2, y) {
 
             var endingPos = timeline(beginDateObject, dateObject, x1, x2);
             Snap("#timeline-rect").attr({width: endingPos + x1});
-            // viewport.line(x1, y, x1 + endingPos, y).attr({stroke: "black", strokeWidth: 4});
+            Snap("#timeline-now-mark").attr({x: endingPos + x1 + 10});
 
         }, 1000);
 
@@ -390,6 +390,11 @@ jQuery(document).ready(function() {
                     "font-size": "14px",
                     "y": "45%"
                 }, duration);
+
+                Snap.select("#timeline-now-mark").animate({
+                    "font-size": "14px",
+                    "y": "30px"
+                }, duration);
             }
             else {
 
@@ -417,10 +422,15 @@ jQuery(document).ready(function() {
                     transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
                     viewport.animate({ "transform": transform_query }, duration);
 
-                    // animate text (decrease font-size):
+                    // animate texts on svg:
                     Snap.selectAll(".date-mark").animate({
                         "font-size": "5px",
                         "y": "47%"
+                    }, duration);
+
+                    Snap.select("#timeline-now-mark").animate({
+                        "font-size": "2px",
+                        "y": "40%"
                     }, duration);
 
                 }, duration);
