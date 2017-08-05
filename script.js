@@ -398,7 +398,8 @@ jQuery(document).ready(function() {
                     jQuery(this).toggle();
                 });
                 jQuery("#plan-container").toggle();
-                jQuery("#plan-container").animate({width: "100%", opacity: 1}, duration);
+                jQuery("#plan-container").css({ background: current_line.attr("stroke")});
+                jQuery("#plan-container").animate({width: "100%", opacity: 1 }, duration);
 
                 // swipe task menu (#section-menu) from right:
                 jQuery("#section-main").animate({width: "75%"}, duration);
