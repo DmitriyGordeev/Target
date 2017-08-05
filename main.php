@@ -23,7 +23,7 @@ class MainViewportPage {
     /* methods: */
     public function generate() {
          return "<!DOCTYPE html>
-        \n<html lang=\"en\">\n"
+        \n<html lang=\"ru\">\n"
              .$this->head().
              $this->body().
              "</html>\n";
@@ -32,7 +32,7 @@ class MainViewportPage {
     /* main tags: */
     public function head() {
         $head_string = "<head>
-                <meta charset=\"UTF-8\">
+                <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" />
                 <title> MainPage | Goal </title>";
 
         $head_string = $head_string.$this->styles().$this->scripts()."</head>";

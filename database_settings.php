@@ -11,3 +11,7 @@ if($mysqli == false) {
     echo "Unable to connect to database: mysqli == false";
     exit();
 }
+
+$mysqli->set_charset('utf8');
+$mysqli->query("SET NAMES UTF8");
+$mysqli->query("CHARSET 'utf8'");
