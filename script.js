@@ -387,7 +387,8 @@ jQuery(document).ready(function() {
 
                 // increase date marks font-size to initial value:
                 Snap.selectAll(".date-mark").animate({
-                    "font-size": "14px"
+                    "font-size": "14px",
+                    "y": "45%"
                 }, duration);
             }
             else {
@@ -417,7 +418,8 @@ jQuery(document).ready(function() {
 
                     // animate text (decrease font-size):
                     Snap.selectAll(".date-mark").animate({
-                        "font-size": "5px"
+                        "font-size": "5px",
+                        "y": "47%"
                     }, duration);
 
                 }, duration);
