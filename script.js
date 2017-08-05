@@ -31,7 +31,7 @@ function init() {
 }
 
 /* test: draws date matches on circles: */
-function dateMark() {
+function dateMark(viewport) {
     var circles = Snap.selectAll("#canvas circle");
 
     // timeout due to server delay:
@@ -42,10 +42,7 @@ function dateMark() {
             var c_id = circles[i].attr("id");
             c_id = c_id.replace("point_", "");
 
-
-            var dm = jQuery("<span class='date-mark'>" + g_user_goal_object[c_id].date + "</span>");
-            dm.css({left: circles[i].asPX("cx") - 30, top: circles[i].asPX("cy") - 20});
-            jQuery("body").append(dm);
+            viewport.text(circles[i].attr("cx"), "45%", g_user_goal_object[c_id].date).attr({"font-size" : "14", "class" : "date-mark"});
         }
 
     }, 1000);
@@ -288,8 +285,6 @@ jQuery(document).ready(function() {
 
     init();
 
-    dateMark();
-
     // load and parse user_goal_info from database:
     jQuery.post("retreive_goal_info.php", function(result) {
         g_user_goal_object = JSON.parse(result);
@@ -324,6 +319,8 @@ jQuery(document).ready(function() {
 
     var svgElement = Snap("#main-svg-viewport");
     var viewport = svgElement.select("#canvas");
+
+    dateMark(viewport);
 
     // get keypoints objects from server:
     get_keypoints(viewport);
@@ -387,6 +384,11 @@ jQuery(document).ready(function() {
                 // remove all <li> from tasklist:
                 jQuery("#section-menu > ul").empty();
                 g_line_id = "";
+
+                // increase date marks font-size to initial value:
+                Snap.selectAll(".date-mark").animate({
+                    "font-size": "14px"
+                }, duration);
             }
             else {
 
@@ -412,6 +414,12 @@ jQuery(document).ready(function() {
                     dx = 0.75 * (W - x2 - x1) / 2 - 30;
                     transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
                     viewport.animate({ "transform": transform_query }, duration);
+
+                    // animate text (decrease font-size):
+                    Snap.selectAll(".date-mark").animate({
+                        "font-size": "5px"
+                    }, duration);
+
                 }, duration);
 
                 // TODO: refactor transform_query usage (should not be empty):
@@ -427,9 +435,6 @@ jQuery(document).ready(function() {
                     tasklistElement.append("<li>" + tasklist[i] + "</li>");
                 }
 
-
-                // removing date-mark from old positions:
-                jQuery(".date-mark").toggle();
             }
 
             viewport.animate({ "transform": transform_query }, duration);
