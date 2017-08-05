@@ -542,7 +542,7 @@ textarea[name="ta-penalty"].element-description:-ms-input-placeholder {
     font-size: 17px;
 }
 
-.date-match {
+.date-mark {
     background: var(--main-color);
     color: white;
     font-size: 13px;

@@ -31,7 +31,7 @@ function init() {
 }
 
 /* test: draws date matches on circles: */
-function dateMatches() {
+function dateMark() {
     var circles = Snap.selectAll("#canvas circle");
 
     // timeout due to server delay:
@@ -43,7 +43,7 @@ function dateMatches() {
             c_id = c_id.replace("point_", "");
 
 
-            var dm = jQuery("<span class='date-match'>" + g_user_goal_object[c_id].date + "</span>");
+            var dm = jQuery("<span class='date-mark'>" + g_user_goal_object[c_id].date + "</span>");
             dm.css({left: circles[i].asPX("cx") - 30, top: circles[i].asPX("cy") - 20});
             jQuery("body").append(dm);
         }
@@ -288,7 +288,7 @@ jQuery(document).ready(function() {
 
     init();
 
-    dateMatches();
+    dateMark();
 
     // load and parse user_goal_info from database:
     jQuery.post("retreive_goal_info.php", function(result) {
