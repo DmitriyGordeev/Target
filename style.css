@@ -207,12 +207,14 @@ header {
 #plan-container > textarea {
     width: 50%;
     outline: none;
-    border: none;
+    box-sizing: border-box;
     resize: none;
-    background: red;
+    background: transparent;
+    border: 3px solid white;
     color: white;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 15px;
+    padding: 7px 9px;
 }
 
 input[name="plan-datepicker"] {
