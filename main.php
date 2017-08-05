@@ -155,7 +155,7 @@ class MainViewportPage {
                 </ul>
                 <div id=\"plan-container\">
                     <h2 style=\"font-weight: 800;\"></h2>
-                    <textarea rows=\"4\" placeholder='Введите здесь описание плана-кинжала'></textarea>
+                    <textarea rows=\"3\" placeholder='Опишите здесь промежуточную ключевую задачу'></textarea>
                     <br>
                     <span>Дата выполнения:</span><input name=\"plan-datepicker\" placeholder=\"Выберите дату\">
                     <button id=\"btn-change-plan-description\">Применить</button>
