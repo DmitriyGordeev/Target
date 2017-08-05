@@ -426,6 +426,10 @@ jQuery(document).ready(function() {
                 for(var i = 0; i < tasklist.length; i++) {
                     tasklistElement.append("<li>" + tasklist[i] + "</li>");
                 }
+
+
+                // removing date-mark from old positions:
+                jQuery(".date-mark").toggle();
             }
 
             viewport.animate({ "transform": transform_query }, duration);
