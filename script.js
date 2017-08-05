@@ -30,6 +30,16 @@ function init() {
 
 }
 
+/* test: draws date matches on circles: */
+function dateMatches() {
+    var circles = Snap.selectAll("#canvas circle");
+    for(var i = 0; i < circles.length; i++) {
+        var dm = jQuery("<p class='date-match'>Date-Match</p>");
+        dm.css({left: circles[i].asPX("cx") - dm.width(), top: circles[i].asPX("cy") - 20});
+        jQuery("body").append(dm);
+    }
+}
+
 /* creates sticker on position (x,y): */
 function sticker(x, y, title, description) {
 
@@ -263,7 +273,10 @@ function writeDatabaseEvents() {
 
 ///////////////////////////////////////////////////////////////////////////////////
 jQuery(document).ready(function() {
+
     init();
+
+    dateMatches();
 
     // load and parse user_goal_info from database:
     jQuery.post("retreive_goal_info.php", function(result) {

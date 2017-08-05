@@ -541,3 +541,12 @@ textarea[name="ta-penalty"].element-description:-ms-input-placeholder {
     padding: 10px;
     font-size: 17px;
 }
+
+.date-match {
+    background: var(--main-color);
+    color: white;
+    font-size: 13px;
+    padding: 3px 5px;
+    max-width: 200px;
+    position: absolute;
+}
