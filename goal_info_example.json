@@ -1,5 +1,5 @@
 {
-  "point_A": {
+  "A": {
     "date": "18 June 2017",
     "description": "POINT A Description",
     "tasklist":[
@@ -8,16 +8,7 @@
       "point_A Task 3"
     ]
   },
-  "point_B": {
-    "date": "18 September 2017",
-    "description": "POINT B Description",
-    "tasklist":[
-      "point_B Task 1",
-      "point_B Task 2",
-      "point_B Task 3"
-    ]
-  },
-  "point_alpha": {
+  "alpha": {
     "date": "18 August 2017",
     "description": "POINT ALPHA Description",
     "tasklist":[
@@ -26,7 +17,7 @@
       "point_alpha Task 3"
     ]
   },
-  "point_betta": {
+  "betta": {
     "date": "18 August 2017",
     "description": "POINT BETTA Description",
     "tasklist":[
@@ -35,13 +26,22 @@
       "point_betta Task 3"
     ]
   },
-  "point_gamma": {
+  "gamma": {
     "date": "18 August 2017",
     "description": "POINT GAMMA Description",
     "tasklist":[
       "point_gamma Task 1",
       "point_gamma Task 2",
       "point_gamma Task 3"
+    ]
+  },
+  "B": {
+    "date": "18 September 2017",
+    "description": "POINT B Description",
+    "tasklist":[
+      "point_B Task 1",
+      "point_B Task 2",
+      "point_B Task 3"
     ]
   }
 }

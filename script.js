@@ -33,11 +33,23 @@ function init() {
 /* test: draws date matches on circles: */
 function dateMatches() {
     var circles = Snap.selectAll("#canvas circle");
-    for(var i = 0; i < circles.length; i++) {
-        var dm = jQuery("<p class='date-match'>Date-Match</p>");
-        dm.css({left: circles[i].asPX("cx") - dm.width(), top: circles[i].asPX("cy") - 20});
-        jQuery("body").append(dm);
-    }
+
+    // timeout due to server delay:
+    setTimeout(function() {
+
+        for(var i = 0; i < circles.length; i++) {
+
+            var c_id = circles[i].attr("id");
+            c_id = c_id.replace("point_", "");
+
+
+            var dm = jQuery("<span class='date-match'>" + g_user_goal_object[c_id].date + "</span>");
+            dm.css({left: circles[i].asPX("cx") - 30, top: circles[i].asPX("cy") - 20});
+            jQuery("body").append(dm);
+        }
+
+    }, 1000);
+
 }
 
 /* creates sticker on position (x,y): */
@@ -317,9 +329,9 @@ jQuery(document).ready(function() {
     get_keypoints(viewport);
 
     // define pointA cx and pointB cx:
-    var x1 = Snap("#pointA").asPX("cx");
-    var x2 = Snap("#pointB").asPX("cx");
-    var y = Snap("#pointA").asPX("cy");
+    var x1 = Snap("#point_A").asPX("cx");
+    var x2 = Snap("#point_B").asPX("cx");
+    var y = Snap("#point_A").asPX("cy");
 
     retreive_dates(viewport, x1, x2, y);
 
@@ -338,6 +350,7 @@ jQuery(document).ready(function() {
         lines[j].click(function() {
             var current_line = this;
             g_line_id = current_line.attr("id");
+            g_line_id = g_line_id.replace("line_", "");
 
             // get line positions:
             var x1 = current_line.asPX("x1");

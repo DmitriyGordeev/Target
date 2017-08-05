@@ -95,17 +95,17 @@ class MainViewportPage {
                 <g id=\"canvas\">
                     <rect id='timeline-rect' x='0' y='0' width='0px' height='100%' fill='#eeeeee'></rect>
                 
-                    <line id=\"point_alpha\" class=\"timeline\" x1=\"10%\" y1=\"50%\" x2=\"30%\" y2=\"50%\" stroke=\"#F53240\" stroke-width=\"4px\"></line>
-                    <line id=\"point_betta\" class=\"timeline\" x1=\"30%\" y1=\"50%\" x2=\"50%\" y2=\"50%\" stroke=\"#02c8a7\" stroke-width=\"4px\"></line>
-                    <line id=\"point_gamma\" class=\"timeline\" x1=\"50%\" y1=\"50%\" x2=\"70%\" y2=\"50%\" stroke=\"#7CDBD5\" stroke-width=\"4px\"></line>
-                    <line id=\"point_B\" class=\"timeline\" x1=\"70%\" y1=\"50%\" x2=\"90%\" y2=\"50%\" stroke=\"#F9BE02\" stroke-width=\"4px\"></line>
+                    <line id=\"line_alpha\" class=\"timeline\" x1=\"10%\" y1=\"50%\" x2=\"30%\" y2=\"50%\" stroke=\"#F53240\" stroke-width=\"4px\"></line>
+                    <line id=\"line_betta\" class=\"timeline\" x1=\"30%\" y1=\"50%\" x2=\"50%\" y2=\"50%\" stroke=\"#02c8a7\" stroke-width=\"4px\"></line>
+                    <line id=\"line_gamma\" class=\"timeline\" x1=\"50%\" y1=\"50%\" x2=\"70%\" y2=\"50%\" stroke=\"#7CDBD5\" stroke-width=\"4px\"></line>
+                    <line id=\"line_B\" class=\"timeline\" x1=\"70%\" y1=\"50%\" x2=\"90%\" y2=\"50%\" stroke=\"#F9BE02\" stroke-width=\"4px\"></line>
 
-                    <circle id=\"pointA\" class=\"dot\" cx=\"10%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
-                    <circle id=\"pointB\" class=\"dot\" cx=\"90%\" cy=\"50%\" r=\"7\" fill=\"#39384d\"></circle>
+                    <circle id=\"point_A\" class=\"dot\" cx=\"10%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
+                    <circle id=\"point_B\" class=\"dot\" cx=\"90%\" cy=\"50%\" r=\"7\" fill=\"#39384d\"></circle>
 
-                    <circle id=\"alpha\" class=\"dot\" cx=\"30%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
-                    <circle id=\"betta\" class=\"dot\" cx=\"50%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
-                    <circle id=\"gamma\" class=\"dot\" cx=\"70%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
+                    <circle id=\"point_alpha\" class=\"dot\" cx=\"30%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
+                    <circle id=\"point_betta\" class=\"dot\" cx=\"50%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
+                    <circle id=\"point_gamma\" class=\"dot\" cx=\"70%\" cy=\"50%\" r=\"5\" fill=\"#39384d\"></circle>
                 </g>
             </svg>";
     }
