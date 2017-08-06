@@ -18,6 +18,7 @@ $(document).on('click', '#tasklist li', function(){
 var keypoints = [];
 var g_line_id = "";
 var g_user_goal_object = null;
+var width_scale = 1;
 
 /* initial page preferences: */
 function init() {
@@ -183,8 +184,12 @@ function retreive_dates(viewport, x1, x2, y) {
             jQuery("#seconds .inner-digit").text(countdown.s);
 
             var endingPos = timeline(beginDateObject, dateObject, x1, x2);
-            Snap("#timeline-rect").attr({width: endingPos + x1});
-            Snap("#timeline-now-mark").attr({x: endingPos + x1 + 10});
+
+            var p = (endingPos + x1) / jQuery("#main-svg-viewport").width();
+            Snap("#timeline-rect").attr({ width: width_scale * p * 100 + "%"});
+
+            // Snap("#timeline-rect").attr({width: endingPos + x1});
+            // Snap("#timeline-now-mark").attr({x: endingPos + x1 + 10});
 
         }, 1000);
 
@@ -377,6 +382,8 @@ jQuery(document).ready(function() {
                 });
                 jQuery("#section-main").animate({width: "100%"}, duration);
 
+                width_scale = 1;
+
                 // remove all <li> from tasklist:
                 jQuery("#section-menu > ul").empty();
                 g_line_id = "";
@@ -406,6 +413,8 @@ jQuery(document).ready(function() {
                 jQuery("#section-main").animate({width: "75%"}, duration);
                 jQuery("#section-menu").toggle();
                 jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
+
+                width_scale = 0.75;
 
                 // svg animation:
                 setTimeout(function() {
