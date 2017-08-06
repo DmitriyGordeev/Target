@@ -1,6 +1,6 @@
 /* Javascript here: */
 
-// attach click event to dynamic added an removed task object:
+// attach click event to dynamic add or remove task object:
 $(document).on('click', '#tasklist li', function(){
     var item = jQuery(this);
 
@@ -36,15 +36,11 @@ function dateMark(viewport) {
 
     // timeout due to server delay:
     setTimeout(function() {
-
         for(var i = 0; i < circles.length; i++) {
-
             var c_id = circles[i].attr("id");
             c_id = c_id.replace("point_", "");
-
             viewport.text(circles[i].attr("cx"), "45%", g_user_goal_object[c_id].date).attr({"font-size" : "14", "class" : "date-mark"});
         }
-
     }, 1000);
 
 }
