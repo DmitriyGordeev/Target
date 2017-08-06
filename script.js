@@ -291,6 +291,8 @@ jQuery(document).ready(function() {
         g_user_goal_object = JSON.parse(result);
     });
 
+    Snap("#timeline-now-mark").attr({"font-size" : "14"});
+
     writeDatabaseEvents();
 
     // make tasklist sortbale with jQuery-ui
@@ -434,7 +436,7 @@ jQuery(document).ready(function() {
                     }, duration);
 
                     Snap.select("#timeline-now-mark").animate({
-                        "font-size": "2px",
+                        "font-size": "5px",
                         "y": "40%"
                     }, duration);
 
