@@ -425,7 +425,7 @@ jQuery(document).ready(function() {
                     // decreased to 75% of its normal width
                     // TODO: refactor hardcode
 
-                    dx = 0.75 * (W - x2 - x1) / 2;
+                    dx = 0.75 * (W - x2 - x1) / 2 - 30;
                     transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
                     viewport.animate({ "transform": transform_query }, duration);
 
