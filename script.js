@@ -18,6 +18,8 @@ $(document).on('click', '#tasklist li', function(){
 var keypoints = [];
 var g_line_id = "";
 var g_user_goal_object = null;
+
+// needed for recalc positions while zooming:
 var width_scale = 1;
 
 /* initial page preferences: */
@@ -187,9 +189,7 @@ function retreive_dates(viewport, x1, x2, y) {
 
             var p = (endingPos + x1) / jQuery("#main-svg-viewport").width();
             Snap("#timeline-rect").attr({ width: width_scale * p * 100 + "%"});
-
-            // Snap("#timeline-rect").attr({width: endingPos + x1});
-            // Snap("#timeline-now-mark").attr({x: endingPos + x1 + 10});
+            Snap("#timeline-now-mark").attr({x: width_scale * p * 100 + 1 + "%"});
 
         }, 1000);
 
