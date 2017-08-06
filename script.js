@@ -42,7 +42,12 @@ function dateMark(viewport) {
         for(var i = 0; i < circles.length; i++) {
             var c_id = circles[i].attr("id");
             c_id = c_id.replace("point_", "");
-            viewport.text(circles[i].attr("cx"), "45%", g_user_goal_object[c_id].date).attr({"font-size" : "14", "class" : "date-mark"});
+            viewport.text(circles[i].attr("cx"), "45%", g_user_goal_object[c_id].date)
+                .attr({
+                    "font-size" : "14",
+                    "class" : "date-mark",
+                    "id" : c_id + "-date-mark"
+                });
         }
     }, 1000);
 
@@ -206,7 +211,7 @@ function writeDatabaseEvents() {
             g_user_goal_object[g_line_id].description = plan_desc_data;
 
             jQuery.ajax({
-                url: "test_js_accept.php",
+                url: "refresh-database.php",
                 type: "post",
                 data: { user_goal_info: JSON.stringify(g_user_goal_object) }
             });
@@ -225,7 +230,7 @@ function writeDatabaseEvents() {
         g_user_goal_object[g_line_id].tasklist.push(task_data);
 
         jQuery.ajax({
-            url: "test_js_accept.php",
+            url: "refresh-database.php",
             type: "post",
             data: { user_goal_info: JSON.stringify(g_user_goal_object) }
         });
@@ -252,7 +257,7 @@ function writeDatabaseEvents() {
 
         // send fresh data to server:
         jQuery.ajax({
-            url: "test_js_accept.php",
+            url: "refresh-database.php",
             type: "post",
             data: { user_goal_info: JSON.stringify(g_user_goal_object) }
         });
@@ -267,11 +272,14 @@ function writeDatabaseEvents() {
         maxDate: new Date(2020, 12, 31),
         yearRange: [2000, 2020],
         onSelect: function () {
-            g_user_goal_object[g_line_id].date = jQuery("input[name='plan-datepicker']").val();
+            var date_val = jQuery("input[name='plan-datepicker']").val();
+
+            g_user_goal_object[g_line_id].date = date_val;
+            jQuery("#" + g_line_id + "-date-mark").text(date_val);
 
             // send fresh data to server:
             jQuery.ajax({
-                url: "test_js_accept.php",
+                url: "refresh-database.php",
                 type: "post",
                 data: { user_goal_info: JSON.stringify(g_user_goal_object) }
             });
@@ -309,7 +317,7 @@ jQuery(document).ready(function() {
             g_user_goal_object[g_line_id].tasklist = tasklist_string_array;
 
             jQuery.ajax({
-                url: "test_js_accept.php",
+                url: "refresh-database.php",
                 type: "post",
                 data: { user_goal_info: JSON.stringify(g_user_goal_object) }
             });
@@ -384,6 +392,7 @@ jQuery(document).ready(function() {
                 });
                 jQuery("#section-main").animate({width: "100%"}, duration);
 
+                // TODO: refactor hardcoded value:
                 width_scale = 1;
 
                 // remove all <li> from tasklist:
@@ -416,6 +425,7 @@ jQuery(document).ready(function() {
                 jQuery("#section-menu").toggle();
                 jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
 
+                // TODO: refactor hardcoded value:
                 width_scale = 0.75;
 
                 // svg animation:
@@ -425,7 +435,7 @@ jQuery(document).ready(function() {
                     // decreased to 75% of its normal width
                     // TODO: refactor hardcode
 
-                    dx = 0.75 * (W - x2 - x1) / 2 - 30;
+                    dx = 0.75 * (W - x2 - x1) / 2 - 40;
                     transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
                     viewport.animate({ "transform": transform_query }, duration);
 
