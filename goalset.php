@@ -18,7 +18,6 @@ include_once ("encoding.php");
     <script src="moment-with-locales.js"></script>
     <script src="Pikaday-master/pikaday.js"></script>
     <script src="goalset.js"></script>
-    <!--<script src="script.js"></script>-->
 
 </head>
 
@@ -50,15 +49,13 @@ include_once ("encoding.php");
         text-align: center;
         border: none;
         outline: none;
-        /*-webkit-border-radius: 3px;*/
-        /*-moz-border-radius: 3px;*/
-        /*border-radius: 3px;*/
         font-size: 18px;
         color: white;
         width: 180px;
         margin: 90px auto;
         transition-duration: 0.4s;
         padding: 11px 11px;
+        box-sizing: content-box;
     }
 
     #goal-begin:hover {
@@ -88,35 +85,25 @@ include_once ("encoding.php");
                         <li>
                             <div>
                                 <p class="element-heading"><span>Цель</span></p>
-                                <textarea class="element-description" name="ta-goal" rows="5" placeholder="Например: заработать 100 000 руб"></textarea>
+                                <textarea class="element-description" name="ta-goal" rows="4" placeholder="Например: заработать 100 000 руб"></textarea>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <p class="element-heading"><span>Доказательство</span></p>
-                                <textarea class="element-description" name="ta-proof" rows="5" placeholder="Например: 10 фотографий поездки"></textarea>
+                                <textarea class="element-description" name="ta-proof" rows="4" placeholder="Например: 10 фотографий поездки"></textarea>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <p class="element-heading"><span>Дата</span></p>
-                                <!--<textarea class="element-description" name="ta-date" rows="3" placeholder="Например: до 10 июля"></textarea>-->
                                 <input class=element-description type="text" name="datepicker" placeholder="Выберите дату">
-                                <!--<p class="element-description" id="date_countdown">-->
-                                <!--<span class="digit-block" id="days"><span class="inner-digit">12</span><br>дней</span>-->
-                                <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
-                                <!--<span class="digit-block" id="hours"><span class="inner-digit">12</span><br>часов</span>-->
-                                <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
-                                <!--<span class="digit-block" id="minutes"><span class="inner-digit">12</span><br>минут</span>-->
-                                <!--<span class="digit-block"><span class="inner-digit">-</span></span>-->
-                                <!--<span class="digit-block" id="seconds"><span class="inner-digit">12</span><br>секунд</span>-->
-                                <!--</p>-->
                             </div>
                         </li>
                         <li>
                             <div>
                                 <p class="element-heading"><span>Цена слова</span></p>
-                                <textarea class="element-description" name="ta-penalty" rows="5" placeholder="Например: отдать Ивану Ивановичу 20 000 руб"></textarea>
+                                <textarea class="element-description" name="ta-penalty" rows="4" placeholder="Например: отдать 20 000 руб неприятному человеку"></textarea>
                             </div>
                         </li>
                     </ul>
