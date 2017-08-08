@@ -1,16 +1,10 @@
 <?php
+session_start();
 include("database_settings.php");
 include("user_preference.php");
 
 
-/* testing simple database interaction: */
-$mysqli = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-if($mysqli == false) {
-    echo "Unable to connect to database: mysqli == false";
-    exit();
-}
-
-$result = $mysqli->query("select * from users");
+$result = $mysqli->query("select user_goal_info from users where email='".$_SESSION["user_email"]."'");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
-echo $row["goal_info"];
+echo $row["user_goal_info"];

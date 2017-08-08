@@ -97,20 +97,20 @@ function circle_popup(viewport, circleObject, title, desc) {
 /* highlights circles when hovering: */
 function highlight_circles(viewport, keyPoints) {
 
-    var pointA_circle = Snap.select("#pointA");
-    circle_popup(viewport, pointA_circle, keyPoints.point_A.date, keyPoints.point_A.description);
+    var pointA_circle = Snap.select("#point_A");
+    circle_popup(viewport, pointA_circle, "Точка А", keyPoints.A.description);
 
-    var alphaCircle = Snap.select("#alpha");
-    circle_popup(viewport, alphaCircle, "Alpha Title", keyPoints.point_alpha.description);
+    var alphaCircle = Snap.select("#point_alpha");
+    circle_popup(viewport, alphaCircle, "План-кинжал 1", keyPoints.alpha.description);
 
-    var bettaCircle = Snap.select("#betta");
-    circle_popup(viewport, bettaCircle, "Betta Title", keyPoints.point_betta.description);
+    var bettaCircle = Snap.select("#point_betta");
+    circle_popup(viewport, bettaCircle, "План-кинжал 2", keyPoints.betta.description);
 
-    var gammaCircle = Snap.select("#gamma");
-    circle_popup(viewport, gammaCircle, "Gamma Title", keyPoints.point_gamma.description);
+    var gammaCircle = Snap.select("#point_gamma");
+    circle_popup(viewport, gammaCircle, "План-кинжал 3", keyPoints.gamma.description);
 
-    var pointB_circle = Snap.select("#pointB");
-    circle_popup(viewport, pointB_circle, "Точка B", keyPoints.point_B.description);
+    var pointB_circle = Snap.select("#point_B");
+    circle_popup(viewport, pointB_circle, "Цель - точка B", keyPoints.B.description);
 
 }
 
@@ -161,8 +161,8 @@ function lineZoom(x1, x2, y, delta, W, H) {
 // obtain keypoints objects from server as json:
 function get_keypoints(viewport) {
     jQuery.post("test_database.php", function(result) {
-        // keypoints = JSON.parse(result);
-        // highlight_circles(viewport, keypoints);
+        keypoints = JSON.parse(result);
+        highlight_circles(viewport, keypoints);
     });
 }
 
