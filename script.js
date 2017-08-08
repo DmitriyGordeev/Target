@@ -187,7 +187,7 @@ function retreive_dates(viewport, x1, x2, y) {
 
             var p = (endingPos + x1) / jQuery("#main-svg-viewport").width();
             Snap("#timeline-rect").attr({ width: width_scale * p * 100 + "%"});
-            Snap("#timeline-now-mark").attr({x: width_scale * p * 100 + 1 + "%"});
+            Snap("#timeline-now-mark").attr({x: width_scale * p * 101 + "%"});
 
         }, 1000);
 
