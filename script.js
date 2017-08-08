@@ -18,6 +18,7 @@ $(document).on('click', '#tasklist li', function(){
 var keypoints = [];
 var g_line_id = "";
 var g_user_goal_object = null;
+var zoomed = false;
 
 // needed for recalc positions while zooming:
 var width_scale = 1;
@@ -288,6 +289,122 @@ function writeDatabaseEvents() {
 
 }
 
+function line_zoom(viewport, W, snap_line) {
+
+    var current_line = snap_line;
+    g_line_id = current_line.attr("id");
+    g_line_id = g_line_id.replace("line_", "");
+
+    // get line positions:
+    var x1 = current_line.asPX("x1");
+    var x2 = current_line.asPX("x2");
+
+    var duration = 300;
+
+    var transform_query = "";
+    var dx = 0;
+
+    // zooming stuff:
+    // delta needed for left & right circles margin of zoomed viewport
+    var delta = 0.3;
+    var w = (x2 - x1) * (1 + delta);
+    var zoomfactor = W / w;
+
+    if(zoomed) {
+        viewport.animate({ "transform":"t0,0 s1,1" }, 200);
+        zoomed = false;
+
+        // swipe #plan-container to #bottom-row:
+        jQuery("#bottom-row > .ul-horizontal").toggle();
+        jQuery("#bottom-row > .ul-horizontal").animate({width: "100%", opacity: 1}, duration);
+        jQuery("#plan-container").animate({width: 0, opacity: 0}, duration, function() {
+            jQuery(this).toggle();
+        });
+
+        // hide task menu (#section-menu) to right:
+        jQuery("#section-menu").animate({width: 0, opacity: 0}, duration, function() {
+            jQuery(this).toggle();
+        });
+        jQuery("#section-main").animate({width: "100%"}, duration);
+
+        // TODO: refactor hardcoded value:
+        width_scale = 1;
+
+        // remove all <li> from tasklist:
+        jQuery("#section-menu > ul").empty();
+        g_line_id = "";
+
+        // increase date marks font-size to initial value:
+        Snap.selectAll(".date-mark").animate({
+            "font-size": "14px",
+            "y": "45%"
+        }, duration);
+
+        Snap.select("#timeline-now-mark").animate({
+            "font-size": "14px",
+            "y": "30px"
+        }, duration);
+    }
+    else {
+
+        // swipe #bottom-row to #plan-container:
+        jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration, function() {
+            jQuery(this).toggle();
+        });
+        jQuery("#plan-container").toggle();
+        jQuery("#plan-container").css({ background: current_line.attr("stroke")});
+        jQuery("#plan-container").animate({width: "100%", opacity: 1 }, duration);
+
+        // swipe task menu (#section-menu) from right:
+        jQuery("#section-main").animate({width: "75%"}, duration);
+        jQuery("#section-menu").toggle();
+        jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
+
+        // TODO: refactor hardcoded value:
+        width_scale = 0.75;
+
+        // svg animation:
+        setTimeout(function() {
+
+            // 0.75 - hardcoded value because #main-svg-viewport
+            // decreased to 75% of its normal width
+            // TODO: refactor hardcode
+
+            dx = 0.75 * (W - x2 - x1) / 2;
+            transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
+            viewport.animate({ "transform": transform_query }, duration);
+
+            // animate texts on svg:
+            Snap.selectAll(".date-mark").animate({
+                "font-size": "5px",
+                "y": "47%"
+            }, duration);
+
+            Snap.select("#timeline-now-mark").animate({
+                "font-size": "5px",
+                "y": "40%"
+            }, duration);
+
+        }, duration);
+
+        // TODO: refactor transform_query usage (should not be empty):
+        transform_query = "";
+        zoomed = true;
+
+
+        // assign data to plan-container (Plan Description)
+        jQuery("#plan-container > textarea").val(g_user_goal_object[g_line_id].description);
+        var tasklist = g_user_goal_object[g_line_id].tasklist;
+        var tasklistElement = jQuery("#section-menu > ul");
+        for(var i = 0; i < tasklist.length; i++) {
+            tasklistElement.append("<li>" + tasklist[i] + "</li>");
+        }
+
+    }
+
+    viewport.animate({ "transform": transform_query }, duration);
+    jQuery("input[name='plan-datepicker']").val(g_user_goal_object[g_line_id].date);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////
 jQuery(document).ready(function() {
@@ -324,7 +441,7 @@ jQuery(document).ready(function() {
         }
     });
 
-    var zoomed = false;
+
     var W = jQuery("#main-svg-viewport").width();
     var H = jQuery("#main-svg-viewport").height();
 
@@ -336,10 +453,6 @@ jQuery(document).ready(function() {
     setTimeout(function() {
         highlight_circles(viewport, g_user_goal_object);
     }, 1500);
-
-
-    // get keypoints objects from server:
-    // get_keypoints(viewport);
 
     // define pointA cx and pointB cx:
     var x1 = Snap("#point_A").asPX("cx");
@@ -361,119 +474,16 @@ jQuery(document).ready(function() {
     // line click:
     for(var j = 0; j < lines.length; j++) {
         lines[j].click(function() {
-            var current_line = this;
-            g_line_id = current_line.attr("id");
-            g_line_id = g_line_id.replace("line_", "");
+            line_zoom(viewport, W, this);
+        });
+    }
 
-            // get line positions:
-            var x1 = current_line.asPX("x1");
-            var x2 = current_line.asPX("x2");
-
-            var duration = 300;
-
-            var transform_query = "";
-            var dx = 0;
-
-            // zooming stuff:
-            // delta needed for left & right circles margin of zoomed viewport
-            var delta = 0.3;
-            var w = (x2 - x1) * (1 + delta);
-            var zoomfactor = W / w;
-
-            if(zoomed) {
-                viewport.animate({ "transform":"t0,0 s1,1" }, 200);
-                zoomed = false;
-
-                // swipe #plan-container to #bottom-row:
-                jQuery("#bottom-row > .ul-horizontal").toggle();
-                jQuery("#bottom-row > .ul-horizontal").animate({width: "100%", opacity: 1}, duration);
-                jQuery("#plan-container").animate({width: 0, opacity: 0}, duration, function() {
-                    jQuery(this).toggle();
-                });
-
-                // hide task menu (#section-menu) to right:
-                jQuery("#section-menu").animate({width: 0, opacity: 0}, duration, function() {
-                    jQuery(this).toggle();
-                });
-                jQuery("#section-main").animate({width: "100%"}, duration);
-
-                // TODO: refactor hardcoded value:
-                width_scale = 1;
-
-                // remove all <li> from tasklist:
-                jQuery("#section-menu > ul").empty();
-                g_line_id = "";
-
-                // increase date marks font-size to initial value:
-                Snap.selectAll(".date-mark").animate({
-                    "font-size": "14px",
-                    "y": "45%"
-                }, duration);
-
-                Snap.select("#timeline-now-mark").animate({
-                    "font-size": "14px",
-                    "y": "30px"
-                }, duration);
-            }
-            else {
-
-                // swipe #bottom-row to #plan-container:
-                jQuery("#bottom-row > .ul-horizontal").animate({width: 0, opacity: 0}, duration, function() {
-                    jQuery(this).toggle();
-                });
-                jQuery("#plan-container").toggle();
-                jQuery("#plan-container").css({ background: current_line.attr("stroke")});
-                jQuery("#plan-container").animate({width: "100%", opacity: 1 }, duration);
-
-                // swipe task menu (#section-menu) from right:
-                jQuery("#section-main").animate({width: "75%"}, duration);
-                jQuery("#section-menu").toggle();
-                jQuery("#section-menu").animate({width: "25%", opacity: 1}, duration);
-
-                // TODO: refactor hardcoded value:
-                width_scale = 0.75;
-
-                // svg animation:
-                setTimeout(function() {
-
-                    // 0.75 - hardcoded value because #main-svg-viewport
-                    // decreased to 75% of its normal width
-                    // TODO: refactor hardcode
-
-                    dx = 0.75 * (W - x2 - x1) / 2 - 40;
-                    transform_query = "s" + zoomfactor + " t" + dx + "," + 0;
-                    viewport.animate({ "transform": transform_query }, duration);
-
-                    // animate texts on svg:
-                    Snap.selectAll(".date-mark").animate({
-                        "font-size": "5px",
-                        "y": "47%"
-                    }, duration);
-
-                    Snap.select("#timeline-now-mark").animate({
-                        "font-size": "5px",
-                        "y": "40%"
-                    }, duration);
-
-                }, duration);
-
-                // TODO: refactor transform_query usage (should not be empty):
-                transform_query = "";
-                zoomed = true;
-
-
-                // assign data to plan-container (Plan Description)
-                jQuery("#plan-container > textarea").val(g_user_goal_object[g_line_id].description);
-                var tasklist = g_user_goal_object[g_line_id].tasklist;
-                var tasklistElement = jQuery("#section-menu > ul");
-                for(var i = 0; i < tasklist.length; i++) {
-                    tasklistElement.append("<li>" + tasklist[i] + "</li>");
-                }
-
-            }
-
-            viewport.animate({ "transform": transform_query }, duration);
-            jQuery("input[name='plan-datepicker']").val(g_user_goal_object[g_line_id].date);
+    var circles = viewport.selectAll("#point_alpha, #point_betta, #point_gamma");
+    for(var j = 0; j < circles.length; j++) {
+        circles[j].click(function() {
+             var id = this.attr("id");
+             id = id.replace("point_", "line_");
+             line_zoom(viewport, W, Snap.select("#" + id));
         });
     }
 
