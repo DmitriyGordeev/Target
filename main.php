@@ -43,7 +43,7 @@ class MainViewportPage {
         $body_string =
             "<body>
             <div id=\"main-container\">".
-            $this->topMenu().
+            //$this->topMenu().
             "<section id=\"section-main\">".
                 $this->svgViewport().
                 $this->bottomGoalDescription().
