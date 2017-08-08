@@ -33,7 +33,7 @@ function init() {
 
 }
 
-/* test: draws date matches on circles: */
+/* draws date marks onto circles: */
 function dateMark(viewport) {
     var circles = Snap.selectAll("#canvas circle");
 
@@ -293,16 +293,6 @@ function writeDatabaseEvents() {
 jQuery(document).ready(function() {
 
     init();
-
-    // Load start (point A) / end (point B) dates:
-    jQuery.post("retreive_user_record.php", function(result) {
-        var user_record = JSON.parse(result);
-
-        jQuery("#A-date-mark").text(user_record["begin_date"]);
-        jQuery("#B-date-mark").text(user_record["date"]);
-
-    });
-
 
     // load and parse user_goal_info from database:
     jQuery.post("retreive_goal_info.php", function(result) {
