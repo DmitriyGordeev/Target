@@ -159,14 +159,6 @@ function lineZoom(x1, x2, y, delta, W, H) {
     return "s" + zoomfactor + " t" + x1 + "," + y;
 }
 
-// obtain keypoints objects from server as json:
-function get_keypoints(viewport) {
-    jQuery.post("test_database.php", function(result) {
-        keypoints = JSON.parse(result);
-        highlight_circles(viewport, keypoints);
-    });
-}
-
 // get dates from server:
 function retreive_dates(viewport, x1, x2, y) {
     jQuery.post("retreive_dates.php", function(result) {
