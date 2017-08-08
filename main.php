@@ -117,21 +117,21 @@ class MainViewportPage {
 
                         <li>
                             <div>
-                                <p class=\"element-heading\">Цель</p>
+                                <p class=\"element-heading\"><span>Цель</span></p>
                                 <textarea class=\"element-description\" name=\"ta-goal\" rows=\"4\" placeholder=\"Например: заработать 100 000 руб\">".$this->goalData."</textarea>
                             </div>
                         </li>
 
                         <li>
                             <div>
-                                <p class=\"element-heading\">Доказательство</p>
+                                <p class=\"element-heading\"><span>Доказательство</span></p>
                                 <textarea class=\"element-description\" name=\"ta-proof\" rows=\"4\" placeholder=\"Например: 10 фотографий поездки\">".$this->proofData."</textarea>
                             </div>
                         </li>
 
                         <li>
                             <div>
-                                <p class=\"element-heading\">Дата</p>
+                                <p class=\"element-heading\"><span>Дата</span></p>
                                 <!--<textarea class=\"element-description\" name=\"ta-date\" rows=\"3\" placeholder=\"Например: до 10 июля\"></textarea>-->
                                 <input class=element-description type=\"text\" name=\"datepicker\" placeholder=\"Выберите дату\" value='".$this->date."'>
                                 <p class=\"element-description\" id=\"date_countdown\">
@@ -148,7 +148,7 @@ class MainViewportPage {
 
                         <li>
                             <div>
-                                <p class=\"element-heading\">Цена слова</p>
+                                <p class=\"element-heading\"><span>Цена слова</span></p>
                                 <textarea class=\"element-description\" name=\"ta-penalty\" rows=\"4\" placeholder=\"Например: отдать Ивану Ивановичу 20 000 руб\">".$this->penaltyData."</textarea>
                             </div>
                         </li>

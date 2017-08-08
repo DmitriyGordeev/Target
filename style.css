@@ -247,7 +247,12 @@ input[name="plan-datepicker"] {
     font-weight: 800;
     font-size: 19px;
     text-align: center;
-    text-decoration: underline;
+}
+
+.element-heading > span {
+    border-bottom: 2px solid #39384d;
+    font-weight: 800;
+    padding: 0 3px;
 }
 
 .element-description {

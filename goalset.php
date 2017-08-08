@@ -67,12 +67,6 @@ include_once ("encoding.php");
         text-decoration: none;
     }
 
-    .element-heading > span {
-        border-bottom: 2px solid #39384d;
-        font-weight: 800;
-        padding: 0 3px;
-    }
-
 </style>
 
 <body>
