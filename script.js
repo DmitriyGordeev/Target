@@ -96,7 +96,7 @@ function circle_popup(viewport, circleObject, title, desc) {
 
 /* highlights circles when hovering: */
 function highlight_circles(viewport, keyPoints) {
-
+    
     var pointA_circle = Snap.select("#point_A");
     circle_popup(viewport, pointA_circle, "Точка А", keyPoints.A.description);
 
@@ -333,8 +333,13 @@ jQuery(document).ready(function() {
 
     dateMark(viewport);
 
+    setTimeout(function() {
+        highlight_circles(viewport, g_user_goal_object);
+    }, 1500);
+
+
     // get keypoints objects from server:
-    get_keypoints(viewport);
+    // get_keypoints(viewport);
 
     // define pointA cx and pointB cx:
     var x1 = Snap("#point_A").asPX("cx");
