@@ -59,10 +59,7 @@ function sticker(x, y, title, description) {
     var stickerDiv = jQuery("<div id='cloud'>");
     stickerDiv.hide();
     stickerDiv.appendTo("body");
-    stickerDiv.css({
-        top: y,
-        left: x
-    });
+    stickerDiv.css({ top: y, left: x });
 
     var cloudTitle = jQuery("<p class='cloud-title'>" + title + "</p>");
     var cloudDesc = jQuery("<p class='cloud-description'>" + description + "</p>");
@@ -70,14 +67,17 @@ function sticker(x, y, title, description) {
     cloudTitle.appendTo("#cloud");
     cloudDesc.appendTo("#cloud");
 
-    stickerDiv.show(300);
+    stickerDiv.fadeIn(300);
 }
 
 /* circle cloud appearance: */
 function circle_popup(viewport, circleObject, title, desc) {
     circleObject.hover(function() {
             this.animate({
-                fill: "#fef9ff", strokeWidth: "5px", stroke: "#39384d"
+                fill: "#39384d",
+                r: "5px",
+                strokeWidth: "10px",
+                stroke: "#39384d"
             }, 200);
 
             // recalculating cloud coordinates:
@@ -85,10 +85,10 @@ function circle_popup(viewport, circleObject, title, desc) {
             var newx = this.asPX("cx") * mat.a + mat.e;
             var newy = this.asPX("cy") * mat.a + mat.f;
 
-            sticker(newx, newy + 55, title, desc);
+            sticker(newx, newy + 40, title, desc);
         }, function() {
             this.animate({fill: "#39384d", strokeWidth: "0px"}, 200);
-            jQuery("#cloud").hide(200, function() {
+            jQuery("#cloud").fadeOut(200, function() {
                 jQuery("#cloud").remove();
             });
         });
