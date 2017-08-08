@@ -93,7 +93,7 @@ class MainViewportPage {
         return
             "<svg id=\"main-svg-viewport\">
                 <g id=\"canvas\">
-                    <rect id='timeline-rect' x='0' y='0' width='0px' height='100%' fill='#eeeeee'></rect>
+                    <rect id='timeline-rect' x='0' y='0' width='0px' height='100%' fill='#8cadac'></rect>
                     <text id='timeline-now-mark' x='0' y='30' font-size='10px' fill='#F53240'>Время идет!</text>
                 
                     <line id=\"line_alpha\" class=\"timeline\" x1=\"10%\" y1=\"50%\" x2=\"30%\" y2=\"50%\" stroke=\"#F53240\" stroke-width=\"4px\"></line>
