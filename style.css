@@ -489,6 +489,27 @@ textarea::-webkit-input-placeholder {
     color: #c4e0d9;
 }
 
+textarea::-moz-placeholder {
+    color: #c4e0d9;
+}
+
+textarea:-ms-input-placeholder {
+    color: #c4e0d9;
+}
+
+input[name="plan-datepicker"]::-webkit-input-placeholder {
+    color: #c4e0d9;
+}
+
+input[name="plan-datepicker"]::-moz-placeholder {
+    color: #c4e0d9;
+}
+
+input[name="plan-datepicker"]:-ms-input-placeholder {
+    color: #c4e0d9;
+}
+
+
 #date_countdown {
     font-weight: 800;
     font-size: 17px;
