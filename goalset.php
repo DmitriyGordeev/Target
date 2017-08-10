@@ -73,7 +73,7 @@ include_once ("encoding.php");
 
     <div id="outer-container">
         <p>Поставьте цель</p>
-        <form method="post" action="insert_user.php">
+        <form method="post" action="insert_user.php" onsubmit="return onSubmit()">
             <div id="bottom-row">
                     <ul class="ul-horizontal">
                         <li>

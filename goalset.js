@@ -1,5 +1,19 @@
 /* Goal Set page functionality */
 
+function onSubmit() {
+    var goal = jQuery("textarea[name='ta-goal']").val();
+    var proof = jQuery("textarea[name='ta-proof']").val();
+    var date = jQuery("input[name='datepicker']").val();
+    var penalty = jQuery("textarea[name='ta-penalty']").val();
+
+    if(goal == "" || proof == "" || date == "" || penalty == "") {
+        alert("Заполните все поля");
+        return false;
+    }
+
+    return true;
+}
+
 jQuery(document).ready(function() {
 
     var picker = new Pikaday({
