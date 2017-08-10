@@ -33,7 +33,7 @@ class MainViewportPage {
     public function head() {
         $head_string = "<head>
                 <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" />
-                <title> MainPage | Goal </title>";
+                <title>Не останавливайтесь</title>";
 
         $head_string = $head_string.$this->styles().$this->scripts()."</head>";
         return $head_string;

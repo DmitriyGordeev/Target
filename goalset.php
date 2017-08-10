@@ -7,7 +7,7 @@ include_once ("encoding.php");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Goal Set - Project Target </title>
+    <title>Поставьте свою цель!</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="Pikaday-master/css/pikaday.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo+2|Forum|Play" rel="stylesheet">
